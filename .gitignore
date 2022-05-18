@@ -30,3 +30,10 @@
 *.exe
 *.out
 *.app
+
+#Folders
+.vs/
+x64/
+ING-LP1-TPFinal/x64/
+ING-LP1-TPFinal/.vs/
+ING-LP1-TPFinal/ING-LP1-TPFinal/x64/
