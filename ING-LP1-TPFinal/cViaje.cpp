@@ -16,9 +16,10 @@ cViaje::~cViaje() {
 }
 
 string cViaje::ToStringViaje() const {
-	return "Inicio:" + Inicio +
-		"Destino:" + Destino +
-		"Costo DelViaje:" + to_string(CostoDelViaje);
+	return 
+		"\nInicio:" + Inicio +
+		"\nDestino:" + Destino +
+		"\nCosto DelViaje:" + to_string(CostoDelViaje);
 }
 
 void cViaje::Imprimir() const {

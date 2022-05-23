@@ -5,15 +5,31 @@ using namespace std;
 class cViaje
 {
 private:
+
 	string Inicio;
 	string Destino;
 	float CostoDelViaje;
+
 public:
 
 #pragma region Constructores y destructores
 
+	/// <summary>
+	/// Constructor por defecto de la clase Viaje 
+	/// </summary>
 	cViaje();
+
+	/// <summary>
+	/// Constructor de la clase Viaje 
+	/// </summary>
+	/// <param name="Inicio"></param>
+	/// <param name="Destino"></param>
+	/// <param name="CostoDelViaje"></param>
 	cViaje(string Inicio, string Destino, float CostoDelViaje);
+
+	/// <summary>
+	/// Destructor de la clase Viaje 
+	/// </summary>
 	~cViaje();
 
 #pragma endregion

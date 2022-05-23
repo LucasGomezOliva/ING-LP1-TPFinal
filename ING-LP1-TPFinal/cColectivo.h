@@ -1,12 +1,10 @@
 #pragma once
 #include<string>
-
-#include"cListaTemplate.h"
-
 #include"cRecorrido.h"
-
+#include"cSistemaDePagos.h"
 //Borrar cuando este la lista
 #include"cPasajero.h"
+#include"cListaTemplate.h"
 //borrar cuando este la lista
 
 using namespace std;
@@ -17,31 +15,55 @@ class cColectivo
 protected:
 
 	static unsigned long int CantidadDeColectivos;
-
 	string IDColectivo;
-	
 	bool EstadoOperaativo;
-
-	//cSistemaDePagos* SistemaDePagos = NULL;
-	
+	cSistemaDePagos* SistemaDePagos = NULL;
 	cRecorrido* Recorrido = NULL;
-
 	//cListaPasajeros* Pasajeros = NULL;
 	
 public:
 
 #pragma region Constructores y destructores
 
+	/// <summary>
+	/// Constructor por defecto de la clase Colectivo 
+	/// </summary>
 	cColectivo();
-	cColectivo(string IDColectivo);
+
+	/// <summary>
+	/// Constructor de la clase Colectivo 
+	/// </summary>
+	/// <param name="IDColectivo"></param>
+	/// <param name="RecorridoAsignado"></param>
+	cColectivo(string IDColectivo, cRecorrido* RecorridoAsignado);
+
+	/// <summary>
+	/// Destructor de la clase Colectivo 
+	/// </summary>
 	~cColectivo();
 
 #pragma endregion
 
 #pragma region Getter y setters
 
+	/// <summary>
+	/// Retorna el ID Colectivo
+	/// </summary>
+	/// <returns>String</returns>
 	string GetIDColectivo() const;
+
+	/// <summary>
+	/// Retorna el Estado Operativo
+	/// </summary>
+	/// <returns>Bool</returns>
 	bool GetEstadoOperativo() const ;
+
+	/// <summary>
+	/// Cambia el recorrido del colectivo por uno nuevo
+	/// </summary>
+	/// <param name="Nuevo Recorrido"></param>
+	/// <returns></returns>
+	void SetNuevoRecorrido(cRecorrido* NuevoRecorrido);
 
 #pragma endregion
 
@@ -52,7 +74,7 @@ public:
 	/// </summary>
 	/// <param name="Destino"></param>
 	/// <returns>Pasajero</returns>
-	cPasajero* BajarPasajeros(string NombreParada);
+	cPasajero* BajarPasajeros(string NombreParadaActual);
 
 	/// <summary>
 	/// Agrega un nuevo pasajero a la lista pasajeros del colectivo

@@ -9,7 +9,7 @@ public:
 #pragma region Constructores y destructores
 
 	cColectivoSinAire();
-	cColectivoSinAire(string IDColectivo);
+	cColectivoSinAire(string IDColectivo, cRecorrido* RecorridoAsignado);
 	~cColectivoSinAire();
 
 #pragma endregion

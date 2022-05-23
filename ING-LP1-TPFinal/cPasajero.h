@@ -17,15 +17,47 @@ public:
 
 #pragma region Constructores y destructores
 
+	/// <summary>
+	/// Constructor por defecto de la clase Pasajero 
+	/// </summary>
 	cPasajero();
-	cPasajero(string Nombre, unsigned int long DNI, string NombreParadaDestino, bool SillaDeRuedas,float Saldo);
+
+	/// <summary>
+	/// Constructor de la clase Pasajero 
+	/// </summary>
+	/// <param name="Nombre"></param>
+	/// <param name="DNI"></param>
+	/// <param name="NombreParadaDestino"></param>
+	/// <param name="SillaDeRuedas"></param>
+	/// <param name="Saldo"></param>
+	cPasajero(string Nombre, unsigned int long DNI, string NombreParadaDestino, bool SillaDeRuedas, float Saldo);
+
+	/// <summary>
+	/// Destructor de la clase Pasajero 
+	/// </summary>
 	~cPasajero();
 
 #pragma endregion
 
 #pragma region Getter y setters
 
+	/// <summary>
+	/// Retorna si el pasajero esta en silla de ruedas
+	/// </summary>
+	/// <returns>bool</returns>
+	bool GetSillaDeRuedas() const ;
+
+	/// <summary>
+	/// Retorna el destino del pasajero
+	/// </summary>
+	/// <returns>string</returns>
 	string GetDestino() const ;
+
+	/// <summary>
+	/// Retorna el puntero de la tarjeta del pasajero
+	/// </summary>
+	/// <returns>Tarjeta</returns>
+	cTarjeta* GetTarjetaPasajero() const ;
 
 #pragma endregion
 

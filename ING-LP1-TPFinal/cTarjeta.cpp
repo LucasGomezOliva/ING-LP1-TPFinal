@@ -17,7 +17,9 @@ cTarjeta::cTarjeta(float Saldo) {
 cTarjeta::~cTarjeta() {
 
 }
-
+float cTarjeta::GetSaldo() const {
+	return Saldo;
+}
 float cTarjeta::CargaDeSaldo(float SaldoAgregar) {
 	this->Saldo = Saldo + SaldoAgregar;
 	return Saldo;
@@ -28,9 +30,14 @@ float cTarjeta::DescuentoSalto(float Cargo) {
 	return Saldo;
 }
 
+void cTarjeta::AgregarViajeLista(cViaje* NuevoViaje) {
+
+}
+
 string cTarjeta::ToStringTarjeta()const {
-	return "Numero de Tarjeta:" + to_string(NumeroTarjeta) +
-		"Saldo:" + to_string(Saldo);
+	return 
+		"\nNumero de Tarjeta:" + to_string(NumeroTarjeta) +
+		"\nSaldo:" + to_string(Saldo);
 }
 
 void cTarjeta::Imprimir()const {

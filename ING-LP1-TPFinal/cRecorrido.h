@@ -15,8 +15,20 @@ public:
 
 #pragma region Constructores y destructores
 
+	/// <summary>
+	/// Constructor por defecto de la clase Recorrido 
+	/// </summary>
 	cRecorrido();
+
+	/// <summary>
+	/// Constructor de la clase Recorrido 
+	/// </summary>
+	/// <param name="CodigoRecorrido"></param>
 	cRecorrido(string CodigoRecorrido);
+
+	/// <summary>
+	/// Destructor de la clase Recorrido 
+	/// </summary>
 	~cRecorrido();
 
 #pragma endregion

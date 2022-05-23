@@ -146,6 +146,7 @@
     <ClCompile Include="cParada.cpp" />
     <ClCompile Include="cPasajero.cpp" />
     <ClCompile Include="cRecorrido.cpp" />
+    <ClCompile Include="cSistemaDePagos.cpp" />
     <ClCompile Include="cTarjeta.cpp" />
     <ClCompile Include="cViaje.cpp" />
     <ClCompile Include="ING-LP1-TPFinal.cpp" />
@@ -159,6 +160,7 @@
     <ClInclude Include="cParada.h" />
     <ClInclude Include="cPasajero.h" />
     <ClInclude Include="cRecorrido.h" />
+    <ClInclude Include="cSistemaDePagos.h" />
     <ClInclude Include="cTarjeta.h" />
     <ClInclude Include="cViaje.h" />
   </ItemGroup>

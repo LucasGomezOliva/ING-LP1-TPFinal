@@ -15,9 +15,10 @@ cParada::~cParada() {
 
 }
 
-ostream& operator<<(ostream& os, const cParada* Parada) {
-	os << Parada->ToStringParada();
-	return os;
+
+cPasajero* cParada::PasajeroSubeColectivo() {
+	//Retornar primero los pasajeros con silla de ruedas
+	return NULL;
 }
 
 string cParada::ToStringParada() const {
@@ -28,4 +29,9 @@ string cParada::ToStringParada() const {
 
 void cParada::imprimir() const {
 	
+}
+
+ostream& operator<<(ostream& os, const cParada* Parada) {
+	os << Parada->ToStringParada();
+	return os;
 }

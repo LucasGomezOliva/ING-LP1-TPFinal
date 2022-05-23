@@ -18,16 +18,21 @@ cPasajero::cPasajero(string Nombre, unsigned int long DNI, string NombreParadaDe
 cPasajero::~cPasajero() {
 	delete TarjetaPasajero;
 }
-
+bool cPasajero::GetSillaDeRuedas() const {
+	return SillaDeRuedas;
+}
 string cPasajero::GetDestino()const {
 	return NombreParadaDestino;
 }
-
+cTarjeta* cPasajero::GetTarjetaPasajero() const {
+	return TarjetaPasajero;
+}
 string cPasajero::ToStringPasajero() const {
-	return "Nombre" + Nombre +
-		"DNI" + to_string(DNI) +
-		"Destino" + NombreParadaDestino +
-		"Datos de Tarjeta:" + TarjetaPasajero->ToStringTarjeta();
+	return 
+		"\nNombre" + Nombre +
+		"\nDNI" + to_string(DNI) +
+		"\nDestino" + NombreParadaDestino +
+		"\nDatos de Tarjeta:" + TarjetaPasajero->ToStringTarjeta();
 }
 
 void cPasajero::imprimir() const {

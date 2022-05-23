@@ -3,7 +3,7 @@ cColectivoSinAire::cColectivoSinAire():cColectivo() {
 
 }
 
-cColectivoSinAire::cColectivoSinAire(string IDColectivo):cColectivo(IDColectivo) {
+cColectivoSinAire::cColectivoSinAire(string IDColectivo,cRecorrido* RecorridoAsignado):cColectivo(IDColectivo,RecorridoAsignado) {
 
 }
 cColectivoSinAire::~cColectivoSinAire() {

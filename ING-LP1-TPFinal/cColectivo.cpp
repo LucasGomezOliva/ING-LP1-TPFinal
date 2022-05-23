@@ -6,25 +6,41 @@ cColectivo::cColectivo() {
 	this->CantidadDeColectivos++;
 	this->IDColectivo = "";
 	this->EstadoOperaativo = true;
+	this->SistemaDePagos = new cSistemaDePagos();
+	//this->Recorrido = new cRecorrido();
 }
 
-cColectivo::cColectivo(string IDColectivo) {
+cColectivo::cColectivo(string IDColectivo,cRecorrido*RecorridoAsignado) {
 	this->CantidadDeColectivos++;
 	this->IDColectivo = IDColectivo;
 	this->EstadoOperaativo = true;
+	this->SistemaDePagos = new cSistemaDePagos();
+	this->Recorrido = RecorridoAsignado;
 }
 
 cColectivo::~cColectivo() {
-
+	delete SistemaDePagos;
+	//delete Recorrido;
 }
 
-cPasajero* cColectivo::BajarPasajeros(string NombreParada) {
+cPasajero* cColectivo::BajarPasajeros(string NombreParadaActual) {
 	//return pasajero
 	return NULL;
 }
 
 bool cColectivo::SubirPasajeros(cPasajero* Pasajero) {
-	return true;
+
+	bool EstadoPasajero = SistemaDePagos->GenerarViaje("ParadaActual", Pasajero->GetDestino(), Recorrido->CantidadDeParadasEntreDestinos("ParadaActual", Pasajero->GetDestino()), Pasajero->GetTarjetaPasajero());
+	if (EstadoPasajero == true) {
+		//agregar pasajero a la lista
+		//pasajero sube al colectivo
+		return true;
+	}
+	else {
+		//pasajero no cumple con el saldo requerido
+		//no sube al colectivo
+		return false;
+	}
 }
 
 void cColectivo::Averia() {
@@ -37,6 +53,10 @@ string cColectivo::GetIDColectivo() const {
 
 bool cColectivo::GetEstadoOperativo() const {
 	return EstadoOperaativo;
+}
+
+void cColectivo::SetNuevoRecorrido(cRecorrido* NuevoRecorrido) {
+	this->Recorrido = NuevoRecorrido;
 }
 
 void cColectivo::operator+(cPasajero* Pasajero) {
