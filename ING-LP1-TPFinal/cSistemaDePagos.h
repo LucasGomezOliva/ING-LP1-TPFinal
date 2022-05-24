@@ -15,15 +15,30 @@ public:
 
 #pragma region Constructores y destructores
 
+	/// <summary>
+	/// Constructor por defecto de la clase SistemaDePagos 
+	/// </summary>
 	cSistemaDePagos();
+
+	/// <summary>
+	/// Destructor de la clase SistemaDePagos 
+	/// </summary>
 	~cSistemaDePagos();
 
 #pragma endregion
 
 #pragma region Getter y setters
 
+	/// <summary>
+	/// Retorna el monto de la colecta del dia de ese colectivo
+	/// </summary>
+	/// <returns>float</returns>
 	float GetColectaDelDia() const;
 
+	/// <summary>
+	/// Retorna la cantidad de pasajeros que viajaron en el dia en ese colectivo
+	/// </summary>
+	/// <returns>Bool</returns>
 	unsigned int GetCantidadDePasajeros() const;
 
 #pragma endregion

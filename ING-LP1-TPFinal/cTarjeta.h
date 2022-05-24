@@ -69,6 +69,7 @@ public:
 	string ToStringTarjeta()const;
 
 	void Imprimir()const;
+
 #pragma endregion
 };
 

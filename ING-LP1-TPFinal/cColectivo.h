@@ -2,11 +2,7 @@
 #include<string>
 #include"cRecorrido.h"
 #include"cSistemaDePagos.h"
-//Borrar cuando este la lista
-#include"cPasajero.h"
-#include"cListaTemplate.h"
-//borrar cuando este la lista
-
+#include"cListaPasajeros.h"
 using namespace std;
 
 class cColectivo
@@ -19,7 +15,7 @@ protected:
 	bool EstadoOperaativo;
 	cSistemaDePagos* SistemaDePagos = NULL;
 	cRecorrido* Recorrido = NULL;
-	//cListaPasajeros* Pasajeros = NULL;
+	cListaPasajeros* ListaPasajeros = NULL;
 	
 public:
 
@@ -91,6 +87,7 @@ public:
 	void Averia();
 
 	string ToStringColectivo();
+
 	virtual void imprimir() = 0;
 
 #pragma endregion
@@ -110,6 +107,8 @@ public:
 	/// <param name="Pasajero"></param>
 	/// <returns></returns>
 	cPasajero* operator-(cPasajero* Pasajero);
+
+	bool operator==(const cColectivo& OtroColectivo);
 
 #pragma endregion
 };

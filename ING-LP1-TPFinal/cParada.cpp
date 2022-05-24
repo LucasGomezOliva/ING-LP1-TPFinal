@@ -3,18 +3,23 @@ cParada::cParada() {
 	this->IDParada = "";
 	this->NombreParada = "";
 	this->Direccion = "";
+	this->ListaPasajeros = new cListaPasajeros();
 }
 
 cParada::cParada(string IDParada, string NombreParada, string Direccion) {
 	this->IDParada = IDParada;
 	this->NombreParada = NombreParada;
 	this->Direccion = Direccion;
+	this->ListaPasajeros = new cListaPasajeros(100, false);
 }
 
 cParada::~cParada() {
-
+	delete ListaPasajeros;
 }
 
+string cParada::GetNombreParada() const {
+	return NombreParada;
+}
 
 cPasajero* cParada::PasajeroSubeColectivo() {
 	//Retornar primero los pasajeros con silla de ruedas
@@ -22,9 +27,10 @@ cPasajero* cParada::PasajeroSubeColectivo() {
 }
 
 string cParada::ToStringParada() const {
-	return "ID Parada:" + IDParada +
-		"NombreParada:" + NombreParada +
-		"Direccion:" + Direccion;
+	return 
+		"\nID Parada:" + IDParada +
+		"\nNombreParada:" + NombreParada +
+		"\nDireccion:" + Direccion;
 }
 
 void cParada::imprimir() const {

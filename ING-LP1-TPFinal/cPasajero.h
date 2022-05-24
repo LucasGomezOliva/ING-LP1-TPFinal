@@ -8,7 +8,7 @@ class cPasajero
 private:
 
 	string Nombre;
-	unsigned int long DNI;
+	string DNI;
 	string NombreParadaDestino;
 	bool SillaDeRuedas;
 	cTarjeta* TarjetaPasajero = NULL;
@@ -30,7 +30,7 @@ public:
 	/// <param name="NombreParadaDestino"></param>
 	/// <param name="SillaDeRuedas"></param>
 	/// <param name="Saldo"></param>
-	cPasajero(string Nombre, unsigned int long DNI, string NombreParadaDestino, bool SillaDeRuedas, float Saldo);
+	cPasajero(string Nombre, string DNI, string NombreParadaDestino, bool SillaDeRuedas, float Saldo);
 
 	/// <summary>
 	/// Destructor de la clase Pasajero 
@@ -59,11 +59,18 @@ public:
 	/// <returns>Tarjeta</returns>
 	cTarjeta* GetTarjetaPasajero() const ;
 
+	/// <summary>
+	/// Retorna el DNI del pasajero
+	/// </summary>
+	/// <returns>string</returns>
+	string GetDNI() const;
+
 #pragma endregion
 
 #pragma region Metodos
 
 	string ToStringPasajero()const;
+
 	void imprimir()const;
 
 #pragma endregion
@@ -71,6 +78,8 @@ public:
 #pragma region Sobrecarga Operadores
 
 	friend ostream& operator<<(ostream& os, const cPasajero* Pasajero);
+
+	bool operator==(const cPasajero& OtroPasajero);
 
 #pragma endregion
 

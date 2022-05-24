@@ -2,9 +2,8 @@
 #include<string>
 #include<iostream>
 
-//borr
-#include"cPasajero.h"
-//borr
+#include"cListaPasajeros.h"
+
 using namespace std;
 class cParada
 {
@@ -13,7 +12,7 @@ private:
 	string IDParada;
 	string NombreParada;
 	string Direccion;
-	//cListaPasajeros* ListaPasajeros = NULL;
+	cListaPasajeros* ListaPasajeros = NULL;
 
 public:
 	
@@ -38,12 +37,16 @@ public:
 
 #pragma region Getter y setters
 
+	string GetNombreParada() const;
+
 #pragma endregion
 
 #pragma region Metodos
 
 	cPasajero* PasajeroSubeColectivo();
+
 	string ToStringParada() const;
+
 	void imprimir() const;
 
 #pragma endregion

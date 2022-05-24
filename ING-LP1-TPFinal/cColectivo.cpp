@@ -7,7 +7,7 @@ cColectivo::cColectivo() {
 	this->IDColectivo = "";
 	this->EstadoOperaativo = true;
 	this->SistemaDePagos = new cSistemaDePagos();
-	//this->Recorrido = new cRecorrido();
+	this->ListaPasajeros = new cListaPasajeros(50, false);
 }
 
 cColectivo::cColectivo(string IDColectivo,cRecorrido*RecorridoAsignado) {
@@ -15,12 +15,13 @@ cColectivo::cColectivo(string IDColectivo,cRecorrido*RecorridoAsignado) {
 	this->IDColectivo = IDColectivo;
 	this->EstadoOperaativo = true;
 	this->SistemaDePagos = new cSistemaDePagos();
+	this->ListaPasajeros = new cListaPasajeros(50, false);
 	this->Recorrido = RecorridoAsignado;
 }
 
 cColectivo::~cColectivo() {
 	delete SistemaDePagos;
-	//delete Recorrido;
+	delete ListaPasajeros;
 }
 
 cPasajero* cColectivo::BajarPasajeros(string NombreParadaActual) {
@@ -33,6 +34,7 @@ bool cColectivo::SubirPasajeros(cPasajero* Pasajero) {
 	bool EstadoPasajero = SistemaDePagos->GenerarViaje("ParadaActual", Pasajero->GetDestino(), Recorrido->CantidadDeParadasEntreDestinos("ParadaActual", Pasajero->GetDestino()), Pasajero->GetTarjetaPasajero());
 	if (EstadoPasajero == true) {
 		//agregar pasajero a la lista
+		*(ListaPasajeros) + Pasajero;
 		//pasajero sube al colectivo
 		return true;
 	}
@@ -70,4 +72,12 @@ cPasajero* cColectivo::operator-(cPasajero* Pasajero) {
 
 string cColectivo::ToStringColectivo() {
 	return "ID Colectivo" + IDColectivo;
+}
+
+bool cColectivo::operator==(const cColectivo& OtroColectivo) {
+	if (IDColectivo == OtroColectivo.GetIDColectivo()) {
+		return true;
+	}
+	else
+		return false;
 }

@@ -48,6 +48,9 @@
     <ClCompile Include="cSistemaDePagos.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="cListaPasajeros.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cColectivo.h">
@@ -81,6 +84,12 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="cSistemaDePagos.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Defines.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="cListaPasajeros.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

@@ -8,8 +8,21 @@ public:
 	
 #pragma region Constructores y destructores
 
+	/// <summary>
+	/// Constructor por defecto de la clase ColectivoConAire 
+	/// </summary>
 	cColectivoConAire();
+
+	/// <summary>
+	/// Constructor de la clase ColectivoConAire
+	/// </summary>
+	/// <param name="IDColectivo"></param>
+	/// <param name="RecorridoAsignado"></param>
 	cColectivoConAire(string IDColectivo, cRecorrido* RecorridoAsignado);
+
+	/// <summary>
+	/// Destructor de la clase ColectivoConAire 
+	/// </summary>
 	~cColectivoConAire();
 
 #pragma endregion
