@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{528d9079-aec1-4067-83be-1401afab686c}</ProjectGuid>
-    <RootNamespace>INGLP1TPFinal</RootNamespace>
+    <ProjectGuid>{12177ccc-703b-4c28-80e7-6ea7d45099c5}</ProjectGuid>
+    <RootNamespace>GenerardorRandoms</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -40,7 +40,7 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
@@ -70,18 +70,6 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LinkIncremental>true</LinkIncremental>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <LinkIncremental>false</LinkIncremental>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LinkIncremental>true</LinkIncremental>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <LinkIncremental>false</LinkIncremental>
-  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -139,40 +127,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="cColectivo.cpp" />
-    <ClCompile Include="cColectivoAcordeon.cpp" />
-    <ClCompile Include="cColectivoConAire.cpp" />
-    <ClCompile Include="cColectivoSinAire.cpp" />
-    <ClCompile Include="cListaParadas.cpp" />
-    <ClCompile Include="cListaPasajeros.cpp" />
-    <ClCompile Include="cParada.cpp" />
-    <ClCompile Include="cPasajero.cpp" />
-    <ClCompile Include="cRecorrido.cpp" />
-    <ClCompile Include="cSistemaDePagos.cpp" />
-    <ClCompile Include="cTarjeta.cpp" />
-    <ClCompile Include="cViaje.cpp" />
-    <ClCompile Include="ING-LP1-TPFinal.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="cColectivo.h" />
-    <ClInclude Include="cColectivoAcordeon.h" />
-    <ClInclude Include="cColectivoConAire.h" />
-    <ClInclude Include="cColectivoSinAire.h" />
-    <ClInclude Include="cListaParadas.h" />
-    <ClInclude Include="cListaPasajeros.h" />
-    <ClInclude Include="cListaTemplate.h" />
-    <ClInclude Include="cParada.h" />
-    <ClInclude Include="cPasajero.h" />
-    <ClInclude Include="cRecorrido.h" />
-    <ClInclude Include="cSistemaDePagos.h" />
-    <ClInclude Include="cTarjeta.h" />
-    <ClInclude Include="cViaje.h" />
+    <ClInclude Include="cGenerador.h" />
+    <ClInclude Include="cListaStrings.h" />
     <ClInclude Include="Defines.h" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GenerardorRandoms\GenerardorRandoms.vcxproj">
-      <Project>{12177ccc-703b-4c28-80e7-6ea7d45099c5}</Project>
-    </ProjectReference>
+    <ClCompile Include="cGenerador.cpp" />
+    <ClCompile Include="cListaStrings.cpp" />
+    <ClCompile Include="Defines.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

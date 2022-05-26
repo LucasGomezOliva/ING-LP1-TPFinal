@@ -29,7 +29,7 @@ cPasajero* cParada::PasajeroSubeColectivo() {
 string cParada::ToStringParada() const {
 	return 
 		"\nID Parada:" + IDParada +
-		"\nNombreParada:" + NombreParada +
+		"\nNombre de la Parada: " + NombreParada +
 		"\nDireccion:" + Direccion;
 }
 
@@ -40,4 +40,11 @@ void cParada::imprimir() const {
 ostream& operator<<(ostream& os, const cParada* Parada) {
 	os << Parada->ToStringParada();
 	return os;
+}
+
+bool cParada::operator==(const cParada& OtraParada) {
+	if (NombreParada == OtraParada.GetNombreParada())
+		return true;
+	else
+		return false;
 }

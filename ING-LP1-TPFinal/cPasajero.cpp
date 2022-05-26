@@ -31,11 +31,18 @@ string cPasajero::GetDNI() const {
 	return DNI;
 }
 string cPasajero::ToStringPasajero() const {
-	return 
-		"\nNombre" + Nombre +
-		"\nDNI" + DNI +
-		"\nDestino" + NombreParadaDestino +
-		"\nDatos de Tarjeta:" + TarjetaPasajero->ToStringTarjeta();
+
+	string aux=
+		"\nNombre: " + Nombre +
+		"\nDNI: " + DNI +
+		"\nDestino: " + NombreParadaDestino +
+		"\nDatos de Tarjeta: " + TarjetaPasajero->ToStringTarjeta();
+	if (SillaDeRuedas == true) {
+		aux = aux + "\nSilla de ruedas: SI";
+	}
+	else
+		aux = aux + "\nSilla de ruedas: NO";
+	return aux;
 }
 
 void cPasajero::imprimir() const {

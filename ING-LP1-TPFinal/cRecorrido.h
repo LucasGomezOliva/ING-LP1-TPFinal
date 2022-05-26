@@ -1,15 +1,15 @@
 #pragma once
 #include<iostream>
 #include<string>
-#include"cParada.h"
+//#include"cParada.h"
+#include"cListaParadas.h"
 using namespace std;
 class cRecorrido
 {
 private:
 
 	string CodigoRecorrido;
-
-	//cListaParadas* ListaParadas = NULL;
+	cListaParadas* ListaParadas = NULL;
 
 public:
 
@@ -36,6 +36,7 @@ public:
 #pragma region Getter y setters
 
 	string GetCodigoRecorrido();
+	int GetCantidadParadas() const;
 
 #pragma endregion
 

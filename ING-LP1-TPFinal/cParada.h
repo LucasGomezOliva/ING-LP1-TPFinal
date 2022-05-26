@@ -55,6 +55,8 @@ public:
 
 	friend ostream& operator<<(ostream& os, const cParada* Parada);
 
+	bool operator==(const cParada& OtraParada);
+
 #pragma endregion
 
 };
