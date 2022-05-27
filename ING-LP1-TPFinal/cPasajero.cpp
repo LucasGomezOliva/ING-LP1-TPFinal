@@ -1,15 +1,11 @@
 #include "cPasajero.h"
-cPasajero::cPasajero() {
-	this->Nombre = "";
-	this->DNI = "";
+cPasajero::cPasajero() : cPersona() {
 	this->NombreParadaDestino = "";
 	this->SillaDeRuedas = false;
 	this->TarjetaPasajero = new cTarjeta();
 }
 
-cPasajero::cPasajero(string Nombre, string DNI, string NombreParadaDestino, bool SillaDeRuedas, float Saldo) {
-	this->Nombre = Nombre;
-	this->DNI = DNI;
+cPasajero::cPasajero(string Nombre, string DNI, string NombreParadaDestino, bool SillaDeRuedas, float Saldo) : cPersona(Nombre,DNI) {
 	this->NombreParadaDestino = NombreParadaDestino;
 	this->SillaDeRuedas = SillaDeRuedas;
 	this->TarjetaPasajero = new cTarjeta(Saldo);

@@ -51,7 +51,6 @@ bool cGenerador::GenerarRandomBool() {
 
 string* cGenerador::GenerarRandomNombrePasajero() {
 	srand((unsigned int)time(NULL));
-	//return ListaNombres->QuitarenPos(rand() % ListaNombres->getCA());
 	string* aux = NULL;
 	try {
 		aux = ListaNombres->QuitarenPos(rand() % ListaNombres->GetCantidadActual());
@@ -65,7 +64,6 @@ string* cGenerador::GenerarRandomNombrePasajero() {
 
 string* cGenerador::GenerarRandomDNI() {
 	srand((unsigned int)time(NULL));
-	//return ListaDNI->QuitarenPos(rand() % ListaDNI->getCA());
 	try {
 		ListaDNI->QuitarenPos(rand() % ListaDNI->GetCantidadActual());
 	}
@@ -77,8 +75,7 @@ string* cGenerador::GenerarRandomDNI() {
 }
 
 string* cGenerador::GenerarRandomDireccion() {
-	srand(time(NULL));
-	//return ListaDireccionesParadas->QuitarenPos(rand() % ListaDireccionesParadas->getCA());
+	srand((unsigned int)time(NULL));
 	try {
 		ListaDireccionesParadas->QuitarenPos(rand() % ListaDireccionesParadas->GetCantidadActual());
 	}
@@ -91,7 +88,5 @@ string* cGenerador::GenerarRandomDireccion() {
 
 float cGenerador::GenerarRandomSaldo() {
 	srand((unsigned int)time(NULL));
-	//return 100 + rand() % 1500;
 	return 300 + (rand() % 2000 - 300) / 10.0f;
-	
 }

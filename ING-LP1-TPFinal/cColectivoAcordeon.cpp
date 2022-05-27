@@ -1,7 +1,9 @@
 #include "cColectivoAcordeon.h"
-cColectivoAcordeon::cColectivoAcordeon() {
+cColectivoAcordeon::cColectivoAcordeon() : cColectivoConAire() {
 
 }
+
+
 cColectivoAcordeon::~cColectivoAcordeon() {
 
 }

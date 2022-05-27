@@ -7,9 +7,9 @@ class cGenerador
 {
 private:
 
-	cListaStrings* ListaNombres = NULL;
-	cListaStrings* ListaDNI = NULL;
-	cListaStrings* ListaDireccionesParadas = NULL;
+	cListaStrings* ListaNombres;
+	cListaStrings* ListaDNI;
+	cListaStrings* ListaDireccionesParadas;
 
 public:
 

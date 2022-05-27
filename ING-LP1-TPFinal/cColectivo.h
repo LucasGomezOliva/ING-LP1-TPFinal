@@ -3,6 +3,7 @@
 #include"cRecorrido.h"
 #include"cSistemaDePagos.h"
 #include"cListaPasajeros.h"
+#include"cColectivero.h"
 using namespace std;
 
 class cColectivo
@@ -13,9 +14,10 @@ protected:
 	static unsigned long int CantidadDeColectivos;
 	string IDColectivo;
 	bool EstadoOperaativo;
-	cSistemaDePagos* SistemaDePagos = NULL;
-	cRecorrido* Recorrido = NULL;
-	cListaPasajeros* ListaPasajeros = NULL;
+	cColectivero* Colectivero;
+	cSistemaDePagos* SistemaDePagos;
+	cRecorrido* Recorrido;
+	cListaPasajeros* ListaPasajeros;
 	
 public:
 
@@ -60,6 +62,13 @@ public:
 	/// <param name="Nuevo Recorrido"></param>
 	/// <returns></returns>
 	void SetNuevoRecorrido(cRecorrido* NuevoRecorrido);
+
+	/// <summary>
+	/// Set colectivero
+	/// </summary>
+	/// <param name="Colectivero"></param>
+	/// <returns></returns>
+	void SetColectivero(cColectivero* Colectivero);
 
 #pragma endregion
 
@@ -108,6 +117,14 @@ public:
 	/// <returns></returns>
 	cPasajero* operator-(cPasajero* Pasajero);
 
+	/// <summary>
+	/// Compara 2 colectivos para saber si son el mismo
+	/// </summary>
+	/// <param name="Colectivo"></param>
+	/// <returns>
+	/// TRUE : si es el mismo
+	/// FALSE : si es otro colectivo
+	/// </returns>
 	bool operator==(const cColectivo& OtroColectivo);
 
 #pragma endregion

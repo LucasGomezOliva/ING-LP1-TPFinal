@@ -6,12 +6,14 @@ cTarjeta::cTarjeta() {
 	this->CantidadDeTarjetasCreadas++;
 	this->NumeroTarjeta = CantidadDeTarjetasCreadas;
 	this->Saldo = 0;
+	this->ListaDeViajesRealizados = new cListaViajes(100, true);
 }
 
 cTarjeta::cTarjeta(float Saldo) {
 	this->CantidadDeTarjetasCreadas++;
 	this->NumeroTarjeta = CantidadDeTarjetasCreadas;
 	this->Saldo = Saldo;
+	this->ListaDeViajesRealizados = new cListaViajes(100, true);
 }
 
 cTarjeta::~cTarjeta() {

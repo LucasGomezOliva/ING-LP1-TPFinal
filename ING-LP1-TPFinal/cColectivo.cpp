@@ -8,6 +8,8 @@ cColectivo::cColectivo() {
 	this->EstadoOperaativo = true;
 	this->SistemaDePagos = new cSistemaDePagos();
 	this->ListaPasajeros = new cListaPasajeros(50, false);
+	this->Colectivero = NULL;
+	this->Recorrido = NULL;
 }
 
 cColectivo::cColectivo(string IDColectivo,cRecorrido*RecorridoAsignado) {
@@ -17,6 +19,7 @@ cColectivo::cColectivo(string IDColectivo,cRecorrido*RecorridoAsignado) {
 	this->SistemaDePagos = new cSistemaDePagos();
 	this->ListaPasajeros = new cListaPasajeros(50, false);
 	this->Recorrido = RecorridoAsignado;
+	this->Colectivero = NULL;
 }
 
 cColectivo::~cColectivo() {
@@ -59,6 +62,10 @@ bool cColectivo::GetEstadoOperativo() const {
 
 void cColectivo::SetNuevoRecorrido(cRecorrido* NuevoRecorrido) {
 	this->Recorrido = NuevoRecorrido;
+}
+
+void cColectivo::SetColectivero(cColectivero* Colectivero) {
+	this->Colectivero = Colectivero;
 }
 
 void cColectivo::operator+(cPasajero* Pasajero) {

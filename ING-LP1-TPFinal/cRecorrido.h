@@ -9,7 +9,7 @@ class cRecorrido
 private:
 
 	string CodigoRecorrido;
-	cListaParadas* ListaParadas = NULL;
+	cListaParadas* ListaParadas;
 
 public:
 

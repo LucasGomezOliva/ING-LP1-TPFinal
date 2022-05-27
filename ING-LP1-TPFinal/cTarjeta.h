@@ -1,9 +1,6 @@
 #pragma once
 #include<string>
-
-//borrar dsp
-#include"cViaje.h"
-//borrar dsp
+#include"cListaViajes.h"
 using namespace std;
 class cTarjeta
 {
@@ -12,8 +9,7 @@ private:
 	unsigned int long NumeroTarjeta;
 	float Saldo;
 	static unsigned long int CantidadDeTarjetasCreadas;
-
-	//cListaDeViajes* ListaDeViajesRealizados = NULL;
+	cListaViajes* ListaDeViajesRealizados;
 
 public:
 
@@ -39,6 +35,11 @@ public:
 
 #pragma region Getter y setters
 
+	/// <summary>
+	/// Retorna el saldo actual de la tarjeta
+	/// </summary>
+	/// <param></param>
+	/// <returns>Saldo</returns>
 	float GetSaldo() const ;
 
 #pragma endregion

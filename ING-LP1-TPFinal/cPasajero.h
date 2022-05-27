@@ -2,16 +2,15 @@
 #include<iostream>
 #include<string>
 #include"cTarjeta.h"
+#include"cPersona.h"
 using namespace std;
-class cPasajero
+class cPasajero : public cPersona
 {
 private:
 
-	string Nombre;
-	string DNI;
 	string NombreParadaDestino;
 	bool SillaDeRuedas;
-	cTarjeta* TarjetaPasajero = NULL;
+	cTarjeta* TarjetaPasajero;
 
 public:
 

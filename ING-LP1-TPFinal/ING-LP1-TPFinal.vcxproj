@@ -139,14 +139,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="cColectivero.cpp" />
     <ClCompile Include="cColectivo.cpp" />
     <ClCompile Include="cColectivoAcordeon.cpp" />
+    <ClCompile Include="cColectivoAutonomo.cpp" />
     <ClCompile Include="cColectivoConAire.cpp" />
     <ClCompile Include="cColectivoSinAire.cpp" />
     <ClCompile Include="cListaParadas.cpp" />
     <ClCompile Include="cListaPasajeros.cpp" />
+    <ClCompile Include="cListaViajes.cpp" />
     <ClCompile Include="cParada.cpp" />
     <ClCompile Include="cPasajero.cpp" />
+    <ClCompile Include="cPersona.cpp" />
     <ClCompile Include="cRecorrido.cpp" />
     <ClCompile Include="cSistemaDePagos.cpp" />
     <ClCompile Include="cTarjeta.cpp" />
@@ -154,15 +158,19 @@
     <ClCompile Include="ING-LP1-TPFinal.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="cColectivero.h" />
     <ClInclude Include="cColectivo.h" />
     <ClInclude Include="cColectivoAcordeon.h" />
+    <ClInclude Include="cColectivoAutonomo.h" />
     <ClInclude Include="cColectivoConAire.h" />
     <ClInclude Include="cColectivoSinAire.h" />
     <ClInclude Include="cListaParadas.h" />
     <ClInclude Include="cListaPasajeros.h" />
     <ClInclude Include="cListaTemplate.h" />
+    <ClInclude Include="cListaViajes.h" />
     <ClInclude Include="cParada.h" />
     <ClInclude Include="cPasajero.h" />
+    <ClInclude Include="cPersona.h" />
     <ClInclude Include="cRecorrido.h" />
     <ClInclude Include="cSistemaDePagos.h" />
     <ClInclude Include="cTarjeta.h" />

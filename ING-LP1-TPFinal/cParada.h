@@ -12,7 +12,7 @@ private:
 	string IDParada;
 	string NombreParada;
 	string Direccion;
-	cListaPasajeros* ListaPasajeros = NULL;
+	cListaPasajeros* ListaPasajeros;
 
 public:
 	

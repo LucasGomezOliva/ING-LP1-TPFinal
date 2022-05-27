@@ -3,11 +3,19 @@
 class cColectivoAcordeon :public cColectivoConAire
 {
 private:
+
 public:
 
 #pragma region Constructores y destructores
 
+	/// <summary>
+	/// Constructor por defecto de la clase ColectivoAcordeon
+	/// </summary>
 	cColectivoAcordeon();
+
+	/// <summary>
+	/// Deestructor de la clase ColectivoAcordeon 
+	/// </summary>
 	~cColectivoAcordeon();
 
 #pragma endregion
