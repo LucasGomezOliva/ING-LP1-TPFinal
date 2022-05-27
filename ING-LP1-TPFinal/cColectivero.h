@@ -1,5 +1,6 @@
 #pragma once
 #include "cPersona.h"
+using namespace std;
 class cColectivero :public cPersona
 {
 private:

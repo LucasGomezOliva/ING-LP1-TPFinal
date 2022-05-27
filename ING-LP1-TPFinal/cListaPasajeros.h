@@ -1,7 +1,7 @@
 #pragma once
 #include"cPasajero.h"
 #include "cListaTemplate.h"
-
+using namespace std;
 class cListaPasajeros :public cListaTemplate<cPasajero>
 {
 private:

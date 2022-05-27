@@ -1,6 +1,7 @@
 #pragma once
 #include "cListaTemplate.h"
 #include "cParada.h"
+using namespace std;
 class cRecorrido;
 class cListaParadas : public cListaTemplate<cParada>
 {

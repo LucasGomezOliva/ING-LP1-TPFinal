@@ -1,5 +1,6 @@
 #pragma once
 #include "cColectivo.h"
+using namespace std;
 class cColectivoSinAire :public cColectivo
 {
 private:

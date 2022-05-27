@@ -1,7 +1,6 @@
 #pragma once
 #include<iostream>
 #include<string>
-//#include"cParada.h"
 #include"cListaParadas.h"
 using namespace std;
 class cRecorrido

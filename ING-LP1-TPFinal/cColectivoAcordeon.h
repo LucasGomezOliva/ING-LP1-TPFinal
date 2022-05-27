@@ -1,5 +1,6 @@
 #pragma once
 #include "cColectivoConAire.h"
+using namespace std;
 class cColectivoAcordeon :public cColectivoConAire
 {
 private:

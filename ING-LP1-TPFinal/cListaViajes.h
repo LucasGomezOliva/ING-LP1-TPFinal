@@ -1,6 +1,7 @@
 #pragma once
 #include "cListaTemplate.h"
 #include"cViaje.h"
+using namespace std;
 class cListaViajes : public cListaTemplate<cViaje>
 {
 public:

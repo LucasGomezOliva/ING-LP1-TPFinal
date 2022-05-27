@@ -1,9 +1,7 @@
 #pragma once
 #include<string>
 #include<iostream>
-
 #include"cListaPasajeros.h"
-
 using namespace std;
 class cParada
 {
