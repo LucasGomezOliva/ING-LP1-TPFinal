@@ -8,21 +8,82 @@ template <class T>
 class cListaTemplate
 {
 protected:
+
 	T** Array;
 	unsigned int CantidadActual;
 	unsigned int TamMax;
 	bool borrar;
 	bool duplicados;
+
 public:
+
+#pragma region Constructores y destructores
+
+	/// <summary>
+	/// Constructor de la clase ListaTemplate.
+	/// </summary>
+	/// <param name="TamMax"></param>
+	/// <param name="borrar"></param>
 	cListaTemplate(unsigned int TamMax = SIZE, bool borrar = false);
+
+	/// <summary>
+	/// Destructor de la clase ListaTemplate
+	/// </summary>
 	~cListaTemplate();
+
+#pragma endregion
+
+#pragma region Metodos
+
+	/// <summary>
+	/// Agrega un objeto a la lista.
+	/// </summary>
+	/// <param name="objeto"></param>
 	void Agregar(T* objeto);
+
+	/// <summary>
+	/// Quita un objeto a la lista.
+	/// </summary>
+	/// <param name="objeto"></param>
 	T* Quitar(T* objeto);
+
+	/// <summary>
+	/// Retorna la pos de un objeto
+	/// </summary>
+	/// <param name="objeto"></param>
+	/// <returns>int</returns>
 	int getPos(T* objeto);
+
+	/// <summary>
+	/// Imprime los objetos a la lista.
+	/// </summary>
 	void Listar();
+
+#pragma endregion
+
+#pragma region Sobrecarga Operadores
+
+	/// <summary>
+	/// Agrega un objeto a la lista.
+	/// </summary>
+	/// <param name="objeto"></param>
 	void operator+(T* objeto);
+
+	/// <summary>
+	/// Quita un objeto a la lista.
+	/// </summary>
+	/// <param name="objeto"></param>
 	void operator-(T* objeto);
+
+	/// <summary>
+	/// Busca un objeto en la Lista.
+	/// </summary>
+	/// <param name="pos"></param>
+	/// <returns>Objeto</returns>
 	T* operator[](unsigned int pos);
+
+#pragma endregion
+
 };
 
 template <class T>
@@ -99,7 +160,7 @@ inline void cListaTemplate <T>::operator+(T* objeto) {
 }
 
 template <class T>
-void cListaTemplate <T>::operator-(T* objeto) {
+inline void cListaTemplate <T>::operator-(T* objeto) {
 	Quitar(objeto);
 }
 
