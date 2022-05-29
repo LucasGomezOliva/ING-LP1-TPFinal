@@ -35,6 +35,8 @@ public:
 
 #pragma region Getter y setters
 
+	string GetIDParada() const;
+
 	string GetNombreParada() const;
 
 #pragma endregion

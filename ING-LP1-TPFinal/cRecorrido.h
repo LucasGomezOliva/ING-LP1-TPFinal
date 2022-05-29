@@ -8,7 +8,9 @@ class cRecorrido
 private:
 
 	string CodigoRecorrido;
+	string NombreRecorrido;
 	cListaParadas* ListaParadas;
+	float KmRecorrido;
 
 public:
 
@@ -23,7 +25,9 @@ public:
 	/// Constructor de la clase Recorrido 
 	/// </summary>
 	/// <param name="CodigoRecorrido"></param>
-	cRecorrido(string CodigoRecorrido);
+	/// <param name="NombreRecorrido"></param>
+	/// <param name="KmRecorridoo"></param>
+	cRecorrido(string CodigoRecorrido, string NombreRecorrido, float KmRecorrido);
 
 	/// <summary>
 	/// Destructor de la clase Recorrido 

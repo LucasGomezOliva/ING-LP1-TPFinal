@@ -17,6 +17,10 @@ cParada::~cParada() {
 	delete ListaPasajeros;
 }
 
+string cParada::GetIDParada() const {
+	return IDParada;
+}
+
 string cParada::GetNombreParada() const {
 	return NombreParada;
 }
@@ -43,7 +47,7 @@ ostream& operator<<(ostream& os, const cParada* Parada) {
 }
 
 bool cParada::operator==(const cParada& OtraParada) {
-	if (NombreParada == OtraParada.GetNombreParada())
+	if (IDParada == OtraParada.GetIDParada())
 		return true;
 	else
 		return false;

@@ -5,26 +5,8 @@
 #include<time.h>
 #include"../GenerardorRandoms/cGenerador.h"
 
-//borrar
-#include"cRecorrido.h"
-//borrar
-
-const string NombresParadasRecorrido_A[] = {
-	"Recorrido A - Parada 1",
-	"Recorrido A - Parada 2",
-	"Recorrido A - Parada 3",
-	"Recorrido A - Parada 4",
-	"Recorrido A - Parada 5",
-};
-
-const string NombresParadasRecorrido_B[] = {
-	"Recorrido B - Parada 1",
-	"Recorrido B - Parada 2",
-	"Recorrido B - Parada 3",
-	"Recorrido B - Parada 4",
-	"Recorrido B - Parada 5",
-};
-
+#include"DefinesRecorrido.h"
+#include"cListaColectivos.h"
 
 int main()
 {
@@ -34,35 +16,33 @@ int main()
 
 	///////////////////////////////////////////////////////////////////////
 
-	cRecorrido* Recorrido_A = new cRecorrido("Recorrido A");
+#pragma region Inicializacion de los recorridos y paradas
 
-	cParada* ParadaAux = new cParada(
-		to_string(Recorrido_A->GetCantidadParadas()),
-		NombresParadasRecorrido_A[Recorrido_A->GetCantidadParadas()],
-		*GeneradorRandoms->GenerarRandomDireccion());
+	cRecorrido* RecorridoA = new cRecorrido(CodigoRecorridos[0], NombreRecorridos[0], 31);
 
-	try {
-		Recorrido_A->AgregarParadasRecorrido(ParadaAux);
-	}
-	catch (exception& e) {
-		cout << e.what() << endl;
-	}
+	cRecorrido* RecorridoB = new cRecorrido(CodigoRecorridos[1], NombreRecorridos[1], 27.2);
 
-	ParadaAux = new cParada(
-		to_string(Recorrido_A->GetCantidadParadas()),
-		NombresParadasRecorrido_A[Recorrido_A->GetCantidadParadas()],
-		*GeneradorRandoms->GenerarRandomDireccion());
+	cRecorrido* RecorridoC = new cRecorrido(CodigoRecorridos[2], NombreRecorridos[2], 49.7);
 
-	try {
-		Recorrido_A->AgregarParadasRecorrido(ParadaAux);
-	}
-	catch (exception& e) {
-		cout << e.what() << endl;
-	}
+	cListaParadas* ListaGlobalPardas = new cListaParadas(CantidadTotalParadas, true);
+
+	GenerarParadas(ListaGlobalPardas);
+
+	AgregarParadasRecorrido(RecorridoA, RecorridoB, RecorridoC, ListaGlobalPardas);
+
+	RecorridoA->imprimir();
 	cout << "\n\n/////////////////////////////////////" << endl;
+	RecorridoB->imprimir();
+	cout << "\n\n/////////////////////////////////////" << endl;
+	RecorridoC->imprimir();
 
-	Recorrido_A->imprimir();
+#pragma endregion
 
+	///////////////////////////////////////////////////////////////////////
+	
+	//Inicializacion de los colectivos
+
+	cListaColectivos* ListaGlobalColectivos = new cListaColectivos(20, true);
 
 	///////////////////////////////////////////////////////////////////////
 
@@ -120,7 +100,15 @@ int main()
 
 	delete Pasajero1;
 	delete Pasajero2;
-	delete Recorrido_A;
+
+	delete ListaGlobalColectivos;
+
+	delete ListaGlobalPardas;
+
+	delete RecorridoA;
+	delete RecorridoB;
+	delete RecorridoC;
+
     delete GeneradorRandoms;
 }
 

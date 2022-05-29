@@ -145,6 +145,7 @@
     <ClCompile Include="cColectivoAutonomo.cpp" />
     <ClCompile Include="cColectivoConAire.cpp" />
     <ClCompile Include="cColectivoSinAire.cpp" />
+    <ClCompile Include="cListaColectivos.cpp" />
     <ClCompile Include="cListaParadas.cpp" />
     <ClCompile Include="cListaPasajeros.cpp" />
     <ClCompile Include="cListaViajes.cpp" />
@@ -155,6 +156,7 @@
     <ClCompile Include="cSistemaDePagos.cpp" />
     <ClCompile Include="cTarjeta.cpp" />
     <ClCompile Include="cViaje.cpp" />
+    <ClCompile Include="DefinesRecorrido.cpp" />
     <ClCompile Include="ING-LP1-TPFinal.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -164,6 +166,7 @@
     <ClInclude Include="cColectivoAutonomo.h" />
     <ClInclude Include="cColectivoConAire.h" />
     <ClInclude Include="cColectivoSinAire.h" />
+    <ClInclude Include="cListaColectivos.h" />
     <ClInclude Include="cListaParadas.h" />
     <ClInclude Include="cListaPasajeros.h" />
     <ClInclude Include="cListaTemplate.h" />
@@ -175,7 +178,7 @@
     <ClInclude Include="cSistemaDePagos.h" />
     <ClInclude Include="cTarjeta.h" />
     <ClInclude Include="cViaje.h" />
-    <ClInclude Include="Defines.h" />
+    <ClInclude Include="DefinesRecorrido.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GenerardorRandoms\GenerardorRandoms.vcxproj">
