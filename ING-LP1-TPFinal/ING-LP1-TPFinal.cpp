@@ -12,17 +12,17 @@ int main()
 {
 	//Generador de Randoms para la creacion de los distintos objetos
 
-    cGenerador* GeneradorRandoms = new cGenerador();
+	cGenerador* GeneradorRandoms = new cGenerador();
 
 	///////////////////////////////////////////////////////////////////////
 
 #pragma region Inicializacion de los recorridos y paradas
 
-	cRecorrido* RecorridoA = new cRecorrido(CodigoRecorridos[0], NombreRecorridos[0], 31);
+	cRecorrido* RecorridoA = new cRecorrido(CodigoRecorridos[0], NombreRecorridos[0], TotalKilometrosRecorrido[0]);
 
-	cRecorrido* RecorridoB = new cRecorrido(CodigoRecorridos[1], NombreRecorridos[1], 27.2);
+	cRecorrido* RecorridoB = new cRecorrido(CodigoRecorridos[1], NombreRecorridos[1], TotalKilometrosRecorrido[1]);
 
-	cRecorrido* RecorridoC = new cRecorrido(CodigoRecorridos[2], NombreRecorridos[2], 49.7);
+	cRecorrido* RecorridoC = new cRecorrido(CodigoRecorridos[2], NombreRecorridos[2], TotalKilometrosRecorrido[2]);
 
 	cListaParadas* ListaGlobalPardas = new cListaParadas(CantidadTotalParadas, true);
 
