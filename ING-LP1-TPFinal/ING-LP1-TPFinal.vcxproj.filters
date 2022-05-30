@@ -66,7 +66,7 @@
     <ClCompile Include="cListaViajes.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="DefinesRecorrido.cpp">
+    <ClCompile Include="DefinesSimulacion.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="cListaColectivos.cpp">
@@ -107,7 +107,7 @@
     <ClInclude Include="cSistemaDePagos.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="DefinesRecorrido.h">
+    <ClInclude Include="DefinesSimulacion.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="cListaPasajeros.h">

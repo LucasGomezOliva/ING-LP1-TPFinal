@@ -1,4 +1,4 @@
-#include"DefinesRecorrido.h"
+#include"DefinesSimulacion.h"
 
 void GenerarParadas(cListaParadas* ListaGlobalParadas) {
 	for (int Pos = 0; Pos < CantidadTotalParadas; Pos++) {
@@ -12,75 +12,20 @@ void GenerarParadas(cListaParadas* ListaGlobalParadas) {
 }
 
 void AgregarParadasRecorrido(cRecorrido* RecorridoA, cRecorrido* RecorridoB, cRecorrido* RecorridoC, cListaParadas* ListaGlobalPardas) {
-
+	/*
 	///////////////////////////////////////////////////////////////////////
 	try {
 		RecorridoA->AgregarParadasRecorrido((*ListaGlobalPardas)[0]);
-	}
-	catch (exception& e) {
-		cout << e.what() << endl;
-	}
-	try {
 		RecorridoA->AgregarParadasRecorrido((*ListaGlobalPardas)[1]);
-	}
-	catch (exception& e) {
-		cout << e.what() << endl;
-	}
-	try {
 		RecorridoA->AgregarParadasRecorrido((*ListaGlobalPardas)[2]);
-	}
-	catch (exception& e) {
-		cout << e.what() << endl;
-	}
-	try {
 		RecorridoA->AgregarParadasRecorrido((*ListaGlobalPardas)[3]);
-	}
-	catch (exception& e) {
-		cout << e.what() << endl;
-	}
-	try {
 		RecorridoA->AgregarParadasRecorrido((*ListaGlobalPardas)[4]);
-	}
-	catch (exception& e) {
-		cout << e.what() << endl;
-	}
-	try {
 		RecorridoA->AgregarParadasRecorrido((*ListaGlobalPardas)[5]);
-	}
-	catch (exception& e) {
-		cout << e.what() << endl;
-	}
-	try {
 		RecorridoA->AgregarParadasRecorrido((*ListaGlobalPardas)[6]);
-	}
-	catch (exception& e) {
-		cout << e.what() << endl;
-	}
-	try {
 		RecorridoA->AgregarParadasRecorrido((*ListaGlobalPardas)[7]);
-	}
-	catch (exception& e) {
-		cout << e.what() << endl;
-	}
-	try {
 		RecorridoA->AgregarParadasRecorrido((*ListaGlobalPardas)[8]);
-	}
-	catch (exception& e) {
-		cout << e.what() << endl;
-	}
-	try {
 		RecorridoA->AgregarParadasRecorrido((*ListaGlobalPardas)[9]);
-	}
-	catch (exception& e) {
-		cout << e.what() << endl;
-	}
-	try {
 		RecorridoA->AgregarParadasRecorrido((*ListaGlobalPardas)[10]);
-	}
-	catch (exception& e) {
-		cout << e.what() << endl;
-	}
-	try {
 		RecorridoA->AgregarParadasRecorrido((*ListaGlobalPardas)[11]);
 	}
 	catch (exception& e) {
@@ -128,5 +73,77 @@ void AgregarParadasRecorrido(cRecorrido* RecorridoA, cRecorrido* RecorridoB, cRe
 		cout << e.what() << endl;
 	}
 	///////////////////////////////////////////////////////////////////////
+	*/
+	
+	///////////////////////////////////////////////////////////////////////
+
+	for (unsigned int Pos = 0; Pos < CantidadTotalParadasRecorridoA; Pos++) {
+		try {
+		RecorridoA->AgregarParadasRecorrido((*ListaGlobalPardas)[ParadasRecorridoA[Pos]]);
+		}
+		catch (exception& e) {
+			cout << e.what() << endl;
+		}
+	}
+
+	///////////////////////////////////////////////////////////////////////
+
+	for (unsigned int Pos = 0; Pos < CantidadTotalParadasRecorridoB; Pos++) {
+		try {
+			RecorridoB->AgregarParadasRecorrido((*ListaGlobalPardas)[ParadasRecorridoB[Pos]]);
+		}
+		catch (exception& e) {
+			cout << e.what() << endl;
+		}
+	}
+
+	///////////////////////////////////////////////////////////////////////
+
+	for (unsigned int Pos = 0; Pos < CantidadTotalParadasRecorridoC; Pos++) {
+		try {
+			RecorridoC->AgregarParadasRecorrido((*ListaGlobalPardas)[ParadasRecorridoC[Pos]]);
+		}
+		catch (exception& e) {
+			cout << e.what() << endl;
+		}
+	}
+	
+}
+
+void GenerarColectivos(cListaColectivos* ListaGlobalColectivos) {
+
+}
+
+void ActualizarObjetos(cListaColectivos* ListaGlobalColectivos, cListaParadas* ListaGlobalParadas) {
+	ActualizarParadas(ListaGlobalParadas);
+	ActualizarColectivos(ListaGlobalColectivos);
+}
+
+void ActualizarColectivos(cListaColectivos* ListaGlobalColectivos) {
+
+}
+
+void ActualizarParadas(cListaParadas* ListaGlobalParadas) {
+
+	//Agregar pasajeros a las paradas random
+
+	for (int Pos = 0; Pos < CantidadTotalParadas; Pos++) {
+		try {
+			/*
+			(*ListaGlobalParadas)[Pos]->GetListaPasajeros()->Agregar(new cPasajero(
+				*GeneradorRandoms->GenerarRandomNombrePasajero(),
+				*GeneradorRandoms->GenerarRandomDNI(),
+				"DESTINO-RANDOM",
+				GeneradorRandoms->GenerarRandomBool(),
+				GeneradorRandoms->GenerarRandomSaldo());
+			*/
+		}
+		catch (exception& e) {
+			cout << e.what() << endl;
+		}
+	}
+}
+
+void ActualizarColectivosGPS(cListaColectivos* ListaGlobalColectivos) {
 
 }

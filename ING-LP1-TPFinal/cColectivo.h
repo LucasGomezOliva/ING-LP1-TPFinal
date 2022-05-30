@@ -18,6 +18,7 @@ protected:
 	cSistemaDePagos* SistemaDePagos;
 	cRecorrido* Recorrido;
 	cListaPasajeros* ListaPasajeros;
+	unsigned int PosDelRecorrido;
 	
 public:
 

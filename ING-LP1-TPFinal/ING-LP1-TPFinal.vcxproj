@@ -156,7 +156,7 @@
     <ClCompile Include="cSistemaDePagos.cpp" />
     <ClCompile Include="cTarjeta.cpp" />
     <ClCompile Include="cViaje.cpp" />
-    <ClCompile Include="DefinesRecorrido.cpp" />
+    <ClCompile Include="DefinesSimulacion.cpp" />
     <ClCompile Include="ING-LP1-TPFinal.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -178,7 +178,7 @@
     <ClInclude Include="cSistemaDePagos.h" />
     <ClInclude Include="cTarjeta.h" />
     <ClInclude Include="cViaje.h" />
-    <ClInclude Include="DefinesRecorrido.h" />
+    <ClInclude Include="DefinesSimulacion.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GenerardorRandoms\GenerardorRandoms.vcxproj">

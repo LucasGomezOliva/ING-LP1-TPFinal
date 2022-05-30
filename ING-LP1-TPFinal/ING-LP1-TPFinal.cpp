@@ -4,9 +4,7 @@
 #include <iostream>
 #include<time.h>
 #include"../GenerardorRandoms/cGenerador.h"
-
-#include"DefinesRecorrido.h"
-#include"cListaColectivos.h"
+#include"DefinesSimulacion.h"
 
 int main()
 {
@@ -40,12 +38,18 @@ int main()
 
 	///////////////////////////////////////////////////////////////////////
 	
-	//Inicializacion de los colectivos
+#pragma region Inicializacion de los colectivos
 
 	cListaColectivos* ListaGlobalColectivos = new cListaColectivos(20, true);
 
+	GenerarColectivos(ListaGlobalColectivos);
+
+#pragma endregion
+
 	///////////////////////////////////////////////////////////////////////
 
+	//Generar pasajeros Randoms
+	/*
 	cout << "\n\n/////////////////////////////////////" << endl;
 
 	cPasajero* Pasajero1 = new cPasajero(
@@ -69,6 +73,7 @@ int main()
 	Pasajero2->imprimir();
 
 	cout << "\n\n/////////////////////////////////////" << endl;
+	*/
 
 	///////////////////////////////////////////////////////////////////////
 	
@@ -77,7 +82,7 @@ int main()
 	unsigned int time_0;
 	unsigned int time_1;
 	unsigned int CantidadDeSegundos = 0;
-	bool ciclo = false; //true para iniciar
+	bool ciclo = true; //true para iniciar
 	time_0 = clock();
 	while (ciclo) {
 		time_1 = clock();
@@ -85,21 +90,23 @@ int main()
 		if (diftime >= 1) {
 			cout << "\nPasaron: " << diftime << " s" << endl;
 			//Actualiza los objetos
+			ActualizarObjetos(ListaGlobalColectivos, ListaGlobalPardas);
 			cout << "\tObjetos Actualizados";
 			time_0 = clock();
 			CantidadDeSegundos++;
 			if (CantidadDeSegundos % 5 == 0) {
 				//Actualizar GPS
+				ActualizarColectivosGPS(ListaGlobalColectivos);
 				cout << "\tGPS Actualizados";
 			}
 		}
-		if (CantidadDeSegundos == 15)
+		if (CantidadDeSegundos == 15) //Cantidad de segundos operativos
 			ciclo = false;
 	}
 	///////////////////////////////////////////////////////////////////////
 
-	delete Pasajero1;
-	delete Pasajero2;
+	//delete Pasajero1;
+	//delete Pasajero2;
 
 	delete ListaGlobalColectivos;
 
