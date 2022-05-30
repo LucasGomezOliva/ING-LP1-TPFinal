@@ -33,6 +33,7 @@ int main()
 	RecorridoB->imprimir();
 	cout << "\n\n/////////////////////////////////////" << endl;
 	RecorridoC->imprimir();
+	cout << "\n\n/////////////////////////////////////" << endl;
 
 #pragma endregion
 
@@ -103,6 +104,15 @@ int main()
 		if (CantidadDeSegundos == 15) //Cantidad de segundos operativos
 			ciclo = false;
 	}
+
+	///////////////////////////////////////////////////////////////////////
+
+	cout << "\n\n/////////////////////////////////////" << endl;
+
+	cout << "\n\nResumen del dia" << endl;
+
+	ResumenDelDia(ListaGlobalColectivos);
+
 	///////////////////////////////////////////////////////////////////////
 
 	//delete Pasajero1;

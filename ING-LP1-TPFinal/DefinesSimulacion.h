@@ -121,4 +121,10 @@ void ActualizarParadas(cListaParadas* ListaGlobalParadas);
 	/// <param name="ListaGlobalColectivos"></param>
 void ActualizarColectivosGPS(cListaColectivos* ListaGlobalColectivos);
 
+	/// <summary>
+	/// Indica el resumen del dia de cada colectivo y el total
+	/// </summary>
+	/// <param name="ListaGlobalColectivos"></param>
+void ResumenDelDia(cListaColectivos* ListaGlobalColectivos);
+
 #pragma endregion

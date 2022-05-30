@@ -147,3 +147,7 @@ void ActualizarParadas(cListaParadas* ListaGlobalParadas) {
 void ActualizarColectivosGPS(cListaColectivos* ListaGlobalColectivos) {
 
 }
+
+void ResumenDelDia(cListaColectivos* ListaGlobalColectivos) {
+
+}
