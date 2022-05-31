@@ -17,9 +17,8 @@ public:
 	/// <summary>
 	/// Constructor de la clase ColectivoSinAire
 	/// </summary>
-	/// <param name="IDColectivo"></param>
 	/// <param name="RecorridoAsignado"></param>
-	cColectivoSinAire(string IDColectivo, cRecorrido* RecorridoAsignado);
+	cColectivoSinAire(cRecorrido* RecorridoAsignado);
 
 	/// <summary>
 	/// Destructor de la clase ColectivoSinAire 

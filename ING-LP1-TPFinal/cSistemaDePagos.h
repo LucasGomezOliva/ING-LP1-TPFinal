@@ -38,7 +38,7 @@ public:
 	/// <summary>
 	/// Retorna la cantidad de pasajeros que viajaron en el dia en ese colectivo
 	/// </summary>
-	/// <returns>Bool</returns>
+	/// <returns>Unsigned int</returns>
 	unsigned int GetCantidadDePasajeros() const;
 
 #pragma endregion

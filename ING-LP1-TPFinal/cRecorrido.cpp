@@ -18,6 +18,10 @@ cRecorrido::~cRecorrido(){
 	delete ListaParadas;
 }
 
+cListaParadas* cRecorrido::GetListaParadas()const {
+	return ListaParadas;
+}
+
 string cRecorrido::GetCodigoRecorrido(){
 	return CodigoRecorrido;
 }

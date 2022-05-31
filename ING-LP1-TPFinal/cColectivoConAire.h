@@ -19,7 +19,7 @@ public:
 	/// </summary>
 	/// <param name="IDColectivo"></param>
 	/// <param name="RecorridoAsignado"></param>
-	cColectivoConAire(string IDColectivo, cRecorrido* RecorridoAsignado);
+	cColectivoConAire(cRecorrido* RecorridoAsignado);
 
 	/// <summary>
 	/// Destructor de la clase ColectivoConAire 

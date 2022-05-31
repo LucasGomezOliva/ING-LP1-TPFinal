@@ -10,11 +10,15 @@ cParada::cParada(string IDParada, string NombreParada, string Direccion) {
 	this->IDParada = IDParada;
 	this->NombreParada = NombreParada;
 	this->Direccion = Direccion;
-	this->ListaPasajeros = new cListaPasajeros(100, false);
+	this->ListaPasajeros = new cListaPasajeros(100, true);
 }
 
 cParada::~cParada() {
 	delete ListaPasajeros;
+}
+
+cListaPasajeros* cParada::GetListaPasajeros() const {
+	return ListaPasajeros;
 }
 
 string cParada::GetIDParada() const {

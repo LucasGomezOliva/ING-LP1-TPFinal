@@ -6,6 +6,7 @@ class cColectivero :public cPersona
 private:
 
 	string Legajo;
+	static unsigned int CantidadDeColectiveros;
 
 public:
 

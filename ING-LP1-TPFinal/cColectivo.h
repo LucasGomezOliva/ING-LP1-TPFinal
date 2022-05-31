@@ -32,9 +32,8 @@ public:
 	/// <summary>
 	/// Constructor de la clase Colectivo 
 	/// </summary>
-	/// <param name="IDColectivo"></param>
 	/// <param name="RecorridoAsignado"></param>
-	cColectivo(string IDColectivo, cRecorrido* RecorridoAsignado);
+	cColectivo(cRecorrido* RecorridoAsignado);
 
 	/// <summary>
 	/// Destructor de la clase Colectivo 
@@ -98,7 +97,7 @@ public:
 
 	string ToStringColectivo();
 
-	virtual void imprimir() = 0;
+	virtual void Imprimir() = 0;
 
 #pragma endregion
 

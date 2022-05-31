@@ -4,22 +4,24 @@ unsigned long int cColectivo::CantidadDeColectivos = 0;
 
 cColectivo::cColectivo() {
 	this->CantidadDeColectivos++;
-	this->IDColectivo = "";
+	this->IDColectivo = to_string(CantidadDeColectivos);
 	this->EstadoOperaativo = true;
 	this->SistemaDePagos = new cSistemaDePagos();
-	this->ListaPasajeros = new cListaPasajeros(50, false);
+	this->ListaPasajeros = new cListaPasajeros(50, true);
 	this->Colectivero = NULL;
 	this->Recorrido = NULL;
+	this->PosDelRecorrido = 0;
 }
 
-cColectivo::cColectivo(string IDColectivo,cRecorrido*RecorridoAsignado) {
+cColectivo::cColectivo(cRecorrido*RecorridoAsignado) {
 	this->CantidadDeColectivos++;
-	this->IDColectivo = IDColectivo;
+	this->IDColectivo = to_string(CantidadDeColectivos);
 	this->EstadoOperaativo = true;
 	this->SistemaDePagos = new cSistemaDePagos();
-	this->ListaPasajeros = new cListaPasajeros(50, false);
+	this->ListaPasajeros = new cListaPasajeros(50, true);
 	this->Recorrido = RecorridoAsignado;
 	this->Colectivero = NULL;
+	this->PosDelRecorrido = 0;
 }
 
 cColectivo::~cColectivo() {

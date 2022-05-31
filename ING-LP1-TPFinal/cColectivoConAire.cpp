@@ -3,7 +3,7 @@ cColectivoConAire::cColectivoConAire(): cColectivo() {
 	this->AireAcondicionado = false;
 }
 
-cColectivoConAire::cColectivoConAire(string IDColectivo, cRecorrido* RecorridoAsignado): cColectivo(IDColectivo,RecorridoAsignado) {
+cColectivoConAire::cColectivoConAire(cRecorrido* RecorridoAsignado): cColectivo(RecorridoAsignado) {
 	this->AireAcondicionado = false;
 }
 

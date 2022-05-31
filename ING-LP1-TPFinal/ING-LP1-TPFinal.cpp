@@ -3,18 +3,19 @@
 
 #include <iostream>
 #include<time.h>
-#include"../GenerardorRandoms/cGenerador.h"
 #include"DefinesSimulacion.h"
 
 int main()
 {
+	///////////////////////////////////////////////////////////////////////
+
 	//Generador de Randoms para la creacion de los distintos objetos
 
 	cGenerador* GeneradorRandoms = new cGenerador();
 
 	///////////////////////////////////////////////////////////////////////
-
-#pragma region Inicializacion de los recorridos y paradas
+	
+	//Inicializacion de los recorridos y paradas
 
 	cRecorrido* RecorridoA = new cRecorrido(CodigoRecorridos[0], NombreRecorridos[0], TotalKilometrosRecorrido[0]);
 
@@ -35,46 +36,13 @@ int main()
 	RecorridoC->imprimir();
 	cout << "\n\n/////////////////////////////////////" << endl;
 
-#pragma endregion
-
 	///////////////////////////////////////////////////////////////////////
 	
-#pragma region Inicializacion de los colectivos
+	//Inicializacion de los colectivos
 
-	cListaColectivos* ListaGlobalColectivos = new cListaColectivos(20, true);
+	cListaColectivos* ListaGlobalColectivos = new cListaColectivos(CantidadTotalColectivos, true);
 
 	GenerarColectivos(ListaGlobalColectivos);
-
-#pragma endregion
-
-	///////////////////////////////////////////////////////////////////////
-
-	//Generar pasajeros Randoms
-	/*
-	cout << "\n\n/////////////////////////////////////" << endl;
-
-	cPasajero* Pasajero1 = new cPasajero(
-		*GeneradorRandoms->GenerarRandomNombrePasajero(), 
-		*GeneradorRandoms->GenerarRandomDNI(),
-		"DESTINO-1",
-		GeneradorRandoms->GenerarRandomBool(),
-		GeneradorRandoms->GenerarRandomSaldo());
-
-	cPasajero* Pasajero2 = new cPasajero(
-		*GeneradorRandoms->GenerarRandomNombrePasajero(),
-		*GeneradorRandoms->GenerarRandomDNI(),
-		"DESTINO-2",
-		GeneradorRandoms->GenerarRandomBool(),
-		GeneradorRandoms->GenerarRandomSaldo());
-
-	Pasajero1->imprimir();
-
-	cout << "\n\n/////////////////////////////////////" << endl;
-
-	Pasajero2->imprimir();
-
-	cout << "\n\n/////////////////////////////////////" << endl;
-	*/
 
 	///////////////////////////////////////////////////////////////////////
 	
@@ -91,7 +59,7 @@ int main()
 		if (diftime >= 1) {
 			cout << "\nPasaron: " << diftime << " s" << endl;
 			//Actualiza los objetos
-			ActualizarObjetos(ListaGlobalColectivos, ListaGlobalPardas);
+			ActualizarObjetos(ListaGlobalColectivos, ListaGlobalPardas, RecorridoA, RecorridoB, RecorridoC, GeneradorRandoms);
 			cout << "\tObjetos Actualizados";
 			time_0 = clock();
 			CantidadDeSegundos++;
@@ -107,6 +75,8 @@ int main()
 
 	///////////////////////////////////////////////////////////////////////
 
+	//Resumen del dia
+
 	cout << "\n\n/////////////////////////////////////" << endl;
 
 	cout << "\n\nResumen del dia" << endl;
@@ -115,17 +85,11 @@ int main()
 
 	///////////////////////////////////////////////////////////////////////
 
-	//delete Pasajero1;
-	//delete Pasajero2;
-
 	delete ListaGlobalColectivos;
-
 	delete ListaGlobalPardas;
-
 	delete RecorridoA;
 	delete RecorridoB;
 	delete RecorridoC;
-
     delete GeneradorRandoms;
 }
 

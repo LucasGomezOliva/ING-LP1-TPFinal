@@ -38,7 +38,22 @@ public:
 
 #pragma region Getter y setters
 
+	/// <summary>
+	/// Retorna la lista de paradas del recorrido
+	/// </summary>
+	/// <returns>cListaParadas</returns>
+	cListaParadas* GetListaParadas()const;
+
+	/// <summary>
+	/// Retorna el codigo del recorrido
+	/// </summary>
+	/// <returns>string</returns>
 	string GetCodigoRecorrido();
+
+	/// <summary>
+	/// Retorna la cantidad de paradas del recorrido
+	/// </summary>
+	/// <returns>int</returns>
 	int GetCantidadParadas() const;
 
 #pragma endregion

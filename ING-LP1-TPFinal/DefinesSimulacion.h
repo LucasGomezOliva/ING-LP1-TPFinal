@@ -1,16 +1,14 @@
 #pragma once
 #include <iostream>
 #include <string>
-
 #include"cListaColectivos.h"
-
 #include"cColectivoAcordeon.h"
 #include"cColectivoAutonomo.h"
 #include"cColectivoSinAire.h"
-
+#include"../GenerardorRandoms/cGenerador.h"
 using namespace std;
 
-const unsigned int CantidadTotalParadas = 28;
+const unsigned int CantidadTotalColectivos = 20;
 
 const string CodigoRecorridos[] = { "A","B","C" };
 
@@ -34,7 +32,9 @@ const unsigned int CantidadTotalParadasRecorridoC = 16;
 
 const unsigned int ParadasRecorridoC[] = { 5, 6, 12, 13, 14, 15, 16, 17, 18, 21, 22, 23, 24, 25, 26, 27 };
 
-const string ParadasDireccion[] = { 
+const unsigned int CantidadTotalParadas = 28;
+
+const string ParadasNombre[] = { 
 	"Pedro de Lujan y Santa Maria del Buen Aire",
 	"Av. Suarez y Gral Hornos",
 	"Pte. Suarez y Av Hipolito Yrigoyen",
@@ -65,7 +65,38 @@ const string ParadasDireccion[] = {
 	"Terminal Escobar"
 };
 
-#pragma region Inicializacion de los recorridos y paradas
+const string ParadasDireccion[] = {
+	"Direccion 1",
+	"Direccion 2",
+	"Direccion 3",
+	"Direccion 4",
+	"Direccion 5",
+	"Direccion 6",
+	"Direccion 7",
+	"Direccion 8",
+	"Direccion 9",
+	"Direccion 10",
+	"Direccion 11",
+	"Direccion 12",
+	"Direccion 13",
+	"Direccion 14",
+	"Direccion 15",
+	"Direccion 16",
+	"Direccion 17",
+	"Direccion 18",
+	"Direccion 19",
+	"Direccion 20",
+	"Direccion 21",
+	"Direccion 22",
+	"Direccion 23",
+	"Direccion 24",
+	"Direccion 25",
+	"Direccion 26",
+	"Direccion 27",
+	"Direccion 28"
+};
+
+#pragma region Funciones
 
 	/// <summary>
 	/// Genera paradas y las agrega a la Lista Global Paradas 
@@ -82,29 +113,25 @@ void GenerarParadas(cListaParadas* ListaGlobalParadas);
 	/// <param name="ListaGlobalParadas"></param>
 void AgregarParadasRecorrido(cRecorrido* RecorridoA, cRecorrido* RecorridoB, cRecorrido* RecorridoC, cListaParadas* ListaGlobalPardas);
 
-#pragma endregion
-
-#pragma region Inicializacion de los Colectivos
-
 	/// <summary>
 	/// Genera colectivos y los agrega a la lista global de colectivos
 	/// </summary>
 	/// <param name="RecorridoA"></param>
 void GenerarColectivos(cListaColectivos* ListaGlobalColectivos);
 
-#pragma endregion
-
-#pragma region Simulacion
-
 	/// <summary>
 	/// Actualizacion de objetos
 	/// </summary>
 	/// <param name="ListaGlobalColectivos"></param>
 	/// <param name="ListaGlobalPardas"></param>
-void ActualizarObjetos(cListaColectivos* ListaGlobalColectivos, cListaParadas* ListaGlobalParadas);
+	/// <param name="RecorridoA"></param>
+	/// <param name="RecorridoB"></param>
+	/// <param name="RecorridoC"></param>
+	/// <param name="GeneradorRandoms"></param>
+void ActualizarObjetos(cListaColectivos* ListaGlobalColectivos, cListaParadas* ListaGlobalParadas, cRecorrido* RecorridoA, cRecorrido* RecorridoB, cRecorrido* RecorridoC, cGenerador* GeneradorRandoms);
 
 	/// <summary>
-	/// Actualiza todos los colectivos (avanzan en su recorrido)
+	/// Actualiza todos los colectivos (avanzan en su recorrido - suben y bajan pasajeros)
 	/// </summary>
 	/// <param name="ListaGlobalColectivos"></param>
 void ActualizarColectivos(cListaColectivos* ListaGlobalColectivos);
@@ -113,7 +140,21 @@ void ActualizarColectivos(cListaColectivos* ListaGlobalColectivos);
 	/// Actualiza todos los paradas (agrega nuevas personas a las mismas)
 	/// </summary>
 	/// <param name="ListaGlobalPardas"></param>
-void ActualizarParadas(cListaParadas* ListaGlobalParadas);
+	/// <param name="RecorridoA"></param>
+	/// <param name="RecorridoB"></param>
+	/// <param name="RecorridoC"></param>
+	/// <param name="GeneradorRandoms"></param>
+void ActualizarParadas(cListaParadas* ListaGlobalParadas, cRecorrido* RecorridoA, cRecorrido* RecorridoB, cRecorrido* RecorridoC, cGenerador* GeneradorRandoms);
+
+	/// <summary>
+	/// Generar un destino random del pasajero dependiendo en la parada en la que se lo cree
+	/// </summary>
+	/// <param name="ParadaActual"></param>
+	/// <param name="RecorridoA"></param>
+	/// <param name="RecorridoB"></param>
+	/// <param name="RecorridoC"></param>
+	/// <returns>string</returns>
+string GeneradorDestinoRandom(cParada* ParadaActual, cRecorrido* RecorridoA, cRecorrido* RecorridoB, cRecorrido* RecorridoC);
 
 	/// <summary>
 	/// Actualiza los GPS de todos los colectivos
