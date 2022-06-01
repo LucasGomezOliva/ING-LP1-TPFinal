@@ -13,7 +13,7 @@ cColectivo::cColectivo() {
 	this->PosDelRecorrido = 0;
 }
 
-cColectivo::cColectivo(cRecorrido*RecorridoAsignado) {
+cColectivo::cColectivo(cRecorrido* RecorridoAsignado) {
 	this->CantidadDeColectivos++;
 	this->IDColectivo = to_string(CantidadDeColectivos);
 	this->EstadoOperaativo = true;

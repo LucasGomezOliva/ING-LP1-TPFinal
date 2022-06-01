@@ -69,7 +69,7 @@ int main()
 				cout << "\tGPS Actualizados";
 			}
 		}
-		if (CantidadDeSegundos == 15) //Cantidad de segundos operativos
+		if (CantidadDeSegundos == 10) //Cantidad de segundos operativos
 			ciclo = false;
 	}
 
