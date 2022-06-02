@@ -42,14 +42,46 @@ void AgregarParadasRecorrido(cRecorrido* RecorridoA, cRecorrido* RecorridoB, cRe
 }
 
 void GenerarColectivos(cListaColectivos* ListaGlobalColectivos) {
-	for (int Pos = 0; Pos < CantidadTotalColectivos; Pos++) {
-		try {
-			//ListaGlobalColectivos->Agregar(new cColectivoSinAire());
-			//ListaGlobalColectivos->Agregar(new cColectivoAcordeon());
-			//ListaGlobalColectivos->Agregar(new cColectivoAutonomo());
+	unsigned int CantidadSinAire = 0;
+	unsigned int CantidadAcordeon = 0;
+	unsigned int CantidadAutonomos = 0;
+	for (unsigned int i = 0; i < CantidadTotalColectivos; i++) {
+
+		if (CantidadColectivosSinAire > CantidadSinAire) {
+			try {
+				ListaGlobalColectivos->Agregar(new cColectivoSinAire());
+			}
+			catch (exception& e) {
+				cout << e.what() << endl;
+			}
+			CantidadSinAire++;
 		}
-		catch (exception& e) {
-			cout << e.what() << endl;
+		if (CantidadColectivosAcordeon > CantidadAcordeon) {
+			try {
+				ListaGlobalColectivos->Agregar(new cColectivoAcordeon());
+			}
+			catch (exception& e) {
+				cout << e.what() << endl;
+			}
+			CantidadAcordeon++;
+		}
+		if (CantidadColectivosAutonomos > CantidadAutonomos) {
+			try {
+				ListaGlobalColectivos->Agregar(new cColectivoAutonomo());
+			}
+			catch (exception& e) {
+				cout << e.what() << endl;
+			}
+			CantidadAutonomos++;
+		}
+	}
+}
+
+void GenerarAsignarColectiveros(cListaColectivos* ListaGlobalColectivos, cGenerador* GeneradorRandoms) {
+	for (unsigned int Pos = 0; Pos < CantidadTotalColectivos; Pos++) {
+		cColectivoAutonomo* ColectivoAutonomoAux = dynamic_cast<cColectivoAutonomo*>((*ListaGlobalColectivos)[Pos]);
+		if (ColectivoAutonomoAux == NULL) {
+			(*ListaGlobalColectivos)[Pos]->SetColectivero(new cColectivero(*GeneradorRandoms->GenerarRandomNombrePasajero(), *GeneradorRandoms->GenerarRandomDNI()));
 		}
 	}
 }
@@ -60,6 +92,7 @@ void ActualizarObjetos(cListaColectivos* ListaGlobalColectivos, cListaParadas* L
 }
 
 void ActualizarColectivos(cListaColectivos* ListaGlobalColectivos) {
+	
 
 }
 

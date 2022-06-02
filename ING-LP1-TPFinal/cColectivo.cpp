@@ -27,6 +27,9 @@ cColectivo::cColectivo(cRecorrido* RecorridoAsignado) {
 cColectivo::~cColectivo() {
 	delete SistemaDePagos;
 	delete ListaPasajeros;
+	if (Colectivero != NULL) {
+		delete Colectivero;
+	}
 }
 
 cPasajero* cColectivo::BajarPasajeros(string NombreParadaActual) {

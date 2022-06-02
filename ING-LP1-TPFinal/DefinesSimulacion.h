@@ -10,6 +10,12 @@ using namespace std;
 
 const unsigned int CantidadTotalColectivos = 20;
 
+const unsigned int CantidadColectivosSinAire = 10;
+
+const unsigned int CantidadColectivosAutonomos = 5;
+
+const unsigned int CantidadColectivosAcordeon = 5;
+
 const string CodigoRecorridos[] = { "A","B","C" };
 
 const string NombreRecorridos[] = { 
@@ -118,6 +124,13 @@ void AgregarParadasRecorrido(cRecorrido* RecorridoA, cRecorrido* RecorridoB, cRe
 	/// </summary>
 	/// <param name="RecorridoA"></param>
 void GenerarColectivos(cListaColectivos* ListaGlobalColectivos);
+
+	/// <summary>
+	/// Genera los colectiveros en cada colectivo siempre y cuando no sean ColectivosAutonomos
+	/// </summary>
+	/// <param name="ListaGlobalColectivos"></param>
+	/// <param name="GeneradorRandoms"></param>
+void GenerarAsignarColectiveros(cListaColectivos* ListaGlobalColectivos, cGenerador* GeneradorRandoms);
 
 	/// <summary>
 	/// Actualizacion de objetos

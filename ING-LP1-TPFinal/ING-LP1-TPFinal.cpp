@@ -44,6 +44,8 @@ int main()
 
 	GenerarColectivos(ListaGlobalColectivos);
 
+	GenerarAsignarColectiveros(ListaGlobalColectivos, GeneradorRandoms);
+
 	///////////////////////////////////////////////////////////////////////
 	
 	//Manejo del "tick" para poder actualizar todos los objetos y el GPS
