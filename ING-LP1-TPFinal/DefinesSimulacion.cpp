@@ -119,19 +119,19 @@ string GeneradorDestinoRandom(cParada* ParadaActual, cRecorrido* RecorridoA, cRe
 	srand((unsigned int)time(NULL));
 	for (int Pos = 0; Pos < CantidadTotalParadasRecorridoA; Pos++) {
 		if (ParadaActual->GetIDParada() == (*RecorridoA->GetListaParadas())[Pos]->GetIDParada()) {
-			unsigned int PosParadaRandom = rand() % (CantidadTotalParadasRecorridoA-Pos) + Pos;
+			unsigned int PosParadaRandom = Pos + rand() % (CantidadTotalParadasRecorridoA-Pos);
 			return (*RecorridoA->GetListaParadas())[PosParadaRandom]->GetNombreParada();
 		}
 	}
 	for (int Pos = 0; Pos < CantidadTotalParadasRecorridoB; Pos++) {
 		if (ParadaActual->GetIDParada() == (*RecorridoB->GetListaParadas())[Pos]->GetIDParada()) {
-			unsigned int PosParadaRandom = rand() % (CantidadTotalParadasRecorridoB - Pos) + Pos;
+			unsigned int PosParadaRandom = Pos + rand() % (CantidadTotalParadasRecorridoB - Pos);
 			return (*RecorridoB->GetListaParadas())[PosParadaRandom]->GetNombreParada();
 		}
 	}
 	for (int Pos = 0; Pos < CantidadTotalParadasRecorridoC; Pos++) {
 		if (ParadaActual->GetIDParada() == (*RecorridoC->GetListaParadas())[Pos]->GetIDParada()) {
-			unsigned int PosParadaRandom = rand() % (CantidadTotalParadasRecorridoC - Pos) + Pos;
+			unsigned int PosParadaRandom = Pos + rand() % (CantidadTotalParadasRecorridoC - Pos);
 			return (*RecorridoC->GetListaParadas())[PosParadaRandom]->GetNombreParada();
 		}
 	}
