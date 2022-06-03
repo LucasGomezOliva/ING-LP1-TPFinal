@@ -89,14 +89,16 @@ void ActualizarObjetos(cListaColectivos* ListaGlobalColectivos, cListaParadas* L
 
 void ActualizarColectivos(cListaColectivos* ListaGlobalColectivos) {
 	for (unsigned int Pos = 0; Pos < CantidadTotalColectivos; Pos++) {
+		//TODO: random para averia por colectivo
 		if ((*ListaGlobalColectivos)[Pos]->GetRecorrido() != NULL) {
-			(*ListaGlobalColectivos)[Pos]->AvanzarRecorrido();
+			(*ListaGlobalColectivos)[Pos]->AvanzarRecorrido(); //TODO: Revisar implementacion de AvanzarRecorrido
+			//TODO: Cambiar de sentido del recorrido al llegar al final
 		}
 	}
 }
 
 void ActualizarParadas(cListaParadas* ListaGlobalParadas, cRecorrido* RecorridoA, cRecorrido* RecorridoB, cRecorrido* RecorridoC, cGenerador* GeneradorRandoms) {
-	bool Generador = false; // true para agregar pasajeros
+	bool Generador = false; // true para agregar pasajeros //TODO: delete de pasajeros en paradas o en colectivos
 	if (Generador) {
 		for (int Pos = 0; Pos < CantidadTotalParadas; Pos++) {
 			try {
@@ -138,9 +140,9 @@ string GeneradorDestinoRandom(cParada* ParadaActual, cRecorrido* RecorridoA, cRe
 }
 
 void ActualizarColectivosGPS(cListaColectivos* ListaGlobalColectivos) {
-
+	//TODO: Implementacion de gps todos colectivos
 }
 
 void ResumenDelDia(cListaColectivos* ListaGlobalColectivos) {
-	
+	//TODO: Implementacion del resumen
 }

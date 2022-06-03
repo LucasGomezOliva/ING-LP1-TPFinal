@@ -32,6 +32,9 @@ cColectivo::~cColectivo() {
 	if (Colectivero != NULL) {
 		delete Colectivero;
 	}
+	if (FechaUltimoMantenimiento != NULL) {
+		delete FechaUltimoMantenimiento;
+	}
 }
 
 void cColectivo::AvanzarRecorrido() {
@@ -62,7 +65,7 @@ cPasajero* cColectivo::BajarPasajeros(string NombreParadaActual) {
 
 bool cColectivo::SubirPasajeros(cPasajero* Pasajero) {
 
-	bool EstadoPasajero = SistemaDePagos->GenerarViaje("ParadaActual", Pasajero->GetDestino(), Recorrido->CantidadDeParadasEntreDestinos("ParadaActual", Pasajero->GetDestino()), Pasajero->GetTarjetaPasajero());
+	bool EstadoPasajero = SistemaDePagos->GenerarViaje((*Recorrido->GetListaParadas())[PosDelRecorrido]->GetNombreParada(), Pasajero->GetDestino(), Recorrido->CantidadDeParadasEntreDestinos((*Recorrido->GetListaParadas())[PosDelRecorrido]->GetNombreParada(), Pasajero->GetDestino()), Pasajero->GetTarjetaPasajero());
 	if (EstadoPasajero == true) {
 		//agregar pasajero a la lista
 		*(ListaPasajeros) + Pasajero;
@@ -98,6 +101,10 @@ void cColectivo::SetNuevoRecorrido(cRecorrido* NuevoRecorrido) {
 
 void cColectivo::SetColectivero(cColectivero* Colectivero) {
 	this->Colectivero = Colectivero;
+}
+
+void  cColectivo::SetFechaMantenimiento(cFecha* Fecha) {
+	this->FechaUltimoMantenimiento = Fecha;
 }
 
 void cColectivo::operator+(cPasajero* Pasajero) {

@@ -78,6 +78,13 @@ public:
 	/// <returns></returns>
 	void SetColectivero(cColectivero* Colectivero);
 
+	/// <summary>
+	/// Set nueva fecha de mantenimiento
+	/// </summary>
+	/// <param name="Fecha"></param>
+	/// <returns></returns>
+	void SetFechaMantenimiento(cFecha* Fecha);
+
 #pragma endregion
 
 #pragma region Metodos
