@@ -145,6 +145,7 @@
     <ClCompile Include="cColectivoAutonomo.cpp" />
     <ClCompile Include="cColectivoConAire.cpp" />
     <ClCompile Include="cColectivoSinAire.cpp" />
+    <ClCompile Include="cFecha.cpp" />
     <ClCompile Include="cListaColectivos.cpp" />
     <ClCompile Include="cListaParadas.cpp" />
     <ClCompile Include="cListaPasajeros.cpp" />
@@ -166,6 +167,7 @@
     <ClInclude Include="cColectivoAutonomo.h" />
     <ClInclude Include="cColectivoConAire.h" />
     <ClInclude Include="cColectivoSinAire.h" />
+    <ClInclude Include="cFecha.h" />
     <ClInclude Include="cListaColectivos.h" />
     <ClInclude Include="cListaParadas.h" />
     <ClInclude Include="cListaPasajeros.h" />

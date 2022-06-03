@@ -33,6 +33,22 @@ public:
 
 #pragma endregion
 
+#pragma region Getter y setters
+
+	/// <summary>
+	/// Retorna la Cantidad Actual de la lista
+	/// </summary>
+	/// <returns>unsigned int</returns>
+	unsigned int GetCantidadActual();
+
+	/// <summary>
+	/// Retorna la Cantidad Maxima de la lista
+	/// </summary>
+	/// <returns>unsigned int</returns>
+	unsigned int GetCantidadMaxima();
+
+#pragma endregion
+
 #pragma region Metodos
 
 	/// <summary>
@@ -110,6 +126,16 @@ inline cListaTemplate <T>::~cListaTemplate() {
 		delete[] Array;
 	}
 	Array = NULL;
+}
+
+template <class T>
+inline unsigned int cListaTemplate <T>::GetCantidadActual() {
+	return CantidadActual; 
+}
+
+template <class T>
+unsigned int cListaTemplate <T>::GetCantidadMaxima() { 
+	return TamMax; 
 }
 
 template <class T>

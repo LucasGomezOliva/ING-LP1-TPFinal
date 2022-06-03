@@ -8,7 +8,9 @@ cColectivoAutonomo::~cColectivoAutonomo(){
 }
 
 void cColectivoAutonomo::CargarBateria(){
+
 }
 
 void cColectivoAutonomo::DescargarBateria(){
+
 }

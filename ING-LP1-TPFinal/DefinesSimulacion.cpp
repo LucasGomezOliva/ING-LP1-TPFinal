@@ -12,7 +12,6 @@ void GenerarParadas(cListaParadas* ListaGlobalParadas) {
 }
 
 void AgregarParadasRecorrido(cRecorrido* RecorridoA, cRecorrido* RecorridoB, cRecorrido* RecorridoC, cListaParadas* ListaGlobalPardas) {
-
 	for (unsigned int Pos = 0; Pos < CantidadTotalParadasRecorridoA; Pos++) {
 		try {
 			RecorridoA->AgregarParadasRecorrido((*ListaGlobalPardas)[ParadasRecorridoA[Pos]]);
@@ -21,7 +20,6 @@ void AgregarParadasRecorrido(cRecorrido* RecorridoA, cRecorrido* RecorridoB, cRe
 			cout << e.what() << endl;
 		}
 	}
-
 	for (unsigned int Pos = 0; Pos < CantidadTotalParadasRecorridoB; Pos++) {
 		try {
 			RecorridoB->AgregarParadasRecorrido((*ListaGlobalPardas)[ParadasRecorridoB[Pos]]);
@@ -30,7 +28,6 @@ void AgregarParadasRecorrido(cRecorrido* RecorridoA, cRecorrido* RecorridoB, cRe
 			cout << e.what() << endl;
 		}
 	}
-
 	for (unsigned int Pos = 0; Pos < CantidadTotalParadasRecorridoC; Pos++) {
 		try {
 			RecorridoC->AgregarParadasRecorrido((*ListaGlobalPardas)[ParadasRecorridoC[Pos]]);
@@ -46,7 +43,6 @@ void GenerarColectivos(cListaColectivos* ListaGlobalColectivos) {
 	unsigned int CantidadAcordeon = 0;
 	unsigned int CantidadAutonomos = 0;
 	for (unsigned int i = 0; i < CantidadTotalColectivos; i++) {
-
 		if (CantidadColectivosSinAire > CantidadSinAire) {
 			try {
 				ListaGlobalColectivos->Agregar(new cColectivoSinAire());
@@ -92,8 +88,11 @@ void ActualizarObjetos(cListaColectivos* ListaGlobalColectivos, cListaParadas* L
 }
 
 void ActualizarColectivos(cListaColectivos* ListaGlobalColectivos) {
-	
-
+	for (unsigned int Pos = 0; Pos < CantidadTotalColectivos; Pos++) {
+		if ((*ListaGlobalColectivos)[Pos]->GetRecorrido() != NULL) {
+			(*ListaGlobalColectivos)[Pos]->AvanzarRecorrido();
+		}
+	}
 }
 
 void ActualizarParadas(cListaParadas* ListaGlobalParadas, cRecorrido* RecorridoA, cRecorrido* RecorridoB, cRecorrido* RecorridoC, cGenerador* GeneradorRandoms) {

@@ -4,6 +4,7 @@
 #include"cSistemaDePagos.h"
 #include"cListaPasajeros.h"
 #include"cColectivero.h"
+#include"cFecha.h"
 using namespace std;
 
 class cColectivo
@@ -19,6 +20,7 @@ protected:
 	cRecorrido* Recorrido;
 	cListaPasajeros* ListaPasajeros;
 	unsigned int PosDelRecorrido;
+	cFecha* FechaUltimoMantenimiento;
 	
 public:
 
@@ -51,6 +53,12 @@ public:
 	string GetIDColectivo() const;
 
 	/// <summary>
+	/// Retorna el Recorrido del colectivo
+	/// </summary>
+	/// <returns>String</returns>
+	cRecorrido* GetRecorrido() const;
+
+	/// <summary>
 	/// Retorna el Estado Operativo
 	/// </summary>
 	/// <returns>Bool</returns>
@@ -73,6 +81,11 @@ public:
 #pragma endregion
 
 #pragma region Metodos
+
+	/// <summary>
+	/// Avanza a la siguiente parada del recorrido
+	/// </summary>
+	void AvanzarRecorrido();
 
 	/// <summary>
 	/// Baja los pasajeros que llegaron al destino

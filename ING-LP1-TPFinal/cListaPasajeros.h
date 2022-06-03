@@ -37,6 +37,12 @@ public:
 	/// <returns>Pasajero</returns>
 	cPasajero* QuitarSillaRuedas();
 
+	/// <summary>
+	/// Quita de la lista un pasajero 
+	/// </summary>
+	/// <returns>Pasajero</returns>
+	cPasajero* QuitarPasajero();
+
 #pragma endregion
 
 #pragma region Sobrecarga Operadores

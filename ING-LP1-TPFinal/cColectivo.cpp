@@ -10,6 +10,7 @@ cColectivo::cColectivo() {
 	this->ListaPasajeros = new cListaPasajeros(50, true);
 	this->Colectivero = NULL;
 	this->Recorrido = NULL;
+	this->FechaUltimoMantenimiento = NULL;
 	this->PosDelRecorrido = 0;
 }
 
@@ -21,6 +22,7 @@ cColectivo::cColectivo(cRecorrido* RecorridoAsignado) {
 	this->ListaPasajeros = new cListaPasajeros(50, true);
 	this->Recorrido = RecorridoAsignado;
 	this->Colectivero = NULL;
+	this->FechaUltimoMantenimiento = NULL;
 	this->PosDelRecorrido = 0;
 }
 
@@ -32,8 +34,29 @@ cColectivo::~cColectivo() {
 	}
 }
 
+void cColectivo::AvanzarRecorrido() {
+	this->PosDelRecorrido++;
+
+	BajarPasajeros((*Recorrido->GetListaParadas())[PosDelRecorrido]->GetNombreParada());
+
+	for (unsigned int Pos = 0; Pos < (*Recorrido->GetListaParadas())[PosDelRecorrido]->GetListaPasajeros()->GetCantidadActual(); Pos++) {
+		if (ListaPasajeros->GetCantidadActual() < ListaPasajeros->GetCantidadMaxima()) {
+			SubirPasajeros((*Recorrido->GetListaParadas())[PosDelRecorrido]->GetListaPasajeros()->QuitarSillaRuedas());
+		}
+	}
+	for (unsigned int Pos = 0; Pos < (*Recorrido->GetListaParadas())[PosDelRecorrido]->GetListaPasajeros()->GetCantidadActual(); Pos++) {
+		if (ListaPasajeros->GetCantidadActual() < ListaPasajeros->GetCantidadMaxima()) {
+			SubirPasajeros((*Recorrido->GetListaParadas())[PosDelRecorrido]->GetListaPasajeros()->QuitarPasajero());
+		}
+	}
+}
+
 cPasajero* cColectivo::BajarPasajeros(string NombreParadaActual) {
-	//return pasajero
+	for (unsigned int Pos = 0; Pos < ListaPasajeros->GetCantidadActual(); Pos++) {
+		if ((*ListaPasajeros)[Pos]->GetDestino() == NombreParadaActual) {
+			return ListaPasajeros->Quitar((*ListaPasajeros)[Pos]);
+		}
+	}
 	return NULL;
 }
 
@@ -55,6 +78,10 @@ bool cColectivo::SubirPasajeros(cPasajero* Pasajero) {
 
 void cColectivo::Averia() {
 	this->EstadoOperaativo = false;
+}
+
+cRecorrido* cColectivo::GetRecorrido() const {
+	return Recorrido;
 }
 
 string cColectivo::GetIDColectivo() const {
