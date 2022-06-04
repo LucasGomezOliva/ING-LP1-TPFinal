@@ -134,7 +134,7 @@ inline unsigned int cListaTemplate <T>::GetCantidadActual() {
 }
 
 template <class T>
-unsigned int cListaTemplate <T>::GetCantidadMaxima() { 
+inline unsigned int cListaTemplate <T>::GetCantidadMaxima() { 
 	return TamMax; 
 }
 
