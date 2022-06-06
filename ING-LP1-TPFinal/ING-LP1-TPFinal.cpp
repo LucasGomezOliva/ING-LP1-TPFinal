@@ -3,7 +3,8 @@
 
 #include <iostream>
 #include<time.h>
-#include"DefinesSimulacion.h"
+//#include"DefinesSimulacion.h"
+#include"cSimulador.h"
 
 int main()
 {
@@ -12,6 +13,12 @@ int main()
 	//Generador de Randoms para la creacion de los distintos objetos
 
 	cGenerador* GeneradorRandoms = new cGenerador();
+
+	///////////////////////////////////////////////////////////////////////
+
+	//Clase simulador
+
+	cSimulador* Simulador = new cSimulador();
 
 	///////////////////////////////////////////////////////////////////////
 	
@@ -25,9 +32,9 @@ int main()
 
 	cListaParadas* ListaGlobalPardas = new cListaParadas(CantidadTotalParadas, true);
 
-	GenerarParadas(ListaGlobalPardas);
+	Simulador->GenerarParadas(ListaGlobalPardas);
 
-	AgregarParadasRecorrido(RecorridoA, RecorridoB, RecorridoC, ListaGlobalPardas);
+	Simulador->AgregarParadasRecorrido(RecorridoA, RecorridoB, RecorridoC, ListaGlobalPardas);
 
 	RecorridoA->imprimir();
 	cout << "\n\n/////////////////////////////////////" << endl;
@@ -42,9 +49,9 @@ int main()
 
 	cListaColectivos* ListaGlobalColectivos = new cListaColectivos(CantidadTotalColectivos, true);
 
-	GenerarColectivos(ListaGlobalColectivos);
+	Simulador->GenerarColectivos(ListaGlobalColectivos);
 
-	GenerarAsignarColectiveros(ListaGlobalColectivos, GeneradorRandoms);
+	Simulador->GenerarAsignarColectiveros(ListaGlobalColectivos, GeneradorRandoms);
 
 	///////////////////////////////////////////////////////////////////////
 	
@@ -61,13 +68,13 @@ int main()
 		if (diftime >= 1) {
 			cout << "\nPasaron: " << diftime << " s" << endl;
 			//Actualiza los objetos
-			ActualizarObjetos(ListaGlobalColectivos, ListaGlobalPardas, RecorridoA, RecorridoB, RecorridoC, GeneradorRandoms);
+			Simulador->ActualizarObjetos(ListaGlobalColectivos, ListaGlobalPardas, RecorridoA, RecorridoB, RecorridoC, GeneradorRandoms);
 			cout << "\tObjetos Actualizados";
 			time_0 = clock();
 			CantidadDeSegundos++;
 			if (CantidadDeSegundos % 5 == 0) {
 				//Actualizar GPS
-				ActualizarColectivosGPS(ListaGlobalColectivos);
+				Simulador->ActualizarColectivosGPS(ListaGlobalColectivos);
 				cout << "\tGPS Actualizados";
 			}
 		}
@@ -83,7 +90,7 @@ int main()
 
 	cout << "\n\nResumen del dia" << endl;
 
-	ResumenDelDia(ListaGlobalColectivos);
+	Simulador->ResumenDelDia(ListaGlobalColectivos);
 
 	///////////////////////////////////////////////////////////////////////
 
@@ -93,6 +100,7 @@ int main()
 	delete RecorridoB;
 	delete RecorridoC;
     delete GeneradorRandoms;
+	delete Simulador;
 }
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
