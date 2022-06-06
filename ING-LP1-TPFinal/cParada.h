@@ -7,10 +7,11 @@ class cParada
 {
 private:
 
-	string IDParada;
-	string NombreParada;
-	string Direccion;
+	const string IDParada;
+	const string NombreParada;
+	const string Direccion;
 	cListaPasajeros* ListaPasajeros;
+	static unsigned int CantidadDeParadasCreadas;
 
 public:
 	
@@ -24,10 +25,9 @@ public:
 	/// <summary>
 	/// Constructor de la clase Parada 
 	/// </summary>
-	/// <param name="IDParada"></param>
 	/// <param name="NombreParada"></param>
 	/// <param name="Direccion"></param>
-	cParada(string IDParada, string NombreParada, string Direccion);
+	cParada(string NombreParada, string Direccion);
 
 	/// <summary>
 	/// Destructor de la clase Parada 

@@ -10,7 +10,7 @@ cSimulador::~cSimulador() {
 void cSimulador::GenerarParadas(cListaParadas* ListaGlobalParadas) {
 	for (unsigned int Pos = 0; Pos < CantidadTotalParadas; Pos++) {
 		try {
-			ListaGlobalParadas->Agregar(new cParada(to_string(Pos), ParadasNombre[Pos], ParadasDireccion[Pos]));
+			ListaGlobalParadas->Agregar(new cParada(ParadasNombre[Pos], ParadasDireccion[Pos]));
 		}
 		catch (exception& e) {
 			cout << e.what() << endl;
@@ -146,20 +146,28 @@ string cSimulador::GeneradorDestinoRandom(cParada* ParadaActual, cRecorrido* Rec
 	return "Destino Invalido";
 }
 
-void cSimulador::ActualizarColectivosGPS(cListaColectivos* ListaGlobalColectivos) {
-	//TODO: Implementacion de gps todos colectivos
+string cSimulador::ActualizarColectivosGPS(cListaColectivos* ListaGlobalColectivos) {
+	string aux = "";
+	for (unsigned int Pos = 0; Pos < CantidadTotalColectivos; Pos++) {
+		(*ListaGlobalColectivos)[Pos]->ActualizarGPS();
+	}
+	for (unsigned int Pos = 0; Pos < CantidadTotalColectivos; Pos++) {
+		aux += (*ListaGlobalColectivos)[Pos]->GetGPS();
+	}
+	return aux;
 }
 
 string cSimulador::ResumenDelDia(cListaColectivos* ListaGlobalColectivos) {
 	string aux;
 	unsigned int CantidadPasajerosTotal = 0;
-	unsigned int MontoTotal = 0;
+	float MontoTotal = 0;
 	for (unsigned int Pos = 0; Pos < CantidadTotalColectivos; Pos++) {
 		aux += (*ListaGlobalColectivos)[Pos]->ToStringColectivo();
 		CantidadPasajerosTotal += (*ListaGlobalColectivos)[Pos]->GetSistemaDePagos()->GetCantidadDePasajeros();
 		MontoTotal += (*ListaGlobalColectivos)[Pos]->GetSistemaDePagos()->GetColectaDelDia();
 	}
-	aux += "\n Cantidad Pasajeros Total:" + to_string(CantidadPasajerosTotal) +
-		"\n Monto Total:" + to_string(MontoTotal);
+	aux += 
+		"\n\nCantidad Pasajeros Total:" + to_string(CantidadPasajerosTotal) +
+		"\nMonto Total:" + to_string(MontoTotal);
 	return aux;
 }

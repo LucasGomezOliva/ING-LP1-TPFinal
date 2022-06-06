@@ -1,15 +1,10 @@
 #include "cParada.h"
-cParada::cParada() {
-	this->IDParada = "";
-	this->NombreParada = "";
-	this->Direccion = "";
+unsigned int cParada::CantidadDeParadasCreadas = 0;
+cParada::cParada() : IDParada(to_string(++CantidadDeParadasCreadas)), NombreParada(""), Direccion("") {
 	this->ListaPasajeros = new cListaPasajeros();
 }
 
-cParada::cParada(string IDParada, string NombreParada, string Direccion) {
-	this->IDParada = IDParada;
-	this->NombreParada = NombreParada;
-	this->Direccion = Direccion;
+cParada::cParada(string NombreParada, string Direccion) : IDParada(to_string(++CantidadDeParadasCreadas)), NombreParada(NombreParada), Direccion(Direccion) {
 	this->ListaPasajeros = new cListaPasajeros(100, true);
 }
 

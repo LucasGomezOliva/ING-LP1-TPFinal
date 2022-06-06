@@ -12,8 +12,8 @@ class cColectivo
 
 protected:
 
-	static unsigned long int CantidadDeColectivos;
 	const string IDColectivo;
+	static unsigned long int CantidadDeColectivos;
 	bool EstadoOperaativo;
 	cColectivero* Colectivero;
 	cSistemaDePagos* SistemaDePagos;
@@ -21,6 +21,7 @@ protected:
 	cListaPasajeros* ListaPasajeros;
 	unsigned int PosDelRecorrido;
 	cFecha* FechaUltimoMantenimiento;
+	string GPS;
 	
 public:
 
@@ -78,6 +79,12 @@ public:
 	void SetNuevoRecorrido(cRecorrido* NuevoRecorrido);
 
 	/// <summary>
+	/// Retorna la ubicacion del GPS
+	/// </summary>
+	/// <returns>String</returns>
+	string GetGPS() const;
+
+	/// <summary>
 	/// Set colectivero
 	/// </summary>
 	/// <param name="Colectivero"></param>
@@ -120,6 +127,13 @@ public:
 	/// <param></param>
 	/// <returns></returns>
 	void Averia();
+	
+	/// <summary>
+	/// Actualiza el GPS del colectivo
+	/// </summary>
+	/// <param></param>
+	/// <returns></returns>
+	void ActualizarGPS();
 
 	string ToStringColectivo() const;
 

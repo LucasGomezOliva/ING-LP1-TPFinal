@@ -2,16 +2,12 @@
 
 unsigned long int cTarjeta::CantidadDeTarjetasCreadas = 0;
 
-cTarjeta::cTarjeta() {
-	this->CantidadDeTarjetasCreadas++;
-	this->NumeroTarjeta = CantidadDeTarjetasCreadas;
+cTarjeta::cTarjeta() : NumeroTarjeta(to_string(++CantidadDeTarjetasCreadas)) {
 	this->Saldo = 0;
 	this->ListaDeViajesRealizados = new cListaViajes(100, true);
 }
 
-cTarjeta::cTarjeta(float Saldo) {
-	this->CantidadDeTarjetasCreadas++;
-	this->NumeroTarjeta = CantidadDeTarjetasCreadas;
+cTarjeta::cTarjeta(float Saldo) : NumeroTarjeta(to_string(++CantidadDeTarjetasCreadas)) {
 	this->Saldo = Saldo;
 	this->ListaDeViajesRealizados = new cListaViajes(100, true);
 }
@@ -38,7 +34,7 @@ void cTarjeta::AgregarViajeLista(cViaje* NuevoViaje) {
 
 string cTarjeta::ToStringTarjeta()const {
 	return 
-		"\nNumero de Tarjeta:" + to_string(NumeroTarjeta) +
+		"\nNumero de Tarjeta:" + NumeroTarjeta +
 		"\nSaldo:" + to_string(Saldo);
 }
 

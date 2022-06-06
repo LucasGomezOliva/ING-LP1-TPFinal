@@ -33,11 +33,41 @@ cColectivo::~cColectivo() {
 	}
 }
 
+cRecorrido* cColectivo::GetRecorrido() const {
+	return Recorrido;
+}
+
+string cColectivo::GetIDColectivo() const {
+	return IDColectivo;
+}
+
+bool cColectivo::GetEstadoOperativo() const {
+	return EstadoOperaativo;
+}
+
+cSistemaDePagos* cColectivo::GetSistemaDePagos() const {
+	return SistemaDePagos;
+}
+
+string cColectivo::GetGPS() const {
+	return GPS;
+}
+
+void cColectivo::SetNuevoRecorrido(cRecorrido* NuevoRecorrido) {
+	this->Recorrido = NuevoRecorrido;
+}
+
+void cColectivo::SetColectivero(cColectivero* Colectivero) {
+	this->Colectivero = Colectivero;
+}
+
+void  cColectivo::SetFechaMantenimiento(cFecha* Fecha) {
+	this->FechaUltimoMantenimiento = Fecha;
+}
+
 void cColectivo::AvanzarRecorrido() {
 	this->PosDelRecorrido++;
-
 	BajarPasajeros((*Recorrido->GetListaParadas())[PosDelRecorrido]->GetNombreParada());
-
 	for (unsigned int Pos = 0; Pos < (*Recorrido->GetListaParadas())[PosDelRecorrido]->GetListaPasajeros()->GetCantidadActual(); Pos++) {
 		if (ListaPasajeros->GetCantidadActual() < ListaPasajeros->GetCantidadMaxima()) {
 			SubirPasajeros((*Recorrido->GetListaParadas())[PosDelRecorrido]->GetListaPasajeros()->QuitarSillaRuedas());
@@ -60,11 +90,10 @@ cPasajero* cColectivo::BajarPasajeros(string NombreParadaActual) {
 }
 
 bool cColectivo::SubirPasajeros(cPasajero* Pasajero) {
-
 	bool EstadoPasajero = SistemaDePagos->GenerarViaje((*Recorrido->GetListaParadas())[PosDelRecorrido]->GetNombreParada(), Pasajero->GetDestino(), Recorrido->CantidadDeParadasEntreDestinos((*Recorrido->GetListaParadas())[PosDelRecorrido]->GetNombreParada(), Pasajero->GetDestino()), Pasajero->GetTarjetaPasajero());
 	if (EstadoPasajero == true) {
 		//agregar pasajero a la lista
-		*(ListaPasajeros) + Pasajero;
+		*(ListaPasajeros)+Pasajero;
 		//pasajero sube al colectivo
 		return true;
 	}
@@ -79,32 +108,10 @@ void cColectivo::Averia() {
 	this->EstadoOperaativo = false;
 }
 
-cRecorrido* cColectivo::GetRecorrido() const {
-	return Recorrido;
-}
-
-string cColectivo::GetIDColectivo() const {
-	return IDColectivo;
-}
-
-bool cColectivo::GetEstadoOperativo() const {
-	return EstadoOperaativo;
-}
-
-cSistemaDePagos* cColectivo::GetSistemaDePagos() const {
-	return SistemaDePagos;
-}
-
-void cColectivo::SetNuevoRecorrido(cRecorrido* NuevoRecorrido) {
-	this->Recorrido = NuevoRecorrido;
-}
-
-void cColectivo::SetColectivero(cColectivero* Colectivero) {
-	this->Colectivero = Colectivero;
-}
-
-void  cColectivo::SetFechaMantenimiento(cFecha* Fecha) {
-	this->FechaUltimoMantenimiento = Fecha;
+void cColectivo::ActualizarGPS() {
+	if (Recorrido != NULL) {
+		this->GPS = (*Recorrido->GetListaParadas())[PosDelRecorrido]->GetNombreParada();
+	}
 }
 
 void cColectivo::operator+(cPasajero* Pasajero) {
@@ -113,12 +120,11 @@ void cColectivo::operator+(cPasajero* Pasajero) {
 
 cPasajero* cColectivo::operator-(cPasajero* Pasajero) {
 	return BajarPasajeros(Pasajero->GetDestino());
-
 }
 
 string cColectivo::ToStringColectivo() const {
 	return 
-		"\nID Colectivo: " + IDColectivo +
+		"\n\nID Colectivo: " + IDColectivo +
 		"\nCantidad de Pasajeros: " + to_string(SistemaDePagos->GetCantidadDePasajeros()) +
 		"\nMonto colectado: " + to_string(SistemaDePagos->GetColectaDelDia());
 }

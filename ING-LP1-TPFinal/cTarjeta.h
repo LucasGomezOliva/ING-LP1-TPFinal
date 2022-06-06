@@ -6,7 +6,7 @@ class cTarjeta
 {
 private:
 	
-	unsigned int long NumeroTarjeta;
+	const string NumeroTarjeta;
 	float Saldo;
 	static unsigned long int CantidadDeTarjetasCreadas;
 	cListaViajes* ListaDeViajesRealizados;

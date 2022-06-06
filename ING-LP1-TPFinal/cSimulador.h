@@ -99,7 +99,7 @@ public:
 	/// Actualiza los GPS de todos los colectivos
 	/// </summary>
 	/// <param name="ListaGlobalColectivos"></param>
-	void ActualizarColectivosGPS(cListaColectivos* ListaGlobalColectivos);
+	string ActualizarColectivosGPS(cListaColectivos* ListaGlobalColectivos);
 
 	/// <summary>
 	/// Indica el resumen del dia de cada colectivo y el total

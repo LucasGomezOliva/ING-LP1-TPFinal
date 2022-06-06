@@ -1,21 +1,13 @@
 #include "cViaje.h"
 
-int cViaje::CantidadDeViajesCreados = 0;
+unsigned int cViaje::CantidadDeViajesCreados = 0;
 
-cViaje::cViaje() {
-	this->IDViaje = to_string(CantidadDeViajesCreados);
-	this->Inicio = "";
-	this->Destino = "";
-	this->CostoDelViaje = 0;
-	CantidadDeViajesCreados++;
+cViaje::cViaje() : IDViaje(to_string(++CantidadDeViajesCreados)), Inicio(""), Destino(""), CostoDelViaje(0) {
+	
 }
 
-cViaje::cViaje(string Inicio, string Destino, float CostoDelViaje) {
-	this->IDViaje = to_string(CantidadDeViajesCreados);
-	this->Inicio = Inicio;
-	this->Destino = Destino;
-	this->CostoDelViaje = CostoDelViaje;
-	CantidadDeViajesCreados++;
+cViaje::cViaje(string Inicio, string Destino, float CostoDelViaje) : IDViaje(to_string(++CantidadDeViajesCreados)), Inicio(Inicio), Destino(Destino), CostoDelViaje(CostoDelViaje) {
+	
 }
 
 cViaje::~cViaje() {

@@ -1,15 +1,11 @@
 #include "cRecorrido.h"
 
-cRecorrido::cRecorrido(){
-	this->CodigoRecorrido = "";
-	this->NombreRecorrido = "";
+cRecorrido::cRecorrido() : CodigoRecorrido(""), NombreRecorrido("") {
 	this->ListaParadas = new cListaParadas(30, false);
 	this->KmRecorrido = 0;
 }
 
-cRecorrido::cRecorrido(string CodigoRecorrido, string NombreRecorrido, float KmRecorrido){
-	this->CodigoRecorrido = CodigoRecorrido;
-	this->NombreRecorrido = NombreRecorrido;
+cRecorrido::cRecorrido(string CodigoRecorrido, string NombreRecorrido, float KmRecorrido) : CodigoRecorrido(CodigoRecorrido), NombreRecorrido(NombreRecorrido) {
 	this->KmRecorrido = KmRecorrido;
 	this->ListaParadas = new cListaParadas(30, false);
 }
@@ -26,7 +22,7 @@ string cRecorrido::GetCodigoRecorrido(){
 	return CodigoRecorrido;
 }
 
-int cRecorrido::GetCantidadParadas() const {
+unsigned int cRecorrido::GetCantidadParadas() const {
 	return ListaParadas->CantidadActual;
 }
 
@@ -41,8 +37,8 @@ bool cRecorrido::AgregarParadasRecorrido(cParada* Parada){
 string cRecorrido::ToStringRecorrido() const {
 	return 
 		"\nCodigo del recorrido: " + CodigoRecorrido +
-		"\n Nombre del recorrido: " + NombreRecorrido + 
-		"\n KM Totales del Recorrido: " + to_string(KmRecorrido);
+		"\nNombre del recorrido: " + NombreRecorrido + 
+		"\nKM Totales del Recorrido: " + to_string(KmRecorrido);
 }
 
 void cRecorrido::imprimir() const{

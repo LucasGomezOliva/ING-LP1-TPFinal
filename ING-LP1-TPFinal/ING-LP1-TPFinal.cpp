@@ -73,7 +73,7 @@ int main()
 			CantidadDeSegundos++;
 			if (CantidadDeSegundos % 5 == 0) {
 				//Actualizar GPS
-				Simulador->ActualizarColectivosGPS(ListaGlobalColectivos);
+				cout << Simulador->ActualizarColectivosGPS(ListaGlobalColectivos);
 				cout << "\tGPS Actualizados";
 			}
 		}
@@ -87,7 +87,7 @@ int main()
 
 	cout << "\n\n/////////////////////////////////////" << endl;
 
-	cout << "\n\nResumen del dia" << endl;
+	cout << "\n\nResumen del dia";
 
 	cout << Simulador->ResumenDelDia(ListaGlobalColectivos) << endl;
 

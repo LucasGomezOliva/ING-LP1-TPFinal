@@ -5,7 +5,7 @@ class cColectivero :public cPersona
 {
 private:
 
-	string Legajo;
+	const string Legajo;
 	static unsigned int CantidadDeColectiveros;
 
 public:

@@ -6,11 +6,11 @@ class cViaje
 {
 private:
 
-	static int CantidadDeViajesCreados;
-	string IDViaje;
-	string Inicio;
-	string Destino;
-	float CostoDelViaje;
+	static unsigned int CantidadDeViajesCreados;
+	const string IDViaje;
+	const string Inicio;
+	const string Destino;
+	const float CostoDelViaje;
 
 public:
 

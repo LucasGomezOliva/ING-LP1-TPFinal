@@ -7,8 +7,8 @@ class cRecorrido
 {
 private:
 
-	string CodigoRecorrido;
-	string NombreRecorrido;
+	const string CodigoRecorrido;
+	const string NombreRecorrido;
 	cListaParadas* ListaParadas;
 	float KmRecorrido;
 
@@ -54,7 +54,7 @@ public:
 	/// Retorna la cantidad de paradas del recorrido
 	/// </summary>
 	/// <returns>int</returns>
-	int GetCantidadParadas() const;
+	unsigned int GetCantidadParadas() const;
 
 #pragma endregion
 
