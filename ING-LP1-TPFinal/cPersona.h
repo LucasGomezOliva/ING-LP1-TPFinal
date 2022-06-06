@@ -7,8 +7,8 @@ class cPersona
 {
 protected:
 
-	string Nombre;
-	string DNI;
+	const string Nombre;
+	const string DNI;
 
 public:
 

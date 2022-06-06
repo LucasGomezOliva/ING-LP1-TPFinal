@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include<time.h>
-//#include"DefinesSimulacion.h"
 #include"cSimulador.h"
 
 int main()
@@ -90,7 +89,7 @@ int main()
 
 	cout << "\n\nResumen del dia" << endl;
 
-	Simulador->ResumenDelDia(ListaGlobalColectivos);
+	cout << Simulador->ResumenDelDia(ListaGlobalColectivos) << endl;
 
 	///////////////////////////////////////////////////////////////////////
 
@@ -99,7 +98,7 @@ int main()
 	delete RecorridoA;
 	delete RecorridoB;
 	delete RecorridoC;
-    delete GeneradorRandoms;
+	delete GeneradorRandoms;
 	delete Simulador;
 }
 

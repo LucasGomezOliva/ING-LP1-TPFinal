@@ -13,7 +13,7 @@ class cColectivo
 protected:
 
 	static unsigned long int CantidadDeColectivos;
-	string IDColectivo;
+	const string IDColectivo;
 	bool EstadoOperaativo;
 	cColectivero* Colectivero;
 	cSistemaDePagos* SistemaDePagos;
@@ -63,6 +63,12 @@ public:
 	/// </summary>
 	/// <returns>Bool</returns>
 	bool GetEstadoOperativo() const ;
+
+	/// <summary>
+	/// Retorna el Sistema de pagos
+	/// </summary>
+	/// <returns>SistemaDePagos</returns>
+	cSistemaDePagos* GetSistemaDePagos() const;
 
 	/// <summary>
 	/// Cambia el recorrido del colectivo por uno nuevo
@@ -115,7 +121,7 @@ public:
 	/// <returns></returns>
 	void Averia();
 
-	string ToStringColectivo();
+	string ToStringColectivo() const;
 
 	virtual void Imprimir() = 0;
 

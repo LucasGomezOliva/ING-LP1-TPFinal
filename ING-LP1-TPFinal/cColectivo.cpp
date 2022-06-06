@@ -2,9 +2,7 @@
 
 unsigned long int cColectivo::CantidadDeColectivos = 0;
 
-cColectivo::cColectivo() {
-	this->CantidadDeColectivos++;
-	this->IDColectivo = to_string(CantidadDeColectivos);
+cColectivo::cColectivo() : IDColectivo(to_string(++CantidadDeColectivos)) {
 	this->EstadoOperaativo = true;
 	this->SistemaDePagos = new cSistemaDePagos();
 	this->ListaPasajeros = new cListaPasajeros(50, true);
@@ -14,9 +12,7 @@ cColectivo::cColectivo() {
 	this->PosDelRecorrido = 0;
 }
 
-cColectivo::cColectivo(cRecorrido* RecorridoAsignado) {
-	this->CantidadDeColectivos++;
-	this->IDColectivo = to_string(CantidadDeColectivos);
+cColectivo::cColectivo(cRecorrido* RecorridoAsignado) : IDColectivo(to_string(++CantidadDeColectivos)) {
 	this->EstadoOperaativo = true;
 	this->SistemaDePagos = new cSistemaDePagos();
 	this->ListaPasajeros = new cListaPasajeros(50, true);
@@ -95,6 +91,10 @@ bool cColectivo::GetEstadoOperativo() const {
 	return EstadoOperaativo;
 }
 
+cSistemaDePagos* cColectivo::GetSistemaDePagos() const {
+	return SistemaDePagos;
+}
+
 void cColectivo::SetNuevoRecorrido(cRecorrido* NuevoRecorrido) {
 	this->Recorrido = NuevoRecorrido;
 }
@@ -116,8 +116,11 @@ cPasajero* cColectivo::operator-(cPasajero* Pasajero) {
 
 }
 
-string cColectivo::ToStringColectivo() {
-	return "ID Colectivo" + IDColectivo;
+string cColectivo::ToStringColectivo() const {
+	return 
+		"\nID Colectivo: " + IDColectivo +
+		"\nCantidad de Pasajeros: " + to_string(SistemaDePagos->GetCantidadDePasajeros()) +
+		"\nMonto colectado: " + to_string(SistemaDePagos->GetColectaDelDia());
 }
 
 bool cColectivo::operator==(const cColectivo& OtroColectivo) {

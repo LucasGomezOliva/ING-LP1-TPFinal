@@ -14,30 +14,34 @@ cPasajero::cPasajero(string Nombre, string DNI, string NombreParadaDestino, bool
 cPasajero::~cPasajero() {
 	delete TarjetaPasajero;
 }
+
 bool cPasajero::GetSillaDeRuedas() const {
 	return SillaDeRuedas;
 }
+
 string cPasajero::GetDestino()const {
 	return NombreParadaDestino;
 }
+
 cTarjeta* cPasajero::GetTarjetaPasajero() const {
 	return TarjetaPasajero;
 }
+
 string cPasajero::GetDNI() const {
 	return DNI;
 }
-string cPasajero::ToStringPasajero() const {
 
+string cPasajero::ToStringPasajero() const {
 	string aux=
 		"\nNombre: " + Nombre +
 		"\nDNI: " + DNI +
 		"\nDestino: " + NombreParadaDestino +
 		"\nDatos de Tarjeta: " + TarjetaPasajero->ToStringTarjeta();
 	if (SillaDeRuedas == true) {
-		aux = aux + "\nSilla de ruedas: SI";
+		aux += "\nSilla de ruedas: SI";
 	}
 	else
-		aux = aux + "\nSilla de ruedas: NO";
+		aux += "\nSilla de ruedas: NO";
 	return aux;
 }
 

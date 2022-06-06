@@ -66,9 +66,6 @@
     <ClCompile Include="cListaViajes.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="DefinesSimulacion.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="cListaColectivos.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>

@@ -105,7 +105,7 @@ public:
 	/// Indica el resumen del dia de cada colectivo y el total
 	/// </summary>
 	/// <param name="ListaGlobalColectivos"></param>
-	void ResumenDelDia(cListaColectivos* ListaGlobalColectivos);
+	string ResumenDelDia(cListaColectivos* ListaGlobalColectivos);
 
 #pragma endregion
 

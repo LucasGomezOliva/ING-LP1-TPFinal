@@ -158,7 +158,6 @@
     <ClCompile Include="cSistemaDePagos.cpp" />
     <ClCompile Include="cTarjeta.cpp" />
     <ClCompile Include="cViaje.cpp" />
-    <ClCompile Include="DefinesSimulacion.cpp" />
     <ClCompile Include="ING-LP1-TPFinal.cpp" />
   </ItemGroup>
   <ItemGroup>
