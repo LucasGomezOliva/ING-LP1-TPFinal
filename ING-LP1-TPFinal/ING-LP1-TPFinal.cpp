@@ -43,6 +43,18 @@ int main()
 	cout << "\n\n/////////////////////////////////////" << endl;
 
 	///////////////////////////////////////////////////////////////////////
+
+	//Inicializacion de los colectiveros
+
+	cListaTemplate<cColectivero>* ListaGlobalColectiveros = new cListaTemplate<cColectivero>(CantidadColectiveros, true);
+
+	Simulador->GenerarColectiveros(ListaGlobalColectiveros,GeneradorRandoms);
+
+	cout << "\n\n=========== Lista de colectiveros ===========" << endl;
+
+	ListaGlobalColectiveros->Listar();
+
+	///////////////////////////////////////////////////////////////////////
 	
 	//Inicializacion de los colectivos
 
@@ -50,7 +62,7 @@ int main()
 
 	Simulador->GenerarColectivos(ListaGlobalColectivos);
 
-	Simulador->GenerarAsignarColectiveros(ListaGlobalColectivos, GeneradorRandoms);
+	Simulador->AsignarColectiveros(ListaGlobalColectivos, ListaGlobalColectiveros);
 
 	///////////////////////////////////////////////////////////////////////
 	
@@ -100,6 +112,7 @@ int main()
 	delete RecorridoC;
 	delete GeneradorRandoms;
 	delete Simulador;
+	delete ListaGlobalColectiveros;
 }
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar

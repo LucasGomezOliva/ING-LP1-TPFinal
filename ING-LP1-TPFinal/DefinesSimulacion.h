@@ -4,6 +4,8 @@
 
 using namespace std;
 
+const unsigned int CantidadColectiveros = 20;
+
 const unsigned int CantidadTotalColectivos = 20;
 
 const unsigned int CantidadColectivosSinAire = 10;

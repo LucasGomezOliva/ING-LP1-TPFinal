@@ -39,7 +39,7 @@ public:
 	/// Retorna un Random Nombre
 	/// </summary>
 	/// <returns>String puntero</returns>
-	string* GenerarRandomNombrePasajero();
+	string* GenerarRandomNombre();
 
 	/// <summary>
 	/// Retorna un Random DNI

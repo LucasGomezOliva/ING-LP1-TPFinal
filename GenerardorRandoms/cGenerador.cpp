@@ -49,7 +49,7 @@ bool cGenerador::GenerarRandomBool() {
 	}
 }
 
-string* cGenerador::GenerarRandomNombrePasajero() {
+string* cGenerador::GenerarRandomNombre() {
 	srand((unsigned int)time(NULL));
 	string* aux = NULL;
 	try {

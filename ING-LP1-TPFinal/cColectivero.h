@@ -31,6 +31,12 @@ public:
 
 #pragma endregion
 
+#pragma region Gets
+
+	string GetLegajo()const;
+
+#pragma endregion
+
 #pragma region Metodos
 
 	/// <summary>
@@ -39,9 +45,15 @@ public:
 	/// <returns>String</returns>
 	string CargarDestinoPasajero(string DestinoPasajero);
 
+	string ToStringColectivero()const;
+
 #pragma endregion
 
 #pragma region Operadores
+
+	friend ostream& operator<<(ostream& os, const cColectivero* Colectivero);
+
+	bool operator==(const cColectivero& OtroColectivo);
 
 #pragma endregion
 };

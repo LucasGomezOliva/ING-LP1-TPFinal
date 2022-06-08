@@ -32,5 +32,12 @@ public:
 	~cPersona();
 
 #pragma endregion
+#pragma region Constructores y destructores
+
+	string GetNombre()const;
+
+	string GetDNI()const;
+
+#pragma endregion
 };
 

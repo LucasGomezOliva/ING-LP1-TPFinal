@@ -25,11 +25,11 @@ bool cListaStrings::Agregar(string* StringLista) {
 string* cListaStrings::QuitarenPos(unsigned int pos) {
 	if (pos >= CantidadActual)throw new exception("Posicion no disponible");
 	string* aux = Array[pos];
-	for (unsigned int i = 0; i < CantidadActual - 1; i++) {
+	for (unsigned int i = pos; i < CantidadActual - 1; i++) {
 		Array[i] = Array[i + 1];
 	}
-	Array[CantidadActual - 1] = NULL;
 	CantidadActual--;
+	Array[CantidadActual] = NULL;
 	return aux;
 }
 

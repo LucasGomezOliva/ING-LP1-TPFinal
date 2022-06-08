@@ -46,17 +46,24 @@ public:
 	void AgregarParadasRecorrido(cRecorrido* RecorridoA, cRecorrido* RecorridoB, cRecorrido* RecorridoC, cListaParadas* ListaGlobalPardas);
 
 	/// <summary>
+	/// Genera colectiveros y los agrega a la lista
+	/// </summary>
+	/// <param name="ListaColectiveros"></param>
+	/// <param name="GeneradorRandoms"></param>
+	void GenerarColectiveros(cListaTemplate<cColectivero>* ListaColectiveros, cGenerador* GeneradorRandoms);
+
+	/// <summary>
 	/// Genera colectivos y los agrega a la lista global de colectivos
 	/// </summary>
-	/// <param name="RecorridoA"></param>
+	/// <param name="ListaGlobalColectivos"></param>
 	void GenerarColectivos(cListaColectivos* ListaGlobalColectivos);
 
 	/// <summary>
-	/// Genera los colectiveros en cada colectivo siempre y cuando no sean ColectivosAutonomos
+	/// Asigna los colectiveros a los clectivos
 	/// </summary>
 	/// <param name="ListaGlobalColectivos"></param>
-	/// <param name="GeneradorRandoms"></param>
-	void GenerarAsignarColectiveros(cListaColectivos* ListaGlobalColectivos, cGenerador* GeneradorRandoms);
+	/// <param name="ListaColectiveros"></param>
+	void AsignarColectiveros(cListaColectivos* ListaGlobalColectivos, cListaTemplate<cColectivero>* ListaColectiveros);
 
 	/// <summary>
 	/// Actualizacion de objetos

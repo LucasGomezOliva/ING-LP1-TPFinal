@@ -25,9 +25,9 @@ cColectivo::cColectivo(cRecorrido* RecorridoAsignado) : IDColectivo(to_string(++
 cColectivo::~cColectivo() {
 	delete SistemaDePagos;
 	delete ListaPasajeros;
-	if (Colectivero != NULL) {
+	/*if (Colectivero != NULL) {
 		delete Colectivero;
-	}
+	}*/
 	if (FechaUltimoMantenimiento != NULL) {
 		delete FechaUltimoMantenimiento;
 	}

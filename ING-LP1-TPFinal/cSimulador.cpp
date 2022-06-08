@@ -45,6 +45,17 @@ void cSimulador::AgregarParadasRecorrido(cRecorrido* RecorridoA, cRecorrido* Rec
 	}
 }
 
+void cSimulador::GenerarColectiveros(cListaTemplate<cColectivero>* ListaColectiveros, cGenerador* GeneradorRandoms) {
+	for (unsigned int Pos = 0; Pos < CantidadColectiveros; Pos++) {
+		try {
+		ListaColectiveros->Agregar(new cColectivero(*GeneradorRandoms->GenerarRandomNombre(), *GeneradorRandoms->GenerarRandomDNI()));
+		}
+		catch (exception& e) {
+			cout << e.what() << endl;
+		}
+	}
+}
+
 void cSimulador::GenerarColectivos(cListaColectivos* ListaGlobalColectivos) {
 	unsigned int CantidadSinAire = 0;
 	unsigned int CantidadAcordeon = 0;
@@ -80,11 +91,14 @@ void cSimulador::GenerarColectivos(cListaColectivos* ListaGlobalColectivos) {
 	}
 }
 
-void cSimulador::GenerarAsignarColectiveros(cListaColectivos* ListaGlobalColectivos, cGenerador* GeneradorRandoms) {
+void cSimulador::AsignarColectiveros(cListaColectivos* ListaGlobalColectivos, cListaTemplate<cColectivero>* ListaColectiveros) {
+	//TODO : exception para la falta de colectiveros
+	unsigned int PosColectiveros = 0;
 	for (unsigned int Pos = 0; Pos < CantidadTotalColectivos; Pos++) {
 		cColectivoAutonomo* ColectivoAutonomoAux = dynamic_cast<cColectivoAutonomo*>((*ListaGlobalColectivos)[Pos]);
 		if (ColectivoAutonomoAux == NULL) {
-			(*ListaGlobalColectivos)[Pos]->SetColectivero(new cColectivero(*GeneradorRandoms->GenerarRandomNombrePasajero(), *GeneradorRandoms->GenerarRandomDNI()));
+			(*ListaGlobalColectivos)[Pos]->SetColectivero((*ListaColectiveros)[PosColectiveros]);
+			PosColectiveros++;
 		}
 	}
 }
@@ -110,7 +124,7 @@ void cSimulador::ActualizarParadas(cListaParadas* ListaGlobalParadas, cRecorrido
 		for (unsigned int Pos = 0; Pos < CantidadTotalParadas; Pos++) {
 			try {
 				(*ListaGlobalParadas)[Pos]->GetListaPasajeros()->Agregar(new cPasajero(
-					*GeneradorRandoms->GenerarRandomNombrePasajero(),
+					*GeneradorRandoms->GenerarRandomNombre(),
 					*GeneradorRandoms->GenerarRandomDNI(),
 					GeneradorDestinoRandom((*ListaGlobalParadas)[Pos], RecorridoA, RecorridoB, RecorridoC),
 					GeneradorRandoms->GenerarRandomBool(),
@@ -158,6 +172,7 @@ string cSimulador::ActualizarColectivosGPS(cListaColectivos* ListaGlobalColectiv
 }
 
 string cSimulador::ResumenDelDia(cListaColectivos* ListaGlobalColectivos) {
+	//TODO : Indicar el tipo de colectivo al listar los datos
 	string aux;
 	unsigned int CantidadPasajerosTotal = 0;
 	float MontoTotal = 0;
