@@ -57,6 +57,7 @@ void cSimulador::GenerarColectiveros(cListaTemplate<cColectivero>* ListaColectiv
 }
 
 void cSimulador::GenerarColectivos(cListaColectivos* ListaGlobalColectivos) {
+	//TODO : simplificar este metodo
 	unsigned int CantidadSinAire = 0;
 	unsigned int CantidadAcordeon = 0;
 	unsigned int CantidadAutonomos = 0;
@@ -111,7 +112,11 @@ void cSimulador::ActualizarObjetos(cListaColectivos* ListaGlobalColectivos, cLis
 void cSimulador::ActualizarColectivos(cListaColectivos* ListaGlobalColectivos) {
 	for (unsigned int Pos = 0; Pos < CantidadTotalColectivos; Pos++) {
 		//TODO: random para averia por colectivo
-		if ((*ListaGlobalColectivos)[Pos]->GetRecorrido() != NULL) {
+		unsigned int RandomAveria = rand() % 21;
+		if (RandomAveria == 7) {
+			(*ListaGlobalColectivos)[Pos]->Averia(); //TODO : Hacer el metodo Averia y reparar clectivo
+		}
+		if ((*ListaGlobalColectivos)[Pos]->GetRecorrido() != NULL && (*ListaGlobalColectivos)[Pos]->GetEstadoOperativo() == true) {
 			(*ListaGlobalColectivos)[Pos]->AvanzarRecorrido(); //TODO: Revisar implementacion de AvanzarRecorrido
 			//TODO: Cambiar de sentido del recorrido al llegar al final
 		}
@@ -138,6 +143,8 @@ void cSimulador::ActualizarParadas(cListaParadas* ListaGlobalParadas, cRecorrido
 }
 
 string cSimulador::GeneradorDestinoRandom(cParada* ParadaActual, cRecorrido* RecorridoA, cRecorrido* RecorridoB, cRecorrido* RecorridoC) {
+	//TODO : Revisar correcto funcionamiento
+	//TODO : Tener en cuenta los dos sentidos de recorrido del colectivo
 	srand((unsigned int)time(NULL));
 	for (unsigned int Pos = 0; Pos < CantidadTotalParadasRecorridoA; Pos++) {
 		if (ParadaActual->GetIDParada() == (*RecorridoA->GetListaParadas())[Pos]->GetIDParada()) {
@@ -157,7 +164,7 @@ string cSimulador::GeneradorDestinoRandom(cParada* ParadaActual, cRecorrido* Rec
 			return (*RecorridoC->GetListaParadas())[PosParadaRandom]->GetNombreParada();
 		}
 	}
-	return "Destino Invalido";
+	return "Destino Invalido"; //TODO : Destino invalido exception
 }
 
 string cSimulador::ActualizarColectivosGPS(cListaColectivos* ListaGlobalColectivos) {
