@@ -4,7 +4,9 @@ using namespace std;
 class cColectivoConAire :public cColectivo
 {
 private:
+
 	bool AireAcondicionado;
+
 public:
 	
 #pragma region Constructores y destructores

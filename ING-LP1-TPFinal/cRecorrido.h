@@ -48,7 +48,7 @@ public:
 	/// Retorna el codigo del recorrido
 	/// </summary>
 	/// <returns>string</returns>
-	string GetCodigoRecorrido();
+	string GetCodigoRecorrido()const ;
 
 	/// <summary>
 	/// Retorna la cantidad de paradas del recorrido

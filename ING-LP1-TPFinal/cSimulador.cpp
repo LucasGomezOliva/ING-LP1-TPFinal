@@ -1,6 +1,7 @@
 #include "cSimulador.h"
 cSimulador::cSimulador() {
-
+	CantidadColectiverosCreados = 0;
+	CantidadPasajerosCreados = 0;
 }
 
 cSimulador::~cSimulador() {
@@ -49,6 +50,7 @@ void cSimulador::GenerarColectiveros(cListaTemplate<cColectivero>* ListaColectiv
 	for (unsigned int Pos = 0; Pos < CantidadColectiveros; Pos++) {
 		try {
 		ListaColectiveros->Agregar(new cColectivero(*GeneradorRandoms->GenerarRandomNombre(), *GeneradorRandoms->GenerarRandomDNI()));
+		CantidadColectiverosCreados++;
 		}
 		catch (exception& e) {
 			cout << e.what() << endl;
@@ -110,33 +112,67 @@ void cSimulador::ActualizarObjetos(cListaColectivos* ListaGlobalColectivos, cLis
 }
 
 void cSimulador::ActualizarColectivos(cListaColectivos* ListaGlobalColectivos) {
-	for (unsigned int Pos = 0; Pos < CantidadTotalColectivos; Pos++) {
-		//TODO: random para averia por colectivo
+	
+	for (unsigned int PosColectivos = 0; PosColectivos < CantidadTotalColectivos; PosColectivos++) {
+
+	///////////////////////////////////////////////////////////////////////
+
+	//Random para averia por colectivo
+
 		unsigned int RandomAveria = rand() % 21;
+
 		if (RandomAveria == 7) {
-			(*ListaGlobalColectivos)[Pos]->Averia(); //TODO : Hacer el metodo Averia y reparar clectivo
+			(*ListaGlobalColectivos)[PosColectivos]->Averia(); //TODO : Hacer el metodo Averia y reparar colectivo
 		}
-		if ((*ListaGlobalColectivos)[Pos]->GetRecorrido() != NULL && (*ListaGlobalColectivos)[Pos]->GetEstadoOperativo() == true) {
-			(*ListaGlobalColectivos)[Pos]->AvanzarRecorrido(); //TODO: Revisar implementacion de AvanzarRecorrido
-			//TODO: Cambiar de sentido del recorrido al llegar al final
+
+	///////////////////////////////////////////////////////////////////////
+
+	//Reviso que el colectivo funcione y que tenga un recorirdo asignado
+
+		if ((*ListaGlobalColectivos)[PosColectivos]->GetRecorrido() != NULL && (*ListaGlobalColectivos)[PosColectivos]->GetEstadoOperativo() == true) {
+
+			(*ListaGlobalColectivos)[PosColectivos]->AvanzarRecorrido(); //TODO: Revisar implementacion de AvanzarRecorrido
+
+	//Si el Colectivo llego al final de su recorrido debe empezar a recorrerlo en sendido contrario
+
+			if ((*ListaGlobalColectivos)[PosColectivos]->GetRecorrido()->GetCantidadParadas() == (*ListaGlobalColectivos)[PosColectivos]->GetPosicionRecorrido()) { //TODO : Revisar condicion del if por las posiciones
+				
+				(*ListaGlobalColectivos)[PosColectivos]->CambioDeSentidoRecorrido();
+			}
 		}
 	}
+
+	///////////////////////////////////////////////////////////////////////
 }
 
 void cSimulador::ActualizarParadas(cListaParadas* ListaGlobalParadas, cRecorrido* RecorridoA, cRecorrido* RecorridoB, cRecorrido* RecorridoC, cGenerador* GeneradorRandoms) {
 	bool Generador = false; // true para agregar pasajeros //TODO: delete de pasajeros en paradas o en colectivos
+
 	if (Generador) {
-		for (unsigned int Pos = 0; Pos < CantidadTotalParadas; Pos++) {
-			try {
-				(*ListaGlobalParadas)[Pos]->GetListaPasajeros()->Agregar(new cPasajero(
-					*GeneradorRandoms->GenerarRandomNombre(),
-					*GeneradorRandoms->GenerarRandomDNI(),
-					GeneradorDestinoRandom((*ListaGlobalParadas)[Pos], RecorridoA, RecorridoB, RecorridoC),
-					GeneradorRandoms->GenerarRandomBool(),
-					GeneradorRandoms->GenerarRandomSaldo()));
-			}
-			catch (exception& e) {
-				cout << e.what() << endl;
+
+		for (unsigned int PosParadas = 0; PosParadas < CantidadTotalParadas; PosParadas++) {
+
+			string DestinoPasajero = GeneradorDestinoRandom((*ListaGlobalParadas)[PosParadas], RecorridoA, RecorridoB, RecorridoC);
+
+			if (DestinoPasajero != "Destino Invalido") {
+
+				string* NombrePasajero = GeneradorRandoms->GenerarRandomNombre();
+				string* DNIPasajero = GeneradorRandoms->GenerarRandomDNI();
+
+				if (NombrePasajero != NULL && DNIPasajero != NULL) {
+					try {
+						(*ListaGlobalParadas)[PosParadas]->GetListaPasajeros()->Agregar(new cPasajero(
+							*NombrePasajero,
+							*DNIPasajero,
+							DestinoPasajero,
+							GeneradorRandoms->GenerarRandomBool(),
+							GeneradorRandoms->GenerarRandomSaldo()));
+						CantidadPasajerosCreados++;
+					}
+					catch (exception& e) {
+						cout << e.what() << endl;
+					}
+				}
 			}
 		}
 	}
@@ -169,11 +205,11 @@ string cSimulador::GeneradorDestinoRandom(cParada* ParadaActual, cRecorrido* Rec
 
 string cSimulador::ActualizarColectivosGPS(cListaColectivos* ListaGlobalColectivos) {
 	string aux = "";
-	for (unsigned int Pos = 0; Pos < CantidadTotalColectivos; Pos++) {
-		(*ListaGlobalColectivos)[Pos]->ActualizarGPS();
+	for (unsigned int PosColectivos = 0; PosColectivos < CantidadTotalColectivos; PosColectivos++) {
+		(*ListaGlobalColectivos)[PosColectivos]->ActualizarGPS();
 	}
-	for (unsigned int Pos = 0; Pos < CantidadTotalColectivos; Pos++) {
-		aux += (*ListaGlobalColectivos)[Pos]->GetGPS();
+	for (unsigned int PosColectivos = 0; PosColectivos < CantidadTotalColectivos; PosColectivos++) {
+		aux += (*ListaGlobalColectivos)[PosColectivos]->GetGPS();
 	}
 	return aux;
 }
@@ -183,10 +219,10 @@ string cSimulador::ResumenDelDia(cListaColectivos* ListaGlobalColectivos) {
 	string aux;
 	unsigned int CantidadPasajerosTotal = 0;
 	float MontoTotal = 0;
-	for (unsigned int Pos = 0; Pos < CantidadTotalColectivos; Pos++) {
-		aux += (*ListaGlobalColectivos)[Pos]->ToStringColectivo();
-		CantidadPasajerosTotal += (*ListaGlobalColectivos)[Pos]->GetSistemaDePagos()->GetCantidadDePasajeros();
-		MontoTotal += (*ListaGlobalColectivos)[Pos]->GetSistemaDePagos()->GetColectaDelDia();
+	for (unsigned int PosColectivos = 0; PosColectivos < CantidadTotalColectivos; PosColectivos++) {
+		aux += (*ListaGlobalColectivos)[PosColectivos]->ToStringColectivo();
+		CantidadPasajerosTotal += (*ListaGlobalColectivos)[PosColectivos]->GetSistemaDePagos()->GetCantidadDePasajeros();
+		MontoTotal += (*ListaGlobalColectivos)[PosColectivos]->GetSistemaDePagos()->GetColectaDelDia();
 	}
 	aux += 
 		"\n\nCantidad Pasajeros Total:" + to_string(CantidadPasajerosTotal) +

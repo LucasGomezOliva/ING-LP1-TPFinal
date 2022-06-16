@@ -27,6 +27,8 @@ public:
 
 #pragma region Metodos
 
+	bool SubirPasajeros(cPasajero* Pasajero);
+
 #pragma endregion
 
 #pragma region Sobrecarga Operadores

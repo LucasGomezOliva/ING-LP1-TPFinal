@@ -33,6 +33,8 @@ public:
 
 #pragma region Metodos
 
+	bool SubirPasajeros(cPasajero* Pasajero);
+
 	string ToStringColectivoSinAire();
 	void Imprimir();
 

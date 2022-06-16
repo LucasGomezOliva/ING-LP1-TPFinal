@@ -52,38 +52,52 @@ bool cGenerador::GenerarRandomBool() {
 string* cGenerador::GenerarRandomNombre() {
 	srand((unsigned int)time(NULL));
 	string* aux = NULL;
-	try {
-		aux = ListaNombres->QuitarenPos(rand() % ListaNombres->GetCantidadActual());
+	if (ListaNombres->GetCantidadActual() != 0) {
+		try {
+			aux = ListaNombres->QuitarenPos(rand() % ListaNombres->GetCantidadActual());
+			return aux;
+		}
+		catch (exception* ex) {
+			cout << ex->what() << endl;
+			delete ex;
+			return NULL;
+		}
 	}
-	catch (exception* ex) {
-		cout << ex->what() << endl;
-		delete ex;
-		return NULL;
-	}
+	return NULL;
 }
 
 string* cGenerador::GenerarRandomDNI() {
 	srand((unsigned int)time(NULL));
-	try {
-		ListaDNI->QuitarenPos(rand() % ListaDNI->GetCantidadActual());
+	string* aux = NULL;
+	if (ListaDNI->GetCantidadActual() != 0) {
+		try {
+			aux = ListaDNI->QuitarenPos(rand() % ListaDNI->GetCantidadActual());
+			return aux;
+		}
+		catch (exception* ex) {
+			cout << ex->what() << endl;
+			delete ex;
+			return NULL;
+		}
 	}
-	catch (exception* ex) {
-		cout << ex->what() << endl;
-		delete ex;
-		return NULL;
-	}
+	return NULL;
 }
 
 string* cGenerador::GenerarRandomDireccion() {
 	srand((unsigned int)time(NULL));
-	try {
-		ListaDireccionesParadas->QuitarenPos(rand() % ListaDireccionesParadas->GetCantidadActual());
+	string* aux = NULL;
+	if (ListaDireccionesParadas->GetCantidadActual() != 0) {
+		try {
+			aux = ListaDireccionesParadas->QuitarenPos(rand() % ListaDireccionesParadas->GetCantidadActual());
+			return aux;
+		}
+		catch (exception* ex) {
+			cout << ex->what() << endl;
+			delete ex;
+			return NULL;
+		}
 	}
-	catch (exception* ex) {
-		cout << ex->what() << endl;
-		delete ex;
-		return NULL;
-	}
+	return NULL;
 }
 
 float cGenerador::GenerarRandomSaldo() {

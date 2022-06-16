@@ -182,6 +182,7 @@
     <ClInclude Include="cTarjeta.h" />
     <ClInclude Include="cViaje.h" />
     <ClInclude Include="DefinesSimulacion.h" />
+    <ClInclude Include="eSentidoRecorrido.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GenerardorRandoms\GenerardorRandoms.vcxproj">

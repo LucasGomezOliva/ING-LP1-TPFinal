@@ -4,6 +4,7 @@
 #include"cSistemaDePagos.h"
 #include"cListaPasajeros.h"
 #include"cColectivero.h"
+#include"eSentidoRecorrido.h"
 #include"cFecha.h"
 using namespace std;
 
@@ -22,6 +23,7 @@ protected:
 	unsigned int PosDelRecorrido;
 	cFecha* FechaUltimoMantenimiento;
 	string GPS;
+	eSentidoRecorrido Sentido;
 	
 public:
 
@@ -85,6 +87,13 @@ public:
 	string GetGPS() const;
 
 	/// <summary>
+	/// Retorna la Posicion del recorrido
+	/// </summary>
+	/// <returns>unsigned int</returns>
+	unsigned int GetPosicionRecorrido() const;
+	
+
+	/// <summary>
 	/// Set colectivero
 	/// </summary>
 	/// <param name="Colectivero"></param>
@@ -119,7 +128,8 @@ public:
 	/// </summary>
 	/// <param name="Pasajero"></param>
 	/// <returns>bool</returns>
-	bool SubirPasajeros(cPasajero* Pasajero);
+	//bool SubirPasajeros(cPasajero* Pasajero);
+	virtual bool SubirPasajeros(cPasajero* Pasajero) = 0;
 
 	/// <summary>
 	/// Genera una averia en el colectivo
@@ -134,6 +144,8 @@ public:
 	/// <param></param>
 	/// <returns></returns>
 	void ActualizarGPS();
+
+	void CambioDeSentidoRecorrido();
 
 	string ToStringColectivo() const;
 

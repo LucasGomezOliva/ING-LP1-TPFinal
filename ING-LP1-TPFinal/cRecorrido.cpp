@@ -18,7 +18,7 @@ cListaParadas* cRecorrido::GetListaParadas()const {
 	return ListaParadas;
 }
 
-string cRecorrido::GetCodigoRecorrido(){
+string cRecorrido::GetCodigoRecorrido()const {
 	return CodigoRecorrido;
 }
 

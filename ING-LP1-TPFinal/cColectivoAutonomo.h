@@ -25,6 +25,8 @@ public:
 
 #pragma region Metodos
 
+	bool SubirPasajeros(cPasajero* Pasajero);
+
 	/// <summary>
 	/// Carga Bateria del colectivo 
 	/// </summary>

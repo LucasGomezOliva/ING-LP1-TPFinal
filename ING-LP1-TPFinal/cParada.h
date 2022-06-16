@@ -3,6 +3,8 @@
 #include<iostream>
 #include"cListaPasajeros.h"
 using namespace std;
+
+class cRecorrido;
 class cParada
 {
 private:

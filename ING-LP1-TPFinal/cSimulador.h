@@ -11,6 +11,10 @@ using namespace std;
 
 class cSimulador
 {
+	//Borrar despues de revisar
+
+	unsigned int CantidadColectiverosCreados;
+	unsigned int CantidadPasajerosCreados;
 
 public:
 
@@ -77,7 +81,7 @@ public:
 	void ActualizarObjetos(cListaColectivos* ListaGlobalColectivos, cListaParadas* ListaGlobalParadas, cRecorrido* RecorridoA, cRecorrido* RecorridoB, cRecorrido* RecorridoC, cGenerador* GeneradorRandoms);
 
 	/// <summary>
-	/// Actualiza todos los colectivos (avanzan en su recorrido - suben y bajan pasajeros)
+	/// Actualiza todos los colectivos (Random Averia - Avanza en su recorrido - Sube y baja pasajeros)
 	/// </summary>
 	/// <param name="ListaGlobalColectivos"></param>
 	void ActualizarColectivos(cListaColectivos* ListaGlobalColectivos);
