@@ -132,6 +132,13 @@ public:
 	virtual bool SubirPasajeros(cPasajero* Pasajero) = 0;
 
 	/// <summary>
+	/// Controla que el pasajero suba al sentido correcto del recorrido
+	/// </summary>
+	/// <param name="Pasajero"></param>
+	/// <returns>bool</returns>
+	bool ControlSentidoPasajero(cPasajero* Pasajero);
+
+	/// <summary>
 	/// Genera una averia en el colectivo
 	/// </summary>
 	/// <param></param>
@@ -145,6 +152,11 @@ public:
 	/// <returns></returns>
 	void ActualizarGPS();
 
+	/// <summary>
+	/// Cambia el sentido del recorrido
+	/// </summary>
+	/// <param></param>
+	/// <returns></returns>
 	void CambioDeSentidoRecorrido();
 
 	string ToStringColectivo() const;

@@ -122,7 +122,7 @@ void cSimulador::ActualizarColectivos(cListaColectivos* ListaGlobalColectivos) {
 		unsigned int RandomAveria = rand() % 21;
 
 		if (RandomAveria == 7) {
-			(*ListaGlobalColectivos)[PosColectivos]->Averia(); //TODO : Hacer el metodo Averia y reparar colectivo
+			//(*ListaGlobalColectivos)[PosColectivos]->Averia(); //TODO : Hacer el metodo Averia y reparar colectivo
 		}
 
 	///////////////////////////////////////////////////////////////////////
@@ -146,7 +146,7 @@ void cSimulador::ActualizarColectivos(cListaColectivos* ListaGlobalColectivos) {
 }
 
 void cSimulador::ActualizarParadas(cListaParadas* ListaGlobalParadas, cRecorrido* RecorridoA, cRecorrido* RecorridoB, cRecorrido* RecorridoC, cGenerador* GeneradorRandoms) {
-	bool Generador = false; // true para agregar pasajeros //TODO: delete de pasajeros en paradas o en colectivos
+	bool Generador = true; // true para agregar pasajeros //TODO: delete de pasajeros en paradas o en colectivos
 
 	if (Generador) {
 
@@ -184,22 +184,27 @@ string cSimulador::GeneradorDestinoRandom(cParada* ParadaActual, cRecorrido* Rec
 	srand((unsigned int)time(NULL));
 	for (unsigned int Pos = 0; Pos < CantidadTotalParadasRecorridoA; Pos++) {
 		if (ParadaActual->GetIDParada() == (*RecorridoA->GetListaParadas())[Pos]->GetIDParada()) {
-			unsigned int PosParadaRandom = Pos + rand() % (CantidadTotalParadasRecorridoA - Pos);
+			unsigned int PosParadaRandom = rand() % CantidadTotalParadasRecorridoA;
+			//unsigned int PosParadaRandom = Pos + rand() % (CantidadTotalParadasRecorridoA - Pos);
 			return (*RecorridoA->GetListaParadas())[PosParadaRandom]->GetNombreParada();
 		}
 	}
+	/*
 	for (unsigned int Pos = 0; Pos < CantidadTotalParadasRecorridoB; Pos++) {
 		if (ParadaActual->GetIDParada() == (*RecorridoB->GetListaParadas())[Pos]->GetIDParada()) {
-			unsigned int PosParadaRandom = Pos + rand() % (CantidadTotalParadasRecorridoB - Pos);
+			unsigned int PosParadaRandom = rand() % CantidadTotalParadasRecorridoB;
+			//unsigned int PosParadaRandom = Pos + rand() % (CantidadTotalParadasRecorridoB - Pos);
 			return (*RecorridoB->GetListaParadas())[PosParadaRandom]->GetNombreParada();
 		}
 	}
 	for (unsigned int Pos = 0; Pos < CantidadTotalParadasRecorridoC; Pos++) {
 		if (ParadaActual->GetIDParada() == (*RecorridoC->GetListaParadas())[Pos]->GetIDParada()) {
-			unsigned int PosParadaRandom = Pos + rand() % (CantidadTotalParadasRecorridoC - Pos);
+			unsigned int PosParadaRandom = rand() % CantidadTotalParadasRecorridoC;
+			//unsigned int PosParadaRandom = Pos + rand() % (CantidadTotalParadasRecorridoC - Pos);
 			return (*RecorridoC->GetListaParadas())[PosParadaRandom]->GetNombreParada();
 		}
 	}
+	*/
 	return "Destino Invalido"; //TODO : Destino invalido exception
 }
 
@@ -209,7 +214,8 @@ string cSimulador::ActualizarColectivosGPS(cListaColectivos* ListaGlobalColectiv
 		(*ListaGlobalColectivos)[PosColectivos]->ActualizarGPS();
 	}
 	for (unsigned int PosColectivos = 0; PosColectivos < CantidadTotalColectivos; PosColectivos++) {
-		aux += (*ListaGlobalColectivos)[PosColectivos]->GetGPS();
+		if((*ListaGlobalColectivos)[PosColectivos]->GetGPS()!="")
+			aux += (*ListaGlobalColectivos)[PosColectivos]->GetGPS() + " \n";
 	}
 	return aux;
 }

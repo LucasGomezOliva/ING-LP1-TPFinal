@@ -22,6 +22,8 @@ bool cSistemaDePagos::GenerarViaje(string Inicio, string Destino, int CantidadDe
 	if (MontoDelViaje <= TarjetaPasajero->GetSaldo()) {
 		TarjetaPasajero->DescuentoSalto(MontoDelViaje);
 		TarjetaPasajero->AgregarViajeLista(new cViaje(Inicio, Destino, MontoDelViaje));
+		ColectaDelDia += MontoDelViaje;
+		CantidadDePasajeros++;
 		return true;
 	}
 	else{

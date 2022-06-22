@@ -64,6 +64,10 @@ int main()
 
 	Simulador->AsignarColectiveros(ListaGlobalColectivos, ListaGlobalColectiveros);
 
+	//for (unsigned int Pos = 0; Pos < ListaGlobalColectiveros->GetCantidadActual(); Pos++) {
+		(*ListaGlobalColectivos)[0]->SetNuevoRecorrido(RecorridoA);
+	//}
+
 	///////////////////////////////////////////////////////////////////////
 	
 	//Manejo del "tick" para poder actualizar todos los objetos y el GPS

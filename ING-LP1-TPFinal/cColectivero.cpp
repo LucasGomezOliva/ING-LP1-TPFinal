@@ -19,7 +19,7 @@ string cColectivero::GetLegajo()const {
 }
 
 string cColectivero::CargarDestinoPasajero(string DestinoPasajero){
-	return "123";
+	return DestinoPasajero;
 }
 
 string cColectivero::ToStringColectivero()const {

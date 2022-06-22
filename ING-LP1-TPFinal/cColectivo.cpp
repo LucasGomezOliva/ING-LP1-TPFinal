@@ -10,6 +10,7 @@ cColectivo::cColectivo() : IDColectivo(to_string(++CantidadDeColectivos)) {
 	this->Recorrido = NULL;
 	this->FechaUltimoMantenimiento = NULL;
 	this->PosDelRecorrido = 0;
+	this->GPS = "";
 	this->Sentido = eSentidoRecorrido::Arriba;
 }
 
@@ -21,6 +22,7 @@ cColectivo::cColectivo(cRecorrido* RecorridoAsignado) : IDColectivo(to_string(++
 	this->Colectivero = NULL;
 	this->FechaUltimoMantenimiento = NULL;
 	this->PosDelRecorrido = 0;
+	this->GPS = "";
 	this->Sentido = eSentidoRecorrido::Arriba;
 }
 
@@ -84,9 +86,11 @@ void cColectivo::AvanzarRecorrido() {
 
 	for (unsigned int PosPasajerosParada = 0; PosPasajerosParada < (*Recorrido->GetListaParadas())[PosDelRecorrido]->GetListaPasajeros()->GetCantidadActual(); PosPasajerosParada++) {
 		if (ListaPasajeros->GetCantidadActual() < ListaPasajeros->GetCantidadMaxima()) {;
-			cPasajero* PasajeroAux = (*Recorrido->GetListaParadas())[PosDelRecorrido]->PasajeroSubeColectivo();
-			if (PasajeroAux != NULL) {
-				SubirPasajeros(PasajeroAux);
+			if (true == ControlSentidoPasajero((*(*Recorrido->GetListaParadas())[PosDelRecorrido]->GetListaPasajeros())[PosPasajerosParada])) {
+				cPasajero* PasajeroAux = (*Recorrido->GetListaParadas())[PosDelRecorrido]->PasajeroSubeColectivo();
+				if (PasajeroAux != NULL) {
+					SubirPasajeros(PasajeroAux);
+				}
 			}
 		}
 	}
@@ -105,6 +109,7 @@ cPasajero* cColectivo::BajarPasajeros(string NombreParadaActual) {
 //bool cColectivo::SubirPasajeros(cPasajero* Pasajero) {
 //
 //	//TODO : Hacer metodo virtual para los colectivos autonomos no dependan del colectivero para cobrar pasaje
+//	//TODO : Controlar que los pasajeros se suban al sentido correcto (metodo de control al inico de SubirPasajero)
 //
 //	const string InicioPasajero = (*Recorrido->GetListaParadas())[PosDelRecorrido]->GetNombreParada();
 //
@@ -122,6 +127,26 @@ cPasajero* cColectivo::BajarPasajeros(string NombreParadaActual) {
 //		return false;
 //	}
 //}
+
+bool cColectivo::ControlSentidoPasajero(cPasajero* Pasajero) {
+	if (Sentido == eSentidoRecorrido::Arriba) {
+		for (unsigned int Pos = PosDelRecorrido; Pos < Recorrido->GetListaParadas()->GetCantidadActual(); Pos++) {
+			if ((*Recorrido->GetListaParadas())[Pos]->GetNombreParada() == Pasajero->GetDestino()) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	if (Sentido == eSentidoRecorrido::Abajo) {
+		for (unsigned int Pos = PosDelRecorrido; Pos > Recorrido->GetListaParadas()->GetCantidadActual(); Pos--) {
+			if ((*Recorrido->GetListaParadas())[Pos]->GetNombreParada() == Pasajero->GetDestino()) {
+				return true;
+			}
+		}
+		return false;
+	}
+}
 
 void cColectivo::Averia() {
 	//TODO : solicitud de enviar a un colectivo con poca gente a su ubicacion para llevar a los pasajeros

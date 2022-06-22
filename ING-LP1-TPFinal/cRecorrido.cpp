@@ -27,7 +27,21 @@ unsigned int cRecorrido::GetCantidadParadas() const {
 }
 
 int cRecorrido::CantidadDeParadasEntreDestinos(string ParadaInicio, string ParadaDestino) {
-	return 0;
+	unsigned int PosInicio = 0;
+	unsigned int PosDestino = 0;
+	for (unsigned int PosParadas = 0; PosParadas < ListaParadas->GetCantidadActual(); PosParadas++) {
+		if ((*ListaParadas)[PosParadas]->GetNombreParada() == ParadaInicio) {
+			PosInicio = PosParadas;
+		}
+		if ((*ListaParadas)[PosParadas]->GetNombreParada() == ParadaDestino) {
+			PosDestino = PosParadas;
+		}
+	}
+	if(PosDestino>PosInicio)
+		return PosDestino - PosInicio;
+	if (PosDestino < PosInicio)
+		return PosInicio - PosDestino;
+	//return 0;
 }
 bool cRecorrido::AgregarParadasRecorrido(cParada* Parada){
 	ListaParadas->Agregar(Parada);
