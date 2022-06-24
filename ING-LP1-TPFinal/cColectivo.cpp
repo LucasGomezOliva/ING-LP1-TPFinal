@@ -197,6 +197,10 @@ void cColectivo::Averia() {
 	}
 }
 
+void cColectivo::RepararColectivo() {
+	EstadoOperaativo == true;
+}
+
 void cColectivo::ActualizarGPS() {
 	if (Recorrido != NULL) {
 		this->GPS = (*Recorrido->GetListaParadas())[PosDelRecorrido]->GetNombreParada();

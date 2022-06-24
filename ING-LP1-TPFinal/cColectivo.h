@@ -144,6 +144,8 @@ public:
 	/// <param></param>
 	/// <returns></returns>
 	void Averia();
+
+	void RepararColectivo();
 	
 	/// <summary>
 	/// Actualiza el GPS del colectivo

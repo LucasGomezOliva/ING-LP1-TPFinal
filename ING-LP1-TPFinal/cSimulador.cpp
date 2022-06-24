@@ -233,6 +233,7 @@ string cSimulador::ResumenDelDia(cListaColectivos* ListaGlobalColectivos) {
 	unsigned int CantidadPasajerosTotal = 0;
 	float MontoTotal = 0;
 	for (unsigned int PosColectivos = 0; PosColectivos < CantidadTotalColectivos; PosColectivos++) {
+		(*ListaGlobalColectivos)[PosColectivos]->RepararColectivo();
 		aux += (*ListaGlobalColectivos)[PosColectivos]->ToStringColectivo();
 		CantidadPasajerosTotal += (*ListaGlobalColectivos)[PosColectivos]->GetSistemaDePagos()->GetCantidadDePasajeros();
 		MontoTotal += (*ListaGlobalColectivos)[PosColectivos]->GetSistemaDePagos()->GetColectaDelDia();
