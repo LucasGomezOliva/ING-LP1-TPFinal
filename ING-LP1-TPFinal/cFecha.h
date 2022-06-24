@@ -57,6 +57,13 @@ public:
 
 	void imprimir() const ;
 
+	friend istream& operator>>(istream& input, cFecha& Fecha);
+	friend ostream& operator<<(ostream& os, const cFecha* Fecha);
+	bool operator!=(cFecha* Fecha);
+	bool operator==(cFecha* Fecha);
+	bool operator > (cFecha* Fecha);
+	bool operator < (cFecha* Fecha);
+	
 #pragma endregion
 };
 

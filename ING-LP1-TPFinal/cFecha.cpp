@@ -67,3 +67,35 @@ string cFecha::to_stringFecha() const {
 void cFecha::imprimir() const {
 	cout << to_stringFecha() << endl;
 }
+
+bool cFecha::operator > (cFecha* Fecha) {
+	time_t aux_this = mktime(&(this->fecha));
+	time_t aux_otra = mktime(&(Fecha->fecha));
+	return aux_this > aux_otra;
+}
+
+bool cFecha::operator < (cFecha* Fecha) {
+	time_t aux_this = mktime(&(this->fecha));
+	time_t aux_otra = mktime(&(Fecha->fecha));
+	return aux_this < aux_otra;
+}
+
+bool cFecha::operator==(cFecha* Fecha) {
+	time_t aux_this = mktime(&(this->fecha));
+	time_t aux_otra = mktime(&(Fecha->fecha));
+	return aux_this == aux_otra;
+}
+
+bool cFecha::operator!=(cFecha* Fecha) {
+	return !(*this == Fecha);
+}
+
+ostream& operator<<(ostream& os, const cFecha* Fecha) {
+	os << Fecha->to_stringFecha();
+	return os;
+}
+
+istream& operator>>(istream& input, cFecha& Fecha) {
+	input >> Fecha.fecha.tm_mday >> Fecha.fecha.tm_mon >> Fecha.fecha.tm_year >> Fecha.fecha.tm_hour >>Fecha.fecha.tm_min;
+	return input;
+}

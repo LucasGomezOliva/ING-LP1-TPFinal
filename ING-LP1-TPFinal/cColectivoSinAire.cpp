@@ -14,11 +14,9 @@ string cColectivoSinAire::ToStringColectivoSinAire() {
 	return ToStringColectivo();
 }
 void cColectivoSinAire::Imprimir() {
-	cout << "Imprimir";
+	cout << ToStringColectivoSinAire();
 }
 bool cColectivoSinAire::SubirPasajeros(cPasajero* Pasajero) {
-
-	//TODO : Hacer metodo virtual para los colectivos autonomos no dependan del colectivero para cobrar pasaje
 
 	const string InicioPasajero = (*Recorrido->GetListaParadas())[PosDelRecorrido]->GetNombreParada();
 
@@ -39,4 +37,14 @@ bool cColectivoSinAire::SubirPasajeros(cPasajero* Pasajero) {
 	else {
 		return false;
 	}
+}
+
+istream& operator>>(istream& input, cColectivoSinAire& Colectivo) {
+	input >> Colectivo.GPS;
+	return input;
+}
+
+ostream& operator<<(ostream& os, cColectivoSinAire* Colectivo) {
+	os << Colectivo->ToStringColectivoSinAire();
+	return os;
 }

@@ -37,6 +37,10 @@ public:
 	/// </summary>
 	void DescargarBateria();
 
+	friend istream& operator>>(istream& input, cColectivoAutonomo& Colectivo);
+
+	friend ostream& operator<<(ostream& os, const cColectivoAutonomo* Colectivo);
+
 #pragma endregion
 
 };

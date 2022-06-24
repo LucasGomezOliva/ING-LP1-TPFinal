@@ -252,3 +252,13 @@ bool cColectivo::operator==(const cColectivo& OtroColectivo) {
 void cColectivo::operator++() {
 	AvanzarRecorrido();
 }
+
+istream& operator>>(istream& input, cColectivo& Colectivo) {
+	input >> Colectivo.GPS;
+	return input;
+}
+
+ostream& operator<<(ostream& os, const cColectivo* Colectivo) {
+	os << Colectivo->ToStringColectivo();
+	return os;
+}

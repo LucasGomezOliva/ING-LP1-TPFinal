@@ -15,6 +15,7 @@ class cSimulador
 
 	unsigned int CantidadColectiverosCreados;
 	unsigned int CantidadPasajerosCreados;
+	unsigned int CantidadColectiverosCirculacion;
 
 public:
 

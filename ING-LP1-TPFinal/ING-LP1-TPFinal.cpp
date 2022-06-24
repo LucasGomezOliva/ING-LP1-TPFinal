@@ -64,9 +64,19 @@ int main()
 
 	Simulador->AsignarColectiveros(ListaGlobalColectivos, ListaGlobalColectiveros);
 
-	//for (unsigned int Pos = 0; Pos < ListaGlobalColectiveros->GetCantidadActual(); Pos++) {
+	//Asignacion de recorridos
+
 		(*ListaGlobalColectivos)[0]->SetNuevoRecorrido(RecorridoA);
-	//}
+		(*ListaGlobalColectivos)[1]->SetNuevoRecorrido(RecorridoA);
+		(*ListaGlobalColectivos)[2]->SetNuevoRecorrido(RecorridoA);
+
+		(*ListaGlobalColectivos)[3]->SetNuevoRecorrido(RecorridoB);
+		(*ListaGlobalColectivos)[4]->SetNuevoRecorrido(RecorridoB);
+		(*ListaGlobalColectivos)[5]->SetNuevoRecorrido(RecorridoB);
+
+		(*ListaGlobalColectivos)[6]->SetNuevoRecorrido(RecorridoC);
+		(*ListaGlobalColectivos)[7]->SetNuevoRecorrido(RecorridoC);
+		(*ListaGlobalColectivos)[8]->SetNuevoRecorrido(RecorridoC);
 
 	///////////////////////////////////////////////////////////////////////
 	

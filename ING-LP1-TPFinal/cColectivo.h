@@ -191,6 +191,10 @@ public:
 	/// </returns>
 	bool operator==(const cColectivo& OtroColectivo);
 
+	friend istream& operator>>(istream& input, cColectivo& Colectivo);
+
+	friend ostream& operator<<(ostream& os, const cColectivo* Colectivo);
+
 	void operator++();
 
 #pragma endregion

@@ -42,6 +42,10 @@ public:
 
 #pragma region Sobrecarga Operadores
 
+	friend istream& operator>>(istream& input, cColectivoSinAire& Colectivo);
+
+	friend ostream& operator<<(ostream& os, const cColectivoSinAire* Colectivo);
+
 #pragma endregion
 };
 

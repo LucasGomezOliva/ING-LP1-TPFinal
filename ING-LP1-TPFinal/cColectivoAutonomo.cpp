@@ -17,14 +17,16 @@ void cColectivoAutonomo::DescargarBateria(){
 
 bool cColectivoAutonomo::SubirPasajeros(cPasajero* Pasajero) {
 
-	//TODO : Hacer metodo virtual para los colectivos autonomos no dependan del colectivero para cobrar pasaje
-
 	const string InicioPasajero = (*Recorrido->GetListaParadas())[PosDelRecorrido]->GetNombreParada();
 
 	const string DestinoPasajero = Pasajero->GetDestino();
 
 	const unsigned int CantidadParadas = Recorrido->CantidadDeParadasEntreDestinos(InicioPasajero, DestinoPasajero);
-
+	cout << "==================" << endl;
+	cout << CantidadParadas << endl;
+	cout << "I:" << InicioPasajero << endl;
+	cout << "D:" << DestinoPasajero << endl;
+	cout << "==================" << endl;
 	bool EstadoPasajero = SistemaDePagos->GenerarViaje(InicioPasajero, DestinoPasajero, CantidadParadas, Pasajero->GetTarjetaPasajero());
 
 	if (EstadoPasajero == true) {
@@ -34,4 +36,14 @@ bool cColectivoAutonomo::SubirPasajeros(cPasajero* Pasajero) {
 	else {
 		return false;
 	}
+}
+
+istream& operator>>(istream& input, cColectivoAutonomo& Colectivo) {
+	input >> Colectivo.GPS;
+	return input;
+}
+
+ostream& operator<<(ostream& os, const cColectivoAutonomo* Colectivo) {
+	os << Colectivo->ToStringColectivo();
+	return os;
 }

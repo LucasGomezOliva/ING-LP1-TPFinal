@@ -1,6 +1,7 @@
 #include "cSimulador.h"
 cSimulador::cSimulador() {
 	CantidadColectiverosCreados = 0;
+	CantidadColectiverosCirculacion = 0;
 	CantidadPasajerosCreados = 0;
 }
 
@@ -117,10 +118,10 @@ void cSimulador::ActualizarColectivos(cListaColectivos* ListaGlobalColectivos) {
 
 	//Random para averia por colectivo
 
-		unsigned int RandomAveria = rand() % 21;
+		unsigned int RandomAveria = rand() % 20000;
 
 		if (RandomAveria == 7 && (*ListaGlobalColectivos)[PosColectivos]->GetEstadoOperativo() == true) {
-			//(*ListaGlobalColectivos)[PosColectivos]->Averia();
+			(*ListaGlobalColectivos)[PosColectivos]->Averia();
 		}
 
 	///////////////////////////////////////////////////////////////////////
@@ -129,17 +130,20 @@ void cSimulador::ActualizarColectivos(cListaColectivos* ListaGlobalColectivos) {
 
 		if ((*ListaGlobalColectivos)[PosColectivos]->GetRecorrido() != NULL && (*ListaGlobalColectivos)[PosColectivos]->GetEstadoOperativo() == true) {
 
-			//(*ListaGlobalColectivos)[PosColectivos]->AvanzarRecorrido(); //TODO: Revisar implementacion de AvanzarRecorrido
+			//(*ListaGlobalColectivos)[PosColectivos]->AvanzarRecorrido(); 
 
 			(*ListaGlobalColectivos)[PosColectivos]->operator++();
+
+			if (CantidadColectiverosCirculacion < CantidadColectiverosCreados) {
+				CantidadColectiverosCirculacion++;
+			}
 			
 	//Si el Colectivo llego al final de su recorrido debe empezar a recorrerlo en sendido contrario
 
-			if ((*ListaGlobalColectivos)[PosColectivos]->GetRecorrido()->GetCantidadParadas() == (*ListaGlobalColectivos)[PosColectivos]->GetPosicionRecorrido()+1) { //TODO : Revisar condicion del if por las posiciones
-				cout << "Cambio Sentido==========================================" << endl;
+			if ((*ListaGlobalColectivos)[PosColectivos]->GetRecorrido()->GetCantidadParadas() == (*ListaGlobalColectivos)[PosColectivos]->GetPosicionRecorrido()+1) {
 				(*ListaGlobalColectivos)[PosColectivos]->CambioDeSentidoRecorrido();
 			}
-			if (0 == (*ListaGlobalColectivos)[PosColectivos]->GetPosicionRecorrido()) { //TODO : Revisar condicion del if por las posiciones
+			if (0 == (*ListaGlobalColectivos)[PosColectivos]->GetPosicionRecorrido()) { 
 				(*ListaGlobalColectivos)[PosColectivos]->CambioDeSentidoRecorrido();
 			}
 		}
