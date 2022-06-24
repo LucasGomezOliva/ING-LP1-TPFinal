@@ -82,10 +82,14 @@ void cColectivo::AvanzarRecorrido() {
 		this->PosDelRecorrido--;
 	}
 
+	cout << (*Recorrido->GetListaParadas())[PosDelRecorrido]->GetNombreParada() << endl;
+
 	BajarPasajeros((*Recorrido->GetListaParadas())[PosDelRecorrido]->GetNombreParada());// TODO : Revisar que se borren los pasajeros
 
 	for (unsigned int PosPasajerosParada = 0; PosPasajerosParada < (*Recorrido->GetListaParadas())[PosDelRecorrido]->GetListaPasajeros()->GetCantidadActual(); PosPasajerosParada++) {
 		if (ListaPasajeros->GetCantidadActual() < ListaPasajeros->GetCantidadMaxima()) {;
+		string Inicio = (*Recorrido->GetListaParadas())[PosDelRecorrido]->GetNombreParada();
+		string Destino = (*(*Recorrido->GetListaParadas())[PosDelRecorrido]->GetListaPasajeros())[PosPasajerosParada]->GetDestino();
 			if (true == ControlSentidoPasajero((*(*Recorrido->GetListaParadas())[PosDelRecorrido]->GetListaPasajeros())[PosPasajerosParada])) {
 				cPasajero* PasajeroAux = (*Recorrido->GetListaParadas())[PosDelRecorrido]->PasajeroSubeColectivo();
 				if (PasajeroAux != NULL) {

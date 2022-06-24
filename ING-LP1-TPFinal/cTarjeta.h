@@ -71,6 +71,13 @@ public:
 
 	void Imprimir()const;
 
+	/*friend istream& operator >> (istream& i, cTarjeta& tarjeta)
+	{
+		cout << "Introducir valores para ( a, b) :";
+		i >> tarjeta.Saldo;
+		return i;
+	}*/
+
 #pragma endregion
 };
 

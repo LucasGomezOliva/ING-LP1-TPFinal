@@ -80,6 +80,15 @@ public:
 
 	bool operator==(const cPasajero& OtroPasajero);
 
+	bool operator!=(const string& Parada){
+		if (NombreParadaDestino == Parada) {
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+
 #pragma endregion
 
 };

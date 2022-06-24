@@ -134,11 +134,11 @@ void cSimulador::ActualizarColectivos(cListaColectivos* ListaGlobalColectivos) {
 			//(*ListaGlobalColectivos)[PosColectivos]->AvanzarRecorrido(); //TODO: Revisar implementacion de AvanzarRecorrido
 
 			(*ListaGlobalColectivos)[PosColectivos]->operator++();
-
+			
 	//Si el Colectivo llego al final de su recorrido debe empezar a recorrerlo en sendido contrario
 
 			if ((*ListaGlobalColectivos)[PosColectivos]->GetRecorrido()->GetCantidadParadas() == (*ListaGlobalColectivos)[PosColectivos]->GetPosicionRecorrido()) { //TODO : Revisar condicion del if por las posiciones
-				
+				cout << "Cambio Sentido==========================================" << endl;
 				(*ListaGlobalColectivos)[PosColectivos]->CambioDeSentidoRecorrido();
 			}
 		}
@@ -191,16 +191,17 @@ string cSimulador::GeneradorDestinoRandom(cParada* ParadaActual, cRecorrido* Rec
 			unsigned int PosParadaRandom = rand() % CantidadTotalParadasRecorridoA;
 			//unsigned int PosParadaRandom = Pos + rand() % (CantidadTotalParadasRecorridoA - Pos);
 
-			if ((*RecorridoA->GetListaParadas())[PosParadaRandom]->GetNombreParada() == ParadaActual->GetNombreParada()) {
+			/*if ((*RecorridoA->GetListaParadas())[PosParadaRandom]->GetNombreParada() == ParadaActual->GetNombreParada()) {
 				if ((PosParadaRandom + 1) >= CantidadTotalParadasRecorridoA) {
 					PosParadaRandom = PosParadaRandom - 2;
 				}
 				else{
 					PosParadaRandom = PosParadaRandom + 1;
 				}
+			}*/
+			if ((*RecorridoA->GetListaParadas())[PosParadaRandom]->GetNombreParada() != ParadaActual->GetNombreParada()) {
+				return (*RecorridoA->GetListaParadas())[PosParadaRandom]->GetNombreParada();
 			}
-
-			return (*RecorridoA->GetListaParadas())[PosParadaRandom]->GetNombreParada();
 		}
 	}
 	/*
