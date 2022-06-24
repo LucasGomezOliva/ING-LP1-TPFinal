@@ -59,7 +59,6 @@ void cSimulador::GenerarColectiveros(cListaTemplate<cColectivero>* ListaColectiv
 }
 
 void cSimulador::GenerarColectivos(cListaColectivos* ListaGlobalColectivos) {
-	//TODO : simplificar este metodo
 	unsigned int CantidadSinAire = 0;
 	unsigned int CantidadAcordeon = 0;
 	unsigned int CantidadAutonomos = 0;
@@ -95,7 +94,6 @@ void cSimulador::GenerarColectivos(cListaColectivos* ListaGlobalColectivos) {
 }
 
 void cSimulador::AsignarColectiveros(cListaColectivos* ListaGlobalColectivos, cListaTemplate<cColectivero>* ListaColectiveros) {
-	//TODO : exception para la falta de colectiveros
 	unsigned int PosColectiveros = 0;
 	for (unsigned int Pos = 0; Pos < CantidadTotalColectivos; Pos++) {
 		cColectivoAutonomo* ColectivoAutonomoAux = dynamic_cast<cColectivoAutonomo*>((*ListaGlobalColectivos)[Pos]);
@@ -121,8 +119,8 @@ void cSimulador::ActualizarColectivos(cListaColectivos* ListaGlobalColectivos) {
 
 		unsigned int RandomAveria = rand() % 21;
 
-		if (RandomAveria == 7) {
-			//(*ListaGlobalColectivos)[PosColectivos]->Averia(); //TODO : Hacer el metodo Averia y reparar colectivo
+		if (RandomAveria == 7 && (*ListaGlobalColectivos)[PosColectivos]->GetEstadoOperativo() == true) {
+			(*ListaGlobalColectivos)[PosColectivos]->Averia();
 		}
 
 	///////////////////////////////////////////////////////////////////////
@@ -148,7 +146,7 @@ void cSimulador::ActualizarColectivos(cListaColectivos* ListaGlobalColectivos) {
 }
 
 void cSimulador::ActualizarParadas(cListaParadas* ListaGlobalParadas, cRecorrido* RecorridoA, cRecorrido* RecorridoB, cRecorrido* RecorridoC, cGenerador* GeneradorRandoms) {
-	bool Generador = true; // true para agregar pasajeros //TODO: delete de pasajeros en paradas o en colectivos
+	bool Generador = true; // true para agregar pasajeros
 
 	if (Generador) {
 
@@ -184,7 +182,6 @@ void cSimulador::ActualizarParadas(cListaParadas* ListaGlobalParadas, cRecorrido
 
 string cSimulador::GeneradorDestinoRandom(cParada* ParadaActual, cRecorrido* RecorridoA, cRecorrido* RecorridoB, cRecorrido* RecorridoC) {
 	//TODO : Revisar correcto funcionamiento
-	//TODO : Tener en cuenta los dos sentidos de recorrido del colectivo
 	srand((unsigned int)time(NULL));
 	for (unsigned int Pos = 0; Pos < CantidadTotalParadasRecorridoA; Pos++) {
 		if (ParadaActual->GetIDParada() == (*RecorridoA->GetListaParadas())[Pos]->GetIDParada()) {
@@ -220,7 +217,7 @@ string cSimulador::GeneradorDestinoRandom(cParada* ParadaActual, cRecorrido* Rec
 		}
 	}
 	*/
-	return "Destino Invalido"; //TODO : Destino invalido exception
+	return "Destino Invalido";
 }
 
 string cSimulador::ActualizarColectivosGPS(cListaColectivos* ListaGlobalColectivos) {
@@ -236,7 +233,6 @@ string cSimulador::ActualizarColectivosGPS(cListaColectivos* ListaGlobalColectiv
 }
 
 string cSimulador::ResumenDelDia(cListaColectivos* ListaGlobalColectivos) {
-	//TODO : Indicar el tipo de colectivo al listar los datos
 	string aux;
 	unsigned int CantidadPasajerosTotal = 0;
 	float MontoTotal = 0;

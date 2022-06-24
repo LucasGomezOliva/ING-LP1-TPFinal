@@ -41,7 +41,6 @@ int cRecorrido::CantidadDeParadasEntreDestinos(string ParadaInicio, string Parad
 		return PosDestino - PosInicio;
 	if (PosDestino < PosInicio)
 		return PosInicio - PosDestino;
-	//return 0;
 }
 bool cRecorrido::AgregarParadasRecorrido(cParada* Parada){
 	ListaParadas->Agregar(Parada);

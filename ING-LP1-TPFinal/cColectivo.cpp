@@ -173,10 +173,10 @@ void cColectivo::ActualizarGPS() {
 
 void cColectivo::CambioDeSentidoRecorrido() {
 	if (Sentido == eSentidoRecorrido::Arriba) {
-		Sentido == eSentidoRecorrido::Abajo;
+		Sentido = eSentidoRecorrido::Abajo;
 	}
 	else {
-		Sentido == eSentidoRecorrido::Arriba;
+		Sentido = eSentidoRecorrido::Arriba;
 	}
 }
 
@@ -189,8 +189,16 @@ cPasajero* cColectivo::operator-(cPasajero* Pasajero) {
 }
 
 string cColectivo::ToStringColectivo() const {
+	string codigoaux;
+	if (Recorrido == NULL) {
+		codigoaux = "Recorrido no asignado";
+	}
+	else{
+		codigoaux = Recorrido->GetCodigoRecorrido();
+	}
 	return 
 		"\n\nID Colectivo: " + IDColectivo +
+		"\nCodigo de Recorrido: " + codigoaux +
 		"\nCantidad de Pasajeros: " + to_string(SistemaDePagos->GetCantidadDePasajeros()) +
 		"\nMonto colectado: " + to_string(SistemaDePagos->GetColectaDelDia());
 }
