@@ -26,9 +26,6 @@ string cParada::GetNombreParada() const {
 
 cPasajero* cParada::PasajeroSubeColectivo() {
 	//Retornar primero los pasajeros con silla de ruedas
-	//TODO : Generar una sublista para tener en consideracion q el coelctivo que esta en la parada no tenga asignado el ramal
-	//que necesita el pasareto
-	//TODO : Si el destino no se encuentra en el recorrido asignado el pasajero baja del coelctivo y se agrega de nuevo a la
 	//lista de pasajeros de la parada(para esto primero bajar los pasajeros y dsp subir los nuevos)
 	cPasajero* PasajeroAux = ListaPasajeros->QuitarSillaRuedas();
 	if (PasajeroAux == NULL) {

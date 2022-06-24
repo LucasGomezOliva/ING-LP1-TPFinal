@@ -139,7 +139,8 @@ bool cColectivo::ControlSentidoPasajero(cPasajero* Pasajero) {
 	}
 
 	if (Sentido == eSentidoRecorrido::Abajo) {
-		for (unsigned int Pos = PosDelRecorrido; Pos > Recorrido->GetListaParadas()->GetCantidadActual(); Pos--) {
+		for (unsigned int Pos = 0; Pos < PosDelRecorrido; Pos++) {
+		//for (unsigned int Pos = PosDelRecorrido; Pos > 0; Pos--) {
 			if ((*Recorrido->GetListaParadas())[Pos]->GetNombreParada() == Pasajero->GetDestino()) {
 				return true;
 			}
