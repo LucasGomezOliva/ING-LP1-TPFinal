@@ -191,6 +191,8 @@ public:
 	/// </returns>
 	bool operator==(const cColectivo& OtroColectivo);
 
+	void operator++();
+
 #pragma endregion
 };
 

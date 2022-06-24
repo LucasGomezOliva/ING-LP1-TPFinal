@@ -26,6 +26,8 @@ bool cColectivoSinAire::SubirPasajeros(cPasajero* Pasajero) {
 
 	const unsigned int CantidadParadas = Recorrido->CantidadDeParadasEntreDestinos(InicioPasajero, DestinoPasajero);
 
+	cout << CantidadParadas << endl;
+
 	bool EstadoPasajero = SistemaDePagos->GenerarViaje(InicioPasajero, DestinoPasajero, CantidadParadas, Pasajero->GetTarjetaPasajero());
 
 	if (EstadoPasajero == true) {

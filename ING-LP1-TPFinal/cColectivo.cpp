@@ -198,3 +198,7 @@ bool cColectivo::operator==(const cColectivo& OtroColectivo) {
 	else
 		return false;
 }
+
+void cColectivo::operator++() {
+	AvanzarRecorrido();
+}
