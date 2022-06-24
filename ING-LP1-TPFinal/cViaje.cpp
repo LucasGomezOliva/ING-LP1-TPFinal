@@ -24,3 +24,16 @@ string cViaje::ToStringViaje() const {
 void cViaje::Imprimir() const {
 	cout << ToStringViaje();
 }
+
+string cViaje::GetIDViaje()const {
+	return IDViaje;
+}
+
+bool cViaje::operator==(const cViaje& OtroViaje) {
+	if (IDViaje == OtroViaje.GetIDViaje()) {
+		return true;
+	}
+	else{
+		return false;
+	}
+}

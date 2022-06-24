@@ -88,8 +88,10 @@ void cColectivo::AvanzarRecorrido() {
 
 	for (unsigned int PosPasajerosParada = 0; PosPasajerosParada < (*Recorrido->GetListaParadas())[PosDelRecorrido]->GetListaPasajeros()->GetCantidadActual(); PosPasajerosParada++) {
 		if (ListaPasajeros->GetCantidadActual() < ListaPasajeros->GetCantidadMaxima()) {;
+
 		string Inicio = (*Recorrido->GetListaParadas())[PosDelRecorrido]->GetNombreParada();
 		string Destino = (*(*Recorrido->GetListaParadas())[PosDelRecorrido]->GetListaPasajeros())[PosPasajerosParada]->GetDestino();
+
 			if (true == ControlSentidoPasajero((*(*Recorrido->GetListaParadas())[PosDelRecorrido]->GetListaPasajeros())[PosPasajerosParada])) {
 				cPasajero* PasajeroAux = (*Recorrido->GetListaParadas())[PosDelRecorrido]->PasajeroSubeColectivo();
 				if (PasajeroAux != NULL) {
@@ -103,7 +105,9 @@ void cColectivo::AvanzarRecorrido() {
 cPasajero* cColectivo::BajarPasajeros(string NombreParadaActual) {
 	//Elimina todos los paajeros que tengan como destino la ParadaActual
 	for (unsigned int Pos = 0; Pos < ListaPasajeros->GetCantidadActual(); Pos++) {
-		if ((*ListaPasajeros)[Pos]->GetDestino() == NombreParadaActual) {
+		int aux = ListaPasajeros->GetCantidadActual();
+		string DestinoPasajero = (*ListaPasajeros)[Pos]->GetDestino();
+		if (DestinoPasajero == NombreParadaActual) {
 			delete ListaPasajeros->Quitar((*ListaPasajeros)[Pos]);
 		}
 	}

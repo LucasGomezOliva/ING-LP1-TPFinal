@@ -38,12 +38,16 @@ public:
 
 #pragma region Metodos
 
+	string GetIDViaje()const;
+
 	string ToStringViaje() const;
 	void Imprimir() const;
 
 #pragma endregion
 
 #pragma region Operadores
+
+	bool operator==(const cViaje& OtroViaje);
 
 #pragma endregion
 };

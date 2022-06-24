@@ -13,7 +13,7 @@ cTarjeta::cTarjeta(float Saldo) : NumeroTarjeta(to_string(++CantidadDeTarjetasCr
 }
 
 cTarjeta::~cTarjeta() {
-
+	delete ListaDeViajesRealizados;
 }
 float cTarjeta::GetSaldo() const {
 	return Saldo;
@@ -29,7 +29,7 @@ float cTarjeta::DescuentoSalto(float Cargo) {
 }
 
 void cTarjeta::AgregarViajeLista(cViaje* NuevoViaje) {
-
+	ListaDeViajesRealizados->Agregar(NuevoViaje);
 }
 
 string cTarjeta::ToStringTarjeta()const {
