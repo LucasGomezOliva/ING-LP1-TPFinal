@@ -29,9 +29,6 @@ cColectivo::cColectivo(cRecorrido* RecorridoAsignado) : IDColectivo(to_string(++
 cColectivo::~cColectivo() {
 	delete SistemaDePagos;
 	delete ListaPasajeros;
-	/*if (Colectivero != NULL) {
-		delete Colectivero;
-	}*/
 	if (FechaUltimoMantenimiento != NULL) {
 		delete FechaUltimoMantenimiento;
 	}
@@ -84,26 +81,7 @@ void cColectivo::AvanzarRecorrido() {
 
 	cout << (*Recorrido->GetListaParadas())[PosDelRecorrido]->GetNombreParada() << endl;
 
-	BajarPasajeros((*Recorrido->GetListaParadas())[PosDelRecorrido]->GetNombreParada());// TODO : Revisar que se borren los pasajeros
-
-	//duplicar for para sacar primero los de silla de ruedas
-
-	/*
-	for (unsigned int PosPasajerosParada = 0; PosPasajerosParada < (*Recorrido->GetListaParadas())[PosDelRecorrido]->GetListaPasajeros()->GetCantidadActual(); PosPasajerosParada++) {
-		if (ListaPasajeros->GetCantidadActual() < ListaPasajeros->GetCantidadMaxima()) {;
-
-		string Inicio = (*Recorrido->GetListaParadas())[PosDelRecorrido]->GetNombreParada();
-		string Destino = (*(*Recorrido->GetListaParadas())[PosDelRecorrido]->GetListaPasajeros())[PosPasajerosParada]->GetDestino();
-
-			if (true == ControlSentidoPasajero((*(*Recorrido->GetListaParadas())[PosDelRecorrido]->GetListaPasajeros())[PosPasajerosParada])) {
-				cPasajero* PasajeroAux = (*Recorrido->GetListaParadas())[PosDelRecorrido]->PasajeroSubeColectivo();/////////////////////////////////77
-				if (PasajeroAux != NULL) {
-					SubirPasajeros(PasajeroAux);
-				}
-			}
-		}
-	}
-	*/
+	BajarPasajeros((*Recorrido->GetListaParadas())[PosDelRecorrido]->GetNombreParada());
 
 	for (unsigned int PosPasajerosParada = 0; PosPasajerosParada < (*Recorrido->GetListaParadas())[PosDelRecorrido]->GetListaPasajeros()->GetCantidadActual(); PosPasajerosParada++) {
 		if (ListaPasajeros->GetCantidadActual() < ListaPasajeros->GetCantidadMaxima()) {
@@ -146,28 +124,6 @@ cPasajero* cColectivo::BajarPasajeros(string NombreParadaActual) {
 	}
 	return NULL;
 }
-
-//bool cColectivo::SubirPasajeros(cPasajero* Pasajero) {
-//
-//	//TODO : Hacer metodo virtual para los colectivos autonomos no dependan del colectivero para cobrar pasaje
-//	//TODO : Controlar que los pasajeros se suban al sentido correcto (metodo de control al inico de SubirPasajero)
-//
-//	const string InicioPasajero = (*Recorrido->GetListaParadas())[PosDelRecorrido]->GetNombreParada();
-//
-//	const string DestinoPasajero = Colectivero->CargarDestinoPasajero(Pasajero->GetDestino());
-//
-//	const unsigned int CantidadParadas = Recorrido->CantidadDeParadasEntreDestinos(InicioPasajero, DestinoPasajero);
-//
-//	bool EstadoPasajero = SistemaDePagos->GenerarViaje(InicioPasajero, DestinoPasajero, CantidadParadas, Pasajero->GetTarjetaPasajero());
-//
-//	if (EstadoPasajero == true) {
-//		*(ListaPasajeros)+Pasajero;
-//		return true;
-//	}
-//	else {
-//		return false;
-//	}
-//}
 
 bool cColectivo::ControlSentidoPasajero(cPasajero* Pasajero) {
 	if (Sentido == eSentidoRecorrido::Arriba) {
