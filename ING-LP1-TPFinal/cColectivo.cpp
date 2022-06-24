@@ -86,6 +86,9 @@ void cColectivo::AvanzarRecorrido() {
 
 	BajarPasajeros((*Recorrido->GetListaParadas())[PosDelRecorrido]->GetNombreParada());// TODO : Revisar que se borren los pasajeros
 
+	//duplicar for para sacar primero los de silla de ruedas
+
+	/*
 	for (unsigned int PosPasajerosParada = 0; PosPasajerosParada < (*Recorrido->GetListaParadas())[PosDelRecorrido]->GetListaPasajeros()->GetCantidadActual(); PosPasajerosParada++) {
 		if (ListaPasajeros->GetCantidadActual() < ListaPasajeros->GetCantidadMaxima()) {;
 
@@ -93,9 +96,39 @@ void cColectivo::AvanzarRecorrido() {
 		string Destino = (*(*Recorrido->GetListaParadas())[PosDelRecorrido]->GetListaPasajeros())[PosPasajerosParada]->GetDestino();
 
 			if (true == ControlSentidoPasajero((*(*Recorrido->GetListaParadas())[PosDelRecorrido]->GetListaPasajeros())[PosPasajerosParada])) {
-				cPasajero* PasajeroAux = (*Recorrido->GetListaParadas())[PosDelRecorrido]->PasajeroSubeColectivo();
+				cPasajero* PasajeroAux = (*Recorrido->GetListaParadas())[PosDelRecorrido]->PasajeroSubeColectivo();/////////////////////////////////77
 				if (PasajeroAux != NULL) {
 					SubirPasajeros(PasajeroAux);
+				}
+			}
+		}
+	}
+	*/
+
+	for (unsigned int PosPasajerosParada = 0; PosPasajerosParada < (*Recorrido->GetListaParadas())[PosDelRecorrido]->GetListaPasajeros()->GetCantidadActual(); PosPasajerosParada++) {
+		if (ListaPasajeros->GetCantidadActual() < ListaPasajeros->GetCantidadMaxima()) {
+			if ((*(*Recorrido->GetListaParadas())[PosDelRecorrido]->GetListaPasajeros())[PosPasajerosParada]->GetSillaDeRuedas() == true) {
+				if (true == ControlSentidoPasajero((*(*Recorrido->GetListaParadas())[PosDelRecorrido]->GetListaPasajeros())[PosPasajerosParada])) {
+					cPasajero* PasajeroAux = ((*Recorrido->GetListaParadas())[PosDelRecorrido]->GetListaPasajeros()->Quitar(
+						(*(*Recorrido->GetListaParadas())[PosDelRecorrido]->GetListaPasajeros())[PosPasajerosParada]
+					));
+					if (PasajeroAux != NULL) {
+						SubirPasajeros(PasajeroAux);
+					}
+				}
+			}
+		}
+	}
+	for (unsigned int PosPasajerosParada = 0; PosPasajerosParada < (*Recorrido->GetListaParadas())[PosDelRecorrido]->GetListaPasajeros()->GetCantidadActual(); PosPasajerosParada++) {
+		if (ListaPasajeros->GetCantidadActual() < ListaPasajeros->GetCantidadMaxima()) {
+			if ((*(*Recorrido->GetListaParadas())[PosDelRecorrido]->GetListaPasajeros())[PosPasajerosParada]->GetSillaDeRuedas() == false) {
+				if (true == ControlSentidoPasajero((*(*Recorrido->GetListaParadas())[PosDelRecorrido]->GetListaPasajeros())[PosPasajerosParada])) {
+					cPasajero* PasajeroAux = ((*Recorrido->GetListaParadas())[PosDelRecorrido]->GetListaPasajeros()->Quitar(
+						(*(*Recorrido->GetListaParadas())[PosDelRecorrido]->GetListaPasajeros())[PosPasajerosParada]
+					));
+					if (PasajeroAux != NULL) {
+						SubirPasajeros(PasajeroAux);
+					}
 				}
 			}
 		}
@@ -155,6 +188,7 @@ bool cColectivo::ControlSentidoPasajero(cPasajero* Pasajero) {
 		}
 		return false;
 	}
+	return false;
 }
 
 void cColectivo::Averia() {
