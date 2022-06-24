@@ -53,7 +53,7 @@ bool cFecha::CompararFechas(cFecha* fecha) {
 	time(&FechaActual);
 	time_t fecha1 = mktime(&(fecha->fecha));
 	timedif = difftime(FechaActual, fecha1);
-	if (timedif < 72000)//Tiempo en segundos para la comparacion
+	if (timedif < 72000)
 		return true;
 	else
 		return false;

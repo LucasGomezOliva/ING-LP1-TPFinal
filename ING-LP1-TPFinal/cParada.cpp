@@ -25,11 +25,9 @@ string cParada::GetNombreParada() const {
 }
 
 cPasajero* cParada::PasajeroSubeColectivo() {
-	//Retornar primero los pasajeros con silla de ruedas
-	//lista de pasajeros de la parada(para esto primero bajar los pasajeros y dsp subir los nuevos)
 	cPasajero* PasajeroAux = ListaPasajeros->QuitarSillaRuedas();
 	if (PasajeroAux == NULL) {
-		return ListaPasajeros->QuitarPasajero(); // Si ya se retornaros todos los pasaresos se devuelve NULL
+		return ListaPasajeros->QuitarPasajero();
 	}
 	else{
 		return PasajeroAux;

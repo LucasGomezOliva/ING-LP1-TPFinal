@@ -181,7 +181,6 @@ bool cColectivo::ControlSentidoPasajero(cPasajero* Pasajero) {
 
 	if (Sentido == eSentidoRecorrido::Abajo) {
 		for (unsigned int Pos = 0; Pos < PosDelRecorrido; Pos++) {
-		//for (unsigned int Pos = PosDelRecorrido; Pos > 0; Pos--) {
 			if ((*Recorrido->GetListaParadas())[Pos]->GetNombreParada() == Pasajero->GetDestino()) {
 				return true;
 			}
@@ -192,12 +191,7 @@ bool cColectivo::ControlSentidoPasajero(cPasajero* Pasajero) {
 }
 
 void cColectivo::Averia() {
-	//TODO : solicitud de enviar a un colectivo con poca gente a su ubicacion para llevar a los pasajeros
-	//TODO : enviar colectivo al taller
-	//TODO : una vez reparado asignar una fecha de mantenimiento (en cSimulador)
 	this->EstadoOperaativo = false;
-
-	//Baja a los pasajeros del colectivo y los agrega a la lista de pasajeros de la parada donde se encoentraba
 	for (unsigned int Pos = 0; Pos < ListaPasajeros->GetCantidadActual(); Pos++) {
 		(*Recorrido->GetListaParadas())[PosDelRecorrido]->GetListaPasajeros()->Agregar(ListaPasajeros->Quitar((*ListaPasajeros)[Pos]));
 	}

@@ -20,7 +20,7 @@ void cColectivoConAire::ApagarAire() {
 }
 
 string cColectivoConAire::ToStringColectivoConAire() {
-	return "123";
+	return ToStringColectivo();
 }
 
 void cColectivoConAire::Imprimir() {

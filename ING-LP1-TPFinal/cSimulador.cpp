@@ -189,7 +189,6 @@ string cSimulador::GeneradorDestinoRandom(cParada* ParadaActual, cRecorrido* Rec
 	for (unsigned int Pos = 0; Pos < CantidadTotalParadasRecorridoA; Pos++) {
 		if (ParadaActual->GetIDParada() == (*RecorridoA->GetListaParadas())[Pos]->GetIDParada()) {
 			unsigned int PosParadaRandom = rand() % CantidadTotalParadasRecorridoA;
-			//unsigned int PosParadaRandom = Pos + rand() % (CantidadTotalParadasRecorridoA - Pos);
 			if ((*RecorridoA->GetListaParadas())[PosParadaRandom]->GetNombreParada() != ParadaActual->GetNombreParada()) {
 				return (*RecorridoA->GetListaParadas())[PosParadaRandom]->GetNombreParada();
 			}
@@ -199,7 +198,6 @@ string cSimulador::GeneradorDestinoRandom(cParada* ParadaActual, cRecorrido* Rec
 	for (unsigned int Pos = 0; Pos < CantidadTotalParadasRecorridoB; Pos++) {
 		if (ParadaActual->GetIDParada() == (*RecorridoB->GetListaParadas())[Pos]->GetIDParada()) {
 			unsigned int PosParadaRandom = rand() % CantidadTotalParadasRecorridoB;
-			//unsigned int PosParadaRandom = Pos + rand() % (CantidadTotalParadasRecorridoB - Pos);
 			if ((*RecorridoB->GetListaParadas())[PosParadaRandom]->GetNombreParada() != ParadaActual->GetNombreParada()) {
 				return (*RecorridoB->GetListaParadas())[PosParadaRandom]->GetNombreParada();
 			}
@@ -209,7 +207,6 @@ string cSimulador::GeneradorDestinoRandom(cParada* ParadaActual, cRecorrido* Rec
 	for (unsigned int Pos = 0; Pos < CantidadTotalParadasRecorridoC; Pos++) {
 		if (ParadaActual->GetIDParada() == (*RecorridoC->GetListaParadas())[Pos]->GetIDParada()) {
 			unsigned int PosParadaRandom = rand() % CantidadTotalParadasRecorridoC;
-			//unsigned int PosParadaRandom = Pos + rand() % (CantidadTotalParadasRecorridoC - Pos);
 			if ((*RecorridoC->GetListaParadas())[PosParadaRandom]->GetNombreParada() != ParadaActual->GetNombreParada()) {
 				return (*RecorridoC->GetListaParadas())[PosParadaRandom]->GetNombreParada();
 			}
