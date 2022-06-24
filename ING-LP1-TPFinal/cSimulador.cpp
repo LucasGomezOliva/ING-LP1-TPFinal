@@ -133,10 +133,6 @@ void cSimulador::ActualizarColectivos(cListaColectivos* ListaGlobalColectivos) {
 			//(*ListaGlobalColectivos)[PosColectivos]->AvanzarRecorrido(); 
 
 			(*ListaGlobalColectivos)[PosColectivos]->operator++();
-
-			if (CantidadColectiverosCirculacion < CantidadColectiverosCreados) {
-				CantidadColectiverosCirculacion++;
-			}
 			
 	//Si el Colectivo llego al final de su recorrido debe empezar a recorrerlo en sendido contrario
 
